@@ -1,0 +1,28 @@
+{
+    "OS":{
+        "0":{
+            "data_entrada":"23/06/21",
+            "data_saida":"",
+            "desc":"",
+            "forma_pagamento":"PIX",
+            "laudo_tecnico":"",
+            "nome_cliente":"IGOR",
+            "status":"CONCLUIDO",
+            "valor_mao_obra":"50",
+            "valor_pecas":"50",
+            "veiculo":"BROS"
+        },
+        "1":{
+            "data_entrada":"23/06/2021",
+            "data_saida":"",
+            "desc":"A FRENTE DA MOTO ESTÁ BATENDO MUITO",
+            "forma_pagamento":"DINHEIRO",
+            "laudo_tecnico":"PROBLEMA NA CAIXA DE DIREÇÃO",
+            "nome_cliente":"IGOR JOSÉ RIBEIRO DOS SANTOS",
+            "status":"EM_ANDAMENTO",
+            "valor_mao_obra":"50",
+            "valor_pecas":"0",
+            "veiculo":"BROS 150 2011"
+        }
+    }
+}
