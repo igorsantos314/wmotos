@@ -15,16 +15,29 @@ class os_ws:
         # SETAR TITULO DA TABELA
         self.headers = [
             'ID',
-            'DATA DE ENTRADA',
-            'DATA DE SAIDA',
-            'NOME DO CLIENTE',
+            'ENTRADA',
+            'SAIDA',
+            'CLIENTE',
             'VEICULO',
             'DESCRICÃO',
             'LAUDO TECNICO',
-            'FORMA DE PAGAMENTO',
+            'PAGAMENTO',
             'STATUS',
-            'VALOR MÃO DE OBRA',
-            'VALOR EM PEÇAS'
+            'VALOR M. OBRA',
+            'VALOR PEÇAS'
+        ]
+
+        self.parametros = [
+            'data_entrada',
+            'data_saida',
+            'nome_cliente',
+            'veiculo',
+            'desc',
+            'laudo_tecnico',
+            'forma_pagamento',
+            'status',
+            'valor_mao_obra',
+            'valor_pecas'
         ]
 
     def exibirTitulo(self, titulo):
@@ -102,14 +115,73 @@ class os_ws:
                          values['data_saida'],
                          values['nome_cliente'],
                          values['veiculo'],
-                         values['desc'],
-                         values['laudo_tecnico'],
+                         '...',
+                         '...',
                          values['forma_pagamento'],
                          values['status'],
                          values['valor_mao_obra'],
                          values['valor_pecas']))
 
-            print(tabulate(list, self.headers, tablefmt="pretty"))
+        print(tabulate(list, self.headers))
+
+    def setNewValues(self, item, edit, newValue):
+        # EDITAR ITEM
+        self.dict['OS'][item][edit] = newValue
+
+        print(self.dict)
+
+        # SALVAR DICIONÁRIO
+        json_ws().escrever(self.dict)
+
+    def editOS(self):
+
+        # EXIBIR TODOS
+        self.showAll()
+
+        self.exibirTitulo('ESOLHA UMA OS PARA EDITAR')
+
+        # PEGAR A OPCAO
+        item = input('-> ')
+
+        if item != '':
+
+            # GERAR LISTA DE TUPLA COM NUMEROS
+            list_edit = [(pos, i) for pos, i in enumerate(self.headers)]
+            self.exibir(list_edit)
+
+            # O QUE DESEJA EDITAR
+            edit = int(input('-> '))
+
+            # TEXTO
+            self.exibirTitulo(f'EDITAR {self.headers[edit]}')
+
+            if edit != '':
+                # NOVO VALOR DA CHAVE
+                newValue = input('-> ').upper()
+
+                self.setNewValues(item, self.parametros[edit-1], newValue)
+
+                # TEXTO
+                self.exibirTitulo('EDITADO COM SUCESSO !')
+
+    def delOS(self):
+
+        # EXIBIR TODAS AS OS
+        self.showAll()
+
+        # TEXTO
+        self.exibirTitulo('DIGITE O ID PARA DELETAR')
+
+        id = input('-> ')
+
+        if id != '':
+            self.dict['OS'].pop(id)
+
+            # SALVAR DICIONÁRIO
+            json_ws().escrever(self.dict)
+
+            # TEXTO
+            self.exibirTitulo('DELETADO COM SUCESSO !')
 
     def print_os(self, item):
 
