@@ -29,13 +29,13 @@ class consulta:
         menubar.add_cascade(label="File", menu=fileMenuFile)
 
         #BUSCAR
-        lblBuscar = Label(text='BUSCAR:')
+        lblBuscar = Label(window, text='BUSCAR:')
         lblBuscar.place(x=10, y=10)
 
-        etBuscar = Entry(width=80)
+        etBuscar = Entry(window, width=80)
         etBuscar.place(x=80, y=10)
 
-        btBuscar = Button(text='BUSCAR', width=16,
+        btBuscar = Button(window, text='BUSCAR', width=16,
                           bg='SpringGreen', command='')
         btBuscar.place(x=590, y=8)
 
@@ -162,5 +162,3 @@ class consulta:
 
         # Calling mainloop 
         window.mainloop()
-
-consulta()

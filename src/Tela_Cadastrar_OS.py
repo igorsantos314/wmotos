@@ -25,39 +25,39 @@ class Tela_Cadastrar_OS:
         lblDataEntrada = Label(self.windowMain, text='Data de Entrada:')
         lblDataEntrada.place(x=10, y=10)
 
-        etDataEntrada = Entry()
+        etDataEntrada = Entry(self.windowMain)
         etDataEntrada.place(x=10, y=30)
 
         lblDataSaida = Label(self.windowMain, text='Data de Saida:')
         lblDataSaida.place(x=150, y=10)
 
-        etDataSaida = Entry()
+        etDataSaida = Entry(self.windowMain)
         etDataSaida.place(x=150, y=30)
 
         # Cliente e Veiculo
         lblCliente = Label(self.windowMain, text='Cliente:*')
         lblCliente.place(x=10, y=60)
 
-        etCliente = Entry()
+        etCliente = Entry(self.windowMain)
         etCliente.place(x=10, y=80)
 
         lblVeiculo = Label(self.windowMain, text='Veiculo:*')
         lblVeiculo.place(x=150, y=60)
 
-        etVeiculo = Entry()
+        etVeiculo = Entry(self.windowMain)
         etVeiculo.place(x=150, y=80)
 
         # Descricao e Laudo
         lblDesc = Label(self.windowMain, text='Descrição do Cliente:')
         lblDesc.place(x=10, y=120)
 
-        etDesc = Entry()
+        etDesc = Entry(self.windowMain)
         etDesc.place(x=10, y=140)
 
         lblLaudo = Label(self.windowMain, text='Laudo Tecnico:')
         lblLaudo.place(x=150, y=120)
 
-        etLaudo = Entry()
+        etLaudo = Entry(self.windowMain)
         etLaudo.place(x=150, y=140)
 
         # Pagamento
@@ -86,23 +86,23 @@ class Tela_Cadastrar_OS:
         lblObra = Label(self.windowMain, text='Valor mão de Obra:')
         lblObra.place(x=10, y=240)
 
-        etObra = Entry()
+        etObra = Entry(self.windowMain)
         etObra.insert(0, '0')
         etObra.place(x=10, y=260)
 
         lblPecas = Label(self.windowMain, text='Valor em Peças:')
         lblPecas.place(x=150, y=240)
 
-        etPecas = Entry()
+        etPecas = Entry(self.windowMain)
         etPecas.insert(0, '0')
         etPecas.place(x=150, y=260)
 
         # Botões de Salvar e Cancelar
-        btSalvar = Button(text='SALVAR', width=16,
+        btSalvar = Button(self.windowMain, text='SALVAR', width=16,
                           bg='SpringGreen', command=lambda: save())
         btSalvar.place(x=150, y=300)
 
-        btSalvar = Button(text='CANCELAR', width=16, bg='Tomato', command=lambda: exit())
+        btSalvar = Button(self.windowMain, text='CANCELAR', width=16, bg='Tomato', command=lambda: exit())
         btSalvar.place(x=150, y=340)
 
         # Funcoes
@@ -150,6 +150,3 @@ class Tela_Cadastrar_OS:
             self.windowMain.destroy()
 
         self.windowMain.mainloop()
-
-
-Tela_Cadastrar_OS()
