@@ -33,4 +33,4 @@ VALOR DE MÃO DE OBRA:           R$ 145.5
 VALOR EM PEÇAS:                 R$ 20
 --------------------------------------------------------------------------------
 
-DATA E HORA IMPRESSÃO: 24/06/2021 12:14
+DATA E HORA IMPRESSÃO: 24/06/2021 12:19

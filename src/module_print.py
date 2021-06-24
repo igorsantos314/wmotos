@@ -5,7 +5,7 @@ class print_document:
 
     def __init__(self, conteudo):
         
-        self.caminho = "{}\\imprimir.txt".format(os.getcwd())
+        self.caminho = "{}\\src\\imprimir.txt".format(os.getcwd())
         
         # CREAR ARQ DE IMPRESSÃO
         self.createArqPrint(conteudo)

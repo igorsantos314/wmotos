@@ -22,7 +22,7 @@ class consulta:
         #MENU FILE
         fileMenuFile = Menu(myMenu, fg='Black')
         fileMenuFile.add_command(label='Editar', command='')
-        fileMenuFile.add_command(label='Excluir', command='')
+        fileMenuFile.add_command(label='Excluir', command=lambda:deletar())
         fileMenuFile.add_separator()
         fileMenuFile.add_command(label='Imprimir', command=lambda:imprimir())
         
@@ -132,6 +132,27 @@ class consulta:
 
                 #IMPRIMIR
                 print_document(conteudo)
+        
+        def deletar():
+            id = getId()
+
+            #VERIFICA SE O ID É VALIDO
+            if id != False:
+
+                if messagebox.askyesno('', 'DESEJA APAGAR A OS?') == True:
+                    #APGAR NO BANCO DE DADOS
+                    bd().delOS(id)
+
+                    messagebox.showinfo('','DELETADO COM SUCESSO!')
+
+            #LIMPA TUDO
+            limparTabela()
+
+            #CARREGA ALTERAÇÕES
+            getAll()
+
+        def limparTabela():
+            treev2.delete(*treev2.get_children())
 
         #Povoar Tabela
         getAll()
