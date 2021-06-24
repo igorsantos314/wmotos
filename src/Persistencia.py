@@ -28,6 +28,13 @@ class bd:
         self.cur.execute(command)
         self.conection.commit()
 
+    def updateOS(self, id, data_entrada, saida, nome_cliente, veiculo, desc, laudo_tecnico, forma_pagamento, status, valor_mao_obra, valor_pecas):
+        #ATUALIZAR OS
+        command = f"UPDATE ordem_servico SET entrada='{data_entrada}', saida='{saida}', cliente='{nome_cliente}', veiculo='{veiculo}', descricao='{desc}', laudo='{laudo_tecnico}', pagamento='{forma_pagamento}', status='{status}', mao_de_obra={valor_mao_obra}, valor_de_pecas={valor_pecas} WHERE id={id};"
+
+        self.cur.execute(command)
+        self.conection.commit()
+
     def getAllOS(self):
         show = "SELECT * FROM ordem_servico"
         self.cur.execute(show)
