@@ -1,5 +1,5 @@
 
-class os:
+class ordem_s:
 
     def __init__(self, data_entrada, data_saida, nome_cliente, veiculo, desc, laudo_tecnico, forma_pagamento, status, valor_mao_obra, valor_pecas):
         

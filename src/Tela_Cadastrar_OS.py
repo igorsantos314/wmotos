@@ -2,8 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 from datetime import date
-from ordem_servico import os
-
+from Persistencia import bd
 
 class Tela_Cadastrar_OS:
 
@@ -103,7 +102,7 @@ class Tela_Cadastrar_OS:
                           bg='SpringGreen', command=lambda: save())
         btSalvar.place(x=150, y=300)
 
-        btSalvar = Button(text='CANCELAR', width=16, bg='Tomato')
+        btSalvar = Button(text='CANCELAR', width=16, bg='Tomato', command=lambda: exit())
         btSalvar.place(x=150, y=340)
 
         # Funcoes
@@ -118,19 +117,21 @@ class Tela_Cadastrar_OS:
                 # SALVAR
                 if messagebox.askyesno('', 'SALVAR OS?'):
 
-                    os(
+                    bd().insertOS(
                         etDataEntrada.get(),
                         etDataSaida.get(),
-                        etCliente.get(),
-                        etVeiculo.get(),
-                        etDesc.get(),
-                        etLaudo.get(),
+                        etCliente.get().upper(),
+                        etVeiculo.get().upper(),
+                        etDesc.get().upper(),
+                        etLaudo.get().upper(),
                         comboPagamento.get(),
                         comboStatus.get(),
                         etObra.get(),
                         etPecas.get()
                     )
-                    
+
+                    messagebox.showinfo('','CADASTRADO COM SUCESSO !')
+
                 # LIMPAR
                 clear()
 
@@ -144,6 +145,9 @@ class Tela_Cadastrar_OS:
             etLaudo.delete(0, END)
             etObra.delete(0, END)
             etPecas.delete(0, END)
+
+        def exit():
+            self.windowMain.destroy()
 
         self.windowMain.mainloop()
 
