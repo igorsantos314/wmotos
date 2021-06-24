@@ -2,8 +2,10 @@ from tkinter import ttk
 from tkinter import *
 from tkinter import messagebox
 import os
+from Contabilidade import Contabilidade
 from showOS import consulta
 from Tela_Cadastrar_OS import Tela_Cadastrar_OS
+from Contabilidade import Contabilidade
 
 class Menu_Principal:
 
@@ -24,6 +26,10 @@ class Menu_Principal:
         fileMenuFile = Menu(myMenu, fg='Black')
         fileMenuFile.add_command(label='Nova', command=lambda:Tela_Cadastrar_OS())
         fileMenuFile.add_command(label='Exibir', command=lambda:consulta())
+        fileMenuFile.add_separator()
+        fileMenuFile.add_command(label='Contabilidade Diaria', command=lambda:consulta())
+        fileMenuFile.add_command(label='Contabilidade Mensal', command=lambda:consulta())
+        fileMenuFile.add_command(label='Contabilidade Total', command=lambda:Contabilidade())
         fileMenuFile.add_separator()
         fileMenuFile.add_command(
             label='Sair', command=lambda: window.destroy())

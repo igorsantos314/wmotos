@@ -49,3 +49,10 @@ class bd:
         #RETORNA LISTA DE OS
         return self.cur.fetchall()
 
+    def getAllMaoObra(self):
+
+        show = f"SELECT sum(mao_de_obra) FROM ordem_servico"
+        self.cur.execute(show)
+
+        #RETORNA O VALOR
+        return self.cur.fetchall()[0][0]
