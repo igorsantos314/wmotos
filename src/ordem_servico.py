@@ -13,3 +13,6 @@ class os:
         self.status = status, 
         self.valor_mao_obra = valor_mao_obra 
         self.valor_pecas = valor_pecas
+
+    def __str__(self):
+        return f'{self.data_entrada}-{self.data_saida}-{self.nome_cliente}-{self.veiculo}-{self.desc}-{self.laudo_tecnico}-{self.forma_pagamento}-{self.status}-{self.valor_mao_obra}-{self.valor_pecas}'
