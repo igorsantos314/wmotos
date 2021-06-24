@@ -53,7 +53,10 @@ class print_document:
 
         body += "--------------------------------------------------------------------------------\n\n"
 
-        bottom = "DATA E HORA IMPRESSÃO: " + datetime.now().strftime('%d/%m/%Y %H:%M')
+        bottom = "DATA E HORA IMPRESSÃO: " + datetime.now().strftime('%d/%m/%Y %H:%M') + "\n\n\n\n\n"
+
+        bottom += "                  ___________________________________________                    \n"
+        bottom += "                           Assinatura do Responsável"
 
         return f"{head}{body}{bottom}"
 

@@ -13,24 +13,29 @@ WHATSAPP:              (81) 98250-0763
 
 ORDEM DE SERVIÇO
 --------------------------------------------------------------------------------
-ID:                             2 
-DATA DE ENTRADA:                24/06 
-DATA DE SAIDA:                  24/06 
-NOME DO CLIENTE:                IGOR SANTOS 
-VEICULO:                        BROS 150 ES 
+ID:                             3 
+DATA DE ENTRADA:                24/06/21 
+DATA DE SAIDA:                  24/06/21 
+NOME DO CLIENTE:                IGOR 
+VEICULO:                        BROS 150 2011 
 
 --------------------------------------------------------------------------------
 DESCRIÇÃO DO CLIENTE:
-     NÃO LIGA 
+     -- 
 --------------------------------------------------------------------------------
 LAUDO TECNICO:
-     IGNIÇÃO
+     PROBLEMA NA CAIXA DE DIREÇÃO
 --------------------------------------------------------------------------------
 
-FORMA DE PAGAMENTO:             CARTÃO 
-STATUS:                         EM ANDAMENTO 
-VALOR DE MÃO DE OBRA:           R$ 145.5 
-VALOR EM PEÇAS:                 R$ 20
+FORMA DE PAGAMENTO:             PIX 
+STATUS:                         CONCLUIDO 
+VALOR DE MÃO DE OBRA:           R$ 50 
+VALOR EM PEÇAS:                 R$ 100
 --------------------------------------------------------------------------------
 
-DATA E HORA IMPRESSÃO: 24/06/2021 12:19
+DATA E HORA IMPRESSÃO: 24/06/2021 15:43
+
+
+
+                ___________________________________________                    
+                        Assinatura do Responsável
