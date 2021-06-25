@@ -3,6 +3,7 @@ from tkinter import *
 from Persistencia import bd
 from module_print import print_document
 from tkinter import messagebox
+from Tela_Editar_OS import Tela_Editar_OS
 
 class consulta:
 
@@ -21,7 +22,7 @@ class consulta:
 
         #MENU FILE
         fileMenuFile = Menu(myMenu, fg='Black')
-        fileMenuFile.add_command(label='Editar', command='')
+        fileMenuFile.add_command(label='Editar', command=lambda:editar())
         fileMenuFile.add_command(label='Excluir', command=lambda:deletar())
         fileMenuFile.add_separator()
         fileMenuFile.add_command(label='Imprimir', command=lambda:imprimir())
@@ -133,6 +134,20 @@ class consulta:
                 #IMPRIMIR
                 print_document(conteudo)
         
+        def editar():
+            
+            id = getId()
+
+            #VERIFICA SE O ID É VALIDO
+            if id != False:
+                #FECHHA A JANELA
+                window.destroy()
+
+                #ABRE JANELA DE EDITAR
+                Tela_Editar_OS(id)
+
+                #REABRE A TELA DE EXIBIR
+                consulta()
         def deletar():
             id = getId()
 

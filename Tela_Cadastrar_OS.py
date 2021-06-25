@@ -102,7 +102,7 @@ class Tela_Cadastrar_OS:
                           bg='SpringGreen', command=lambda: save())
         btSalvar.place(x=150, y=300)
 
-        btSalvar = Button(self.windowMain, text='CANCELAR', width=16, bg='Tomato', command=lambda: exit())
+        btSalvar = Button(self.windowMain, text='VOLTAR', width=16, bg='Tomato', command=lambda: exit())
         btSalvar.place(x=150, y=340)
 
         # Funcoes
@@ -147,6 +147,7 @@ class Tela_Cadastrar_OS:
             etPecas.delete(0, END)
 
         def exit():
+            #DESTRUIR
             self.windowMain.destroy()
 
         self.windowMain.mainloop()

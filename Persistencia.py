@@ -1,5 +1,6 @@
 import sqlite3
 import os
+from module_json import json_ws
 
 class bd:
 
@@ -8,9 +9,7 @@ class bd:
         #LISTA DE MESES
         self.months = ['JANEIRO', 'FEVEREIRO', 'MARCO', 'ABRIL', 'MAIO', 'JUNHO', 'JULHO', 'AGOSTO', 'SETEMBRO', 'OUTUBRO', 'NOVEMBRO', 'DEZEMBRO']
 
-        caminhoAtual = os.getcwd()
-
-        self.conection = sqlite3.connect('{}/src/wmotos.db'.format(caminhoAtual))
+        self.conection = sqlite3.connect(json_ws().getPathBd())
         self.cur = self.conection.cursor()
 
     def insertOS(self, data_entrada, saida, nome_cliente, veiculo, desc, laudo_tecnico, forma_pagamento, status, valor_mao_obra, valor_pecas):
@@ -56,3 +55,5 @@ class bd:
 
         #RETORNA O VALOR
         return self.cur.fetchall()[0][0]
+
+bd()

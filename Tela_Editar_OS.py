@@ -179,5 +179,3 @@ class Tela_Editar_OS:
         setDados()
 
         self.windowMain.mainloop()
-
-Tela_Editar_OS(3)
