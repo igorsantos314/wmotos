@@ -37,7 +37,7 @@ class consulta:
         etBuscar.place(x=80, y=10)
 
         btBuscar = Button(window, text='BUSCAR', width=16,
-                          bg='SpringGreen', command='')
+                          bg='SpringGreen', command=lambda: buscar())
         btBuscar.place(x=590, y=8)
 
         #TREEVIEW
@@ -122,6 +122,15 @@ class consulta:
             for i in bd().getAllOS():
                 treev2.insert("", 'end', text ="L1", values =(i[0], i[1], i[2], i[3], i[4], i[7], i[8], i[9], i[10]))
 
+        def buscar():
+            
+            #LIMPA A TABELA
+            limparTabela()
+
+            #VARRER LISTA E ADICIONAR NA TABELA
+            for i in bd().getNomeVeiculoOS(etBuscar.get().upper()):
+                treev2.insert("", 'end', text ="L1", values =(i[0], i[1], i[2], i[3], i[4], i[7], i[8], i[9], i[10]))
+
         def imprimir():
             
             id = getId()
@@ -148,6 +157,7 @@ class consulta:
 
                 #REABRE A TELA DE EXIBIR
                 consulta()
+
         def deletar():
             id = getId()
 

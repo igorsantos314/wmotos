@@ -56,4 +56,12 @@ class bd:
         #RETORNA O VALOR
         return self.cur.fetchall()[0][0]
 
+    def getNomeVeiculoOS(self, str):
+
+        show = f"SELECT * FROM ordem_servico WHERE cliente LIKE '%{str}%' OR veiculo LIKE '%{str}%'"
+        self.cur.execute(show)
+
+        #RETORNA LISTA DE OS
+        return self.cur.fetchall()
+
 bd()
