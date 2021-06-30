@@ -48,14 +48,6 @@ class bd:
         #RETORNA LISTA DE OS
         return self.cur.fetchall()
 
-    def getAllMaoObra(self):
-
-        show = f"SELECT sum(mao_de_obra) FROM ordem_servico"
-        self.cur.execute(show)
-
-        #RETORNA O VALOR
-        return self.cur.fetchall()[0][0]
-
     def getNomeVeiculoOS(self, str):
 
         show = f"SELECT * FROM ordem_servico WHERE cliente LIKE '%{str}%' OR veiculo LIKE '%{str}%'"
@@ -63,3 +55,82 @@ class bd:
 
         #RETORNA LISTA DE OS
         return self.cur.fetchall()
+
+    # --- CONTABILIDADE ---
+    def getAllMaoObra(self):
+
+        show = f"SELECT sum(mao_de_obra) FROM ordem_servico"
+        self.cur.execute(show)
+
+        valor = self.cur.fetchall()[0][0]
+
+        if  valor == None:
+            return 0
+
+        #RETORNA O VALOR TOTAL
+        return valor
+
+    def getContabilidadeDia(self, data):
+
+        show = f"SELECT sum(mao_de_obra) FROM ordem_servico WHERE saida='{data}' and status='CONCLUIDO'"
+        self.cur.execute(show)
+
+        valor = self.cur.fetchall()[0][0]
+
+        if  valor == None:
+            return 0
+
+        #RETORNA O VALOR DO DIA
+        return valor
+
+    def getContabilidadeMes(self, data):
+
+        show = f"SELECT sum(mao_de_obra) FROM ordem_servico WHERE saida LIKE '%{data}' and status='CONCLUIDO'"
+        self.cur.execute(show)
+
+        valor = self.cur.fetchall()[0][0]
+
+        if  valor == None:
+            return 0
+
+        #RETORNA O VALOR DO MÊS
+        return valor
+
+    def getContabilidadeDinheiro(self):
+
+        show = f"SELECT sum(mao_de_obra) FROM ordem_servico WHERE pagamento='DINHEIRO'"
+        self.cur.execute(show)
+
+        valor = self.cur.fetchall()[0][0]
+
+        if  valor == None:
+            return 0
+
+        #RETORNA O VALOR DO MÊS
+        return valor
+
+    def getContabilidadeCartao(self):
+
+        show = f"SELECT sum(mao_de_obra) FROM ordem_servico WHERE pagamento='CARTÃO'"
+        self.cur.execute(show)
+
+        valor = self.cur.fetchall()[0][0]
+
+        if  valor == None:
+            return 0
+
+        #RETORNA O VALOR DO MÊS
+        return valor
+
+    def getContabilidadePix(self):
+
+        show = f"SELECT sum(mao_de_obra) FROM ordem_servico WHERE pagamento='PIX'"
+        self.cur.execute(show)
+
+        valor = self.cur.fetchall()[0][0]
+
+        if  valor == None:
+            return 0
+
+        #RETORNA O VALOR DO MÊS
+        return valor

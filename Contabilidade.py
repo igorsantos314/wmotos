@@ -11,6 +11,7 @@ class Contabilidade:
         self.day = date.today().day
         self.month = date.today().month
         self.year = date.today().year
+        self.data_atual = f'{self.day}/{self.month}/{self.year}'
 
         self.id = id
 
@@ -21,19 +22,105 @@ class Contabilidade:
 
         self.windowMain = Tk()
         self.windowMain.title('CONTABILIDADE')
-        self.windowMain['bg'] = "Black"
+        self.windowMain.geometry('730x500')
 
-        lbl = Label(self.windowMain, text='VALOR TOTAL DE MÃO DE OBRA', font='Arial 12 bold', bg="Black", fg='white')
-        lbl.pack()
+        #Data
+        lblData = Label(self.windowMain, text='Dia:')
+        lblData.place(x=10, y=20)
 
-        lblTotal = Label(self.windowMain, text='', font='Arial 30 bold', bg="Black", fg='SpringGreen')
-        lblTotal.pack()
+        comboData = ttk.Combobox(self.windowMain, width = 8) 
 
-        def setValor():
-            #PEGAR O VALOR TOTAL
-            lblTotal['text'] = f'R$ {bd().getAllMaoObra()}'
+        comboData['values'] = tuple(['{}'.format(i) for i in range(1, 32)])
+        comboData.current(self.day-1)
+        comboData.place(x=10, y=40)
+
+        #Mes
+        lblMes = Label(self.windowMain, text='Mês:')
+        lblMes.place(x=130, y=20)
+
+        comboMes = ttk.Combobox(self.windowMain, width = 8) 
+
+        comboMes['values'] = tuple(['{}'.format(i) for i in range(1, 13)])
+        comboMes.current(self.month-1)
+        comboMes.place(x=130, y=40)
+
+        #Ano
+        lblAno = Label(self.windowMain, text='Ano:')
+        lblAno.place(x=250, y=20)
+
+        comboAno = ttk.Combobox(self.windowMain, width = 8) 
+
+        comboAno['values'] = tuple(['{}'.format(i) for i in range(2021, 2051)])
+        comboAno.current(self.year - 2021)
+        comboAno.place(x=250, y=40)
+
+        #CONTANIER
+        lblContDia = Label(text='RECEITA DIA', font='Arial 15', width=20, height=2, bg='#fee440')
+        lblContDia.place(x=10, y=80)
+
+        contValorDia = Label(text='', font='Arial 15', width=20, height=2, bg='White')
+        contValorDia.place(x=10, y=132)
+
+        lblContMes = Label(text='RECEITA MÊS', font='Arial 15', width=20, height=2, bg='#00bbf9')
+        lblContMes.place(x=250, y=80)
+
+        contValorMes = Label(text='', font='Arial 15', width=20, height=2, bg='White')
+        contValorMes.place(x=250, y=132)
+
+        lblContTotal = Label(text='RECEITA TOTAL', font='Arial 15', width=20, height=2, bg='#00f5d4')
+        lblContTotal.place(x=490, y=80)
+
+        contValorTotal = Label(text='', font='Arial 15', width=20, height=2, bg='White')
+        contValorTotal.place(x=490, y=132)
+
+        #FORMA DE PAGAMENTO
+        lblContDinheiro = Label(text='DINHEIRO', font='Arial 15', width=20, height=2, bg='#ee6055')
+        lblContDinheiro.place(x=10, y=232)
+
+        contValorDinheiro = Label(text='', font='Arial 15', width=20, height=2, bg='White')
+        contValorDinheiro.place(x=10, y=284)
+
+        lblContCartao = Label(text='CARTÃO', font='Arial 15', width=20, height=2, bg='#60d394')
+        lblContCartao.place(x=250, y=232)
+
+        contValorCartao = Label(text='', font='Arial 15', width=20, height=2, bg='White')
+        contValorCartao.place(x=250, y=284)
+
+        lblContPix = Label(text='PIX/TED', font='Arial 15', width=20, height=2, bg='#aaf683')
+        lblContPix.place(x=490, y=232)
+
+        contValorPix = Label(text='', font='Arial 15', width=20, height=2, bg='White')
+        contValorPix.place(x=490, y=284)
+
+        def setValeusData():
+            #SETAR O VALOR TOTAL
+            contValorTotal['text'] = f'R$ {bd().getAllMaoObra()}'
+
+            #SETAR O VALOR MÊS
+            m = f'/{comboMes.get()}/{comboAno.get()}'
+            contValorMes['text'] = f'R$ {bd().getContabilidadeMes(m)}'
+            
+            #SETAR O VALOR DIA
+            d = f'{comboData.get()}/{comboMes.get()}/{comboAno.get()}'
+            contValorDia['text'] = f'R$ {bd().getContabilidadeDia(d)}'
+        
+        def setValuesPagamento():
+            #DINHEIRO
+            contValorDinheiro['text'] = f'R$ {bd().getContabilidadeDinheiro()}'
+
+            #CARTAO
+            contValorCartao['text'] = f'R$ {bd().getContabilidadeCartao()}'
+
+            #PIX
+            contValorPix['text'] = f'R$ {bd().getContabilidadePix()}'
+
+        btConsultar = Button(text='Consultar', command=setValeusData)
+        btConsultar.place(x=490, y=40)
 
         #SETAR VALOR
-        setValor()
+        setValeusData()
+        setValuesPagamento()
 
         self.windowMain.mainloop()
+
+Contabilidade()
