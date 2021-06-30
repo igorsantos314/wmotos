@@ -15,14 +15,41 @@ class Contabilidade:
 
         self.id = id
 
-        # OBEJTO OS
-        self.window()
+        self.login()
+
+    def login(self):
+
+        windowLogin = Tk()
+        windowLogin.title('LOGIN')
+
+        lblSenha = Label(windowLogin, text='Senha:')
+        lblSenha.pack()
+
+        etSenha = Entry(windowLogin, font='Arial 12 bold', show='*')
+        etSenha.pack()
+
+        def verify():
+            
+            if etSenha.get() == '3098':
+                #DESTRUIR JANELA
+                windowLogin.destroy()
+
+                #CHAMAR CONTABILIDADE
+                self.window()
+            else:
+                messagebox.showerror('', 'SENHA INCORRETA !')
+                windowLogin.destroy()
+
+        bt = Button(windowLogin, text='Entrar', command=verify)
+        bt.pack()
+
+        windowLogin.mainloop()
 
     def window(self):
 
         self.windowMain = Tk()
         self.windowMain.title('CONTABILIDADE')
-        self.windowMain.geometry('730x500')
+        self.windowMain.geometry('730x460')
 
         #Data
         lblData = Label(self.windowMain, text='Dia:')
@@ -114,13 +141,11 @@ class Contabilidade:
             #PIX
             contValorPix['text'] = f'R$ {bd().getContabilidadePix()}'
 
-        btConsultar = Button(text='Consultar', command=setValeusData)
-        btConsultar.place(x=490, y=40)
+        btConsultar = Button(text='CONSULTAR', font='Arial 15', bg='SpringGreen', width=20, height=2, command=setValeusData)
+        btConsultar.place(x=250, y=380)
 
         #SETAR VALOR
         setValeusData()
         setValuesPagamento()
 
         self.windowMain.mainloop()
-
-Contabilidade()

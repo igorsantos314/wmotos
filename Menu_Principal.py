@@ -28,9 +28,7 @@ class Menu_Principal:
         fileMenuFile.add_command(label='Nova', command=lambda:open('Nova'))
         fileMenuFile.add_command(label='Exibir', command=lambda:open('Exibir'))
         fileMenuFile.add_separator()
-        fileMenuFile.add_command(label='Contabilidade Diaria', command='lambda:consulta()')
-        fileMenuFile.add_command(label='Contabilidade Mensal', command='lambda:consulta()')
-        fileMenuFile.add_command(label='Contabilidade Total', command=lambda:open('C_Total'))
+        fileMenuFile.add_command(label='Contabilidade', command=lambda:open('C_Total'))
         fileMenuFile.add_separator()
         fileMenuFile.add_command(
             label='Sair', command=lambda: window.destroy())
