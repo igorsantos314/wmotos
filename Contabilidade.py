@@ -20,7 +20,6 @@ class Contabilidade:
     def login(self):
 
         windowLogin = Tk()
-        windowLogin.title('LOGIN')
 
         lblSenha = Label(windowLogin, text='Senha:')
         lblSenha.pack()
@@ -48,7 +47,7 @@ class Contabilidade:
     def window(self):
 
         self.windowMain = Tk()
-        self.windowMain.title('CONTABILIDADE')
+        self.windowMain.title('CONTABILIDADE W MOTOS')
         self.windowMain.geometry('730x460')
 
         #Data
@@ -121,25 +120,25 @@ class Contabilidade:
 
         def setValeusData():
             #SETAR O VALOR TOTAL
-            contValorTotal['text'] = f'R$ {bd().getAllMaoObra()}'
+            contValorTotal['text'] = f'R$ {bd().getAllMaoObra():.2f}'
 
             #SETAR O VALOR MÊS
             m = f'/{comboMes.get()}/{comboAno.get()}'
-            contValorMes['text'] = f'R$ {bd().getContabilidadeMes(m)}'
+            contValorMes['text'] = f'R$ {bd().getContabilidadeMes(m):.2f}'
             
             #SETAR O VALOR DIA
             d = f'{comboData.get()}/{comboMes.get()}/{comboAno.get()}'
-            contValorDia['text'] = f'R$ {bd().getContabilidadeDia(d)}'
+            contValorDia['text'] = f'R$ {bd().getContabilidadeDia(d):.2f}'
         
         def setValuesPagamento():
             #DINHEIRO
-            contValorDinheiro['text'] = f'R$ {bd().getContabilidadeDinheiro()}'
+            contValorDinheiro['text'] = f'R$ {bd().getContabilidadeDinheiro():.2f}'
 
             #CARTAO
-            contValorCartao['text'] = f'R$ {bd().getContabilidadeCartao()}'
+            contValorCartao['text'] = f'R$ {bd().getContabilidadeCartao():.2f}'
 
             #PIX
-            contValorPix['text'] = f'R$ {bd().getContabilidadePix()}'
+            contValorPix['text'] = f'R$ {bd().getContabilidadePix():.2f}'
 
         btConsultar = Button(text='CONSULTAR', font='Arial 15', bg='SpringGreen', width=20, height=2, command=setValeusData)
         btConsultar.place(x=250, y=380)
