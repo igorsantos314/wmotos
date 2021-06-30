@@ -34,22 +34,24 @@ class print_document:
         body += f"ID:                             {conteudo[0]} \n"
         body += f"DATA DE ENTRADA:                {conteudo[1]} \n"   
         body += f"DATA DE SAIDA:                  {conteudo[2]} \n"    
-        body += f"NOME DO CLIENTE:                {conteudo[3]} \n"        
-        body += f"VEICULO:                        {conteudo[4]} \n\n" 
+        body += f"NOME DO CLIENTE:                {conteudo[3]} \n"   
+        body += f"TELEFONE:                       {conteudo[4]} \n"     
+        body += f"VEICULO:                        {conteudo[5]} \n\n" 
 
         body += "--------------------------------------------------------------------------------\n"
         body += "DESCRIÇÃO DO CLIENTE:\n"
-        body += f"     {conteudo[5]} \n"
+        body += f"     {conteudo[6]} \n"
 
         body += "--------------------------------------------------------------------------------\n"
         body += "LAUDO TECNICO:\n"
-        body += f"     {conteudo[6]}\n"
+        body += f"     {conteudo[7]}\n"
         body += "--------------------------------------------------------------------------------\n\n"
         
-        body += f"FORMA DE PAGAMENTO:             {conteudo[7]} \n"
-        body += f"STATUS:                         {conteudo[8]} \n"
-        body += f"VALOR DE MÃO DE OBRA:           R$ {conteudo[9]} \n"
-        body += f"VALOR EM PEÇAS:                 R$ {conteudo[10] }\n"
+        body += f"FORMA DE PAGAMENTO:             {conteudo[8]} \n"
+        body += f"STATUS:                         {conteudo[9]} \n"
+        body += f"VALOR DE MÃO DE OBRA:           R$ {conteudo[10]} \n"
+        body += f"VALOR EM PEÇAS:                 R$ {conteudo[11] }\n"
+        body += f"TOTAL:                          R$ {conteudo[10] + conteudo[11]}\n"
 
         body += "--------------------------------------------------------------------------------\n\n"
 

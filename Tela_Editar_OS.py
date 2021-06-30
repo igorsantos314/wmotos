@@ -12,9 +12,10 @@ class Tela_Editar_OS:
         self.day = date.today().day
         self.month = date.today().month
         self.year = date.today().year
+        self.data_atual = f'{self.day}/{self.month}/{self.year}'
 
         self.id = id
-
+        
         # OBEJTO OS
         self.window()
 
@@ -41,13 +42,13 @@ class Tela_Editar_OS:
         lblCliente = Label(self.windowMain, text='Cliente:*')
         lblCliente.place(x=10, y=60)
 
-        etCliente = Entry(self.windowMain, font='Arial 10 bold', fg=f'{json_ws().getColorCliente()}')
+        etCliente = Entry(self.windowMain, font='Arial 10 bold', fg=f'{json_ws().getColorCliente()}', width=17)
         etCliente.place(x=10, y=80)
 
         lblVeiculo = Label(self.windowMain, text='Veiculo:*')
         lblVeiculo.place(x=150, y=60)
 
-        etVeiculo = Entry(self.windowMain, font='Arial 10 bold', fg=f'{json_ws().getColorVeiculo()}')
+        etVeiculo = Entry(self.windowMain, font='Arial 10 bold', fg=f'{json_ws().getColorVeiculo()}', width=17)
         etVeiculo.place(x=150, y=80)
 
         # Descricao e Laudo
@@ -102,7 +103,7 @@ class Tela_Editar_OS:
         lblTelefone = Label(self.windowMain, text='Telefone:')
         lblTelefone.place(x=10, y=300)
 
-        etTelefone = Entry(self.windowMain, font='Arial 10 bold', fg=f'{json_ws().getColorTelefone()}')
+        etTelefone = Entry(self.windowMain, font='Arial 10 bold', fg=f'{json_ws().getColorTelefone()}', width=17)
         etTelefone.place(x=10, y=320)
 
         # Botões de Salvar e Cancelar

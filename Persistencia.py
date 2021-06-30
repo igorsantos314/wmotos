@@ -63,5 +63,3 @@ class bd:
 
         #RETORNA LISTA DE OS
         return self.cur.fetchall()
-
-bd()

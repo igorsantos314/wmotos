@@ -129,7 +129,7 @@ class consulta:
 
             #VARRER LISTA E ADICIONAR NA TABELA
             for i in bd().getNomeVeiculoOS(etBuscar.get().upper()):
-                treev2.insert("", 'end', text ="L1", values =(i[0], i[1], i[2], i[3], i[4], i[7], i[8], i[9], i[10]))
+                treev2.insert("", 'end', text ="L1", values =(i[0], i[1], i[2], i[3], i[5], i[8], i[9], i[10], i[11]))
 
         def imprimir():
             

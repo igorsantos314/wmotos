@@ -13,6 +13,8 @@ class Tela_Cadastrar_OS:
         self.month = date.today().month
         self.year = date.today().year
 
+        self.data_atual = f'{self.day}/{self.month}/{self.year}'
+
         # OBEJTO OS
         self.window()
 
@@ -25,27 +27,29 @@ class Tela_Cadastrar_OS:
         # Data
         lblDataEntrada = Label(self.windowMain, text='Data de Entrada:')
         lblDataEntrada.place(x=10, y=10)
-
+        
         etDataEntrada = Entry(self.windowMain)
+        etDataEntrada.insert(0, self.data_atual)
         etDataEntrada.place(x=10, y=30)
 
         lblDataSaida = Label(self.windowMain, text='Data de Saida:')
         lblDataSaida.place(x=150, y=10)
 
         etDataSaida = Entry(self.windowMain)
+        etDataSaida.insert(0, self.data_atual)
         etDataSaida.place(x=150, y=30)
 
         # Cliente e Veiculo
         lblCliente = Label(self.windowMain, text='Cliente:*')
         lblCliente.place(x=10, y=60)
 
-        etCliente = Entry(self.windowMain, font='Arial 10 bold', fg=f'{json_ws().getColorCliente()}')
+        etCliente = Entry(self.windowMain, font='Arial 10 bold', fg=f'{json_ws().getColorCliente()}', width=17)
         etCliente.place(x=10, y=80)
 
         lblVeiculo = Label(self.windowMain, text='Veiculo:*')
         lblVeiculo.place(x=150, y=60)
 
-        etVeiculo = Entry(self.windowMain, font='Arial 10 bold', fg=f'{json_ws().getColorVeiculo()}')
+        etVeiculo = Entry(self.windowMain, font='Arial 10 bold', fg=f'{json_ws().getColorVeiculo()}', width=17)
         etVeiculo.place(x=150, y=80)
 
         # Descricao e Laudo
@@ -102,7 +106,7 @@ class Tela_Cadastrar_OS:
         lblTelefone = Label(self.windowMain, text='Telefone:')
         lblTelefone.place(x=10, y=300)
 
-        etTelefone = Entry(self.windowMain, font='Arial 10 bold', fg=f'{json_ws().getColorTelefone()}')
+        etTelefone = Entry(self.windowMain, font='Arial 10 bold', fg=f'{json_ws().getColorTelefone()}', width=17)
         etTelefone.place(x=10, y=320)
 
         # Botões de Salvar e Cancelar
