@@ -49,9 +49,9 @@ class print_document:
         
         body += f"FORMA DE PAGAMENTO:             {conteudo[8]} \n"
         body += f"STATUS:                         {conteudo[9]} \n"
-        body += f"VALOR DE MÃO DE OBRA:           R$ {conteudo[10]} \n"
-        body += f"VALOR EM PEÇAS:                 R$ {conteudo[11] }\n"
-        body += f"TOTAL:                          R$ {conteudo[10] + conteudo[11]}\n"
+        body += f"VALOR DE MÃO DE OBRA:           R$ {conteudo[10]:.2f} \n"
+        body += f"VALOR EM PEÇAS:                 R$ {conteudo[11]:.2f}\n"
+        body += f"TOTAL:                          R$ {(conteudo[10] + conteudo[11]):.2f}\n"
 
         body += "--------------------------------------------------------------------------------\n\n"
 
