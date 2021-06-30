@@ -26,3 +26,12 @@ class json_ws:
 
     def getPathBd(self):
         return f"{os.getcwd()}/{self.dict['path_bd']}"
+
+    def getColorCliente(self):
+        return self.dict['color_cliente']
+
+    def getColorVeiculo(self):
+        return self.dict['color_veiculo']
+
+    def getColorTelefone(self):
+        return self.dict['color_telefone']

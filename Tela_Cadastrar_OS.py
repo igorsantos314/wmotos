@@ -3,6 +3,7 @@ from tkinter import ttk
 from tkinter import messagebox
 from datetime import date
 from Persistencia import bd
+from module_json import json_ws
 
 class Tela_Cadastrar_OS:
 
@@ -38,13 +39,13 @@ class Tela_Cadastrar_OS:
         lblCliente = Label(self.windowMain, text='Cliente:*')
         lblCliente.place(x=10, y=60)
 
-        etCliente = Entry(self.windowMain)
+        etCliente = Entry(self.windowMain, font='Arial 10 bold', fg=f'{json_ws().getColorCliente()}')
         etCliente.place(x=10, y=80)
 
         lblVeiculo = Label(self.windowMain, text='Veiculo:*')
         lblVeiculo.place(x=150, y=60)
 
-        etVeiculo = Entry(self.windowMain)
+        etVeiculo = Entry(self.windowMain, font='Arial 10 bold', fg=f'{json_ws().getColorVeiculo()}')
         etVeiculo.place(x=150, y=80)
 
         # Descricao e Laudo
@@ -97,6 +98,13 @@ class Tela_Cadastrar_OS:
         etPecas.insert(0, '0')
         etPecas.place(x=150, y=260)
 
+        #Telefone
+        lblTelefone = Label(self.windowMain, text='Telefone:')
+        lblTelefone.place(x=10, y=300)
+
+        etTelefone = Entry(self.windowMain, font='Arial 10 bold', fg=f'{json_ws().getColorTelefone()}')
+        etTelefone.place(x=10, y=320)
+
         # Botões de Salvar e Cancelar
         btSalvar = Button(self.windowMain, text='SALVAR', width=16,
                           bg='SpringGreen', command=lambda: save())
@@ -121,6 +129,7 @@ class Tela_Cadastrar_OS:
                         etDataEntrada.get(),
                         etDataSaida.get(),
                         etCliente.get().upper(),
+                        etTelefone.get(),
                         etVeiculo.get().upper(),
                         etDesc.get().upper(),
                         etLaudo.get().upper(),
@@ -140,6 +149,7 @@ class Tela_Cadastrar_OS:
             etDataEntrada.delete(0, END)
             etDataSaida.delete(0, END)
             etCliente.delete(0, END)
+            etTelefone.delete(0, END)
             etVeiculo.delete(0, END)
             etDesc.delete(0, END)
             etLaudo.delete(0, END)
