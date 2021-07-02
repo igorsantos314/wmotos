@@ -29,7 +29,7 @@ class bd:
 
     def updateOS(self, id, data_entrada, saida, nome_cliente, telefone, veiculo, desc, laudo_tecnico, forma_pagamento, status, valor_mao_obra, valor_pecas, valor_outros):
         #ATUALIZAR OS
-        command = f"UPDATE ordem_servico SET entrada='{data_entrada}', saida='{saida}', cliente='{nome_cliente}', telefone='{telefone}', veiculo='{veiculo}', descricao='{desc}', laudo='{laudo_tecnico}', pagamento='{forma_pagamento}', status='{status}', mao_de_obra={valor_mao_obra}, valor_de_pecas={valor_pecas} valor_outros={valor_outros} WHERE id={id};"
+        command = f"UPDATE ordem_servico SET entrada='{data_entrada}', saida='{saida}', cliente='{nome_cliente}', telefone='{telefone}', veiculo='{veiculo}', descricao='{desc}', laudo='{laudo_tecnico}', pagamento='{forma_pagamento}', status='{status}', mao_de_obra={valor_mao_obra}, valor_de_pecas={valor_pecas}, valor_outros={valor_outros} WHERE id={id};"
 
         self.cur.execute(command)
         self.conection.commit()
@@ -134,3 +134,9 @@ class bd:
 
         #RETORNA O VALOR DO MÊS
         return valor
+
+    # --- BACKUP ---
+    def toJson(self):
+
+        for os in self.getAllOS():
+            pass

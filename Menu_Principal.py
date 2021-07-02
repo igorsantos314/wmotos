@@ -7,6 +7,7 @@ from showOS import consulta
 from Tela_Cadastrar_OS import Tela_Cadastrar_OS
 from Contabilidade import Contabilidade
 from module_json import json_ws
+from Backup_BD import Backup_BD
 
 class Menu_Principal:
 
@@ -30,10 +31,12 @@ class Menu_Principal:
         fileMenuFile.add_separator()
         fileMenuFile.add_command(label='Contabilidade', command=lambda:open('C_Total'))
         fileMenuFile.add_separator()
-        fileMenuFile.add_command(
-            label='Sair', command=lambda: window.destroy())
-
+        fileMenuFile.add_command(label='Sair', command=lambda: window.destroy())
         menubar.add_cascade(label="ORDEM DE SERVIÇO", menu=fileMenuFile)
+
+        fileMenuBackup = Menu(myMenu, fg='Black')
+        fileMenuBackup.add_command(label='Backup', command=lambda:open('Backup'))
+        menubar.add_cascade(label="BACKUP", menu=fileMenuBackup)
 
         #LOGO
         imagem = PhotoImage(file=f"{json_ws().getPathLogo()}")
@@ -64,6 +67,13 @@ class Menu_Principal:
             elif w == 'C_Total':
                 #ABRIR JANELA
                 Contabilidade()
+
+                #REABRIR MENU
+                Menu_Principal()
+
+            elif w == 'Backup':
+                #ABRIR JANELA
+                Backup_BD()
 
                 #REABRIR MENU
                 Menu_Principal()
