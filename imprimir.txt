@@ -13,29 +13,33 @@ WHATSAPP:              (81) 98250-0763
 
 ORDEM DE SERVIÇO
 --------------------------------------------------------------------------------
-ID:                             3 
-DATA DE ENTRADA:                24/06/21 
-DATA DE SAIDA:                  24/06/21 
+ID:                             13 
+DATA DE ENTRADA:                1/7/2021 
+DATA DE SAIDA:                  1/7/2021 
 NOME DO CLIENTE:                IGOR 
-VEICULO:                        BROS 150 2011 
+TELEFONE:                       81 982333074 
+VEICULO:                        BROS 
 
 --------------------------------------------------------------------------------
 DESCRIÇÃO DO CLIENTE:
-     -- 
+     CAIXA DE DIREÇÃO 
 --------------------------------------------------------------------------------
 LAUDO TECNICO:
-     PROBLEMA NA CAIXA DE DIREÇÃO
+     QUEBRADA
 --------------------------------------------------------------------------------
 
-FORMA DE PAGAMENTO:             PIX 
+FORMA DE PAGAMENTO:             DINHEIRO 
 STATUS:                         CONCLUIDO 
-VALOR DE MÃO DE OBRA:           R$ 50 
-VALOR EM PEÇAS:                 R$ 100
+VALOR DE MÃO DE OBRA:           R$ 50.00 
+VALOR EM PEÇAS:                 R$ 50.00
+OUTROS VALORES:                 R$ 50.00
+TOTAL:                          R$ 150.00
 --------------------------------------------------------------------------------
 
-DATA E HORA IMPRESSÃO: 24/06/2021 15:43
+DATA E HORA IMPRESSÃO: 01/07/2021 21:19
 
 
 
-                ___________________________________________                    
-                        Assinatura do Responsável
+
+                  ___________________________________________                    
+                           Assinatura do Responsável
