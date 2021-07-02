@@ -143,9 +143,9 @@ class Tela_Editar_OS:
                         etLaudo.get().upper(),
                         comboPagamento.get(),
                         comboStatus.get(),
-                        float(etObra.get()),
-                        float(etPecas.get()),
-                        float(etOutros.get())
+                        float(etObra.get().replace(',','.')),
+                        float(etPecas.get().replace(',','.')),
+                        float(etOutros.get().replace(',','.'))
                     )
 
                     messagebox.showinfo('','EDITADO COM SUCESSO !')
@@ -180,9 +180,9 @@ class Tela_Editar_OS:
             etLaudo.insert(0, dados[7])
             setPagamento(dados[8])
             setStatus(dados[9])
-            etObra.insert(0, dados[10])
-            etPecas.insert(0, dados[11])
-            etOutros.insert(0, dados[12])
+            etObra.insert(0, dados[10].replace('.',','))
+            etPecas.insert(0, dados[11].replace('.',','))
+            etOutros.insert(0, dados[12].replace('.',','))
 
         def setPagamento(pag):
 

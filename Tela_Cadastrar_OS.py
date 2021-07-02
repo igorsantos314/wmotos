@@ -146,9 +146,9 @@ class Tela_Cadastrar_OS:
                         etLaudo.get().upper(),
                         comboPagamento.get(),
                         comboStatus.get(),
-                        float(etObra.get()),
-                        float(etPecas.get()),
-                        float(etOutros.get())
+                        float(etObra.get().replace(',','.')),
+                        float(etPecas.get().replace(',','.')),
+                        float(etOutros.get().replace(',','.'))
                     )
 
                     messagebox.showinfo('','CADASTRADO COM SUCESSO !')
