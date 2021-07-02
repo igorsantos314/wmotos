@@ -51,7 +51,8 @@ class print_document:
         body += f"STATUS:                         {conteudo[9]} \n"
         body += f"VALOR DE MÃO DE OBRA:           R$ {conteudo[10]:.2f} \n"
         body += f"VALOR EM PEÇAS:                 R$ {conteudo[11]:.2f}\n"
-        body += f"TOTAL:                          R$ {(conteudo[10] + conteudo[11]):.2f}\n"
+        body += f"OUTROS VALORES:                 R$ {conteudo[12]:.2f}\n"
+        body += f"TOTAL:                          R$ {(conteudo[10] + conteudo[11] + conteudo[12]):.2f}\n"
 
         body += "--------------------------------------------------------------------------------\n\n"
 
