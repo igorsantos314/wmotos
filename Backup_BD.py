@@ -75,6 +75,12 @@ class Backup_BD:
         #BUSCAR DISPOSITIVOS
         getDevices()
 
+        #VOLTAR
+        imagem_voltar = PhotoImage(file=f"src/voltar_48.png")
+        btVoltar = Button(self.windowMain, image=imagem_voltar, bg='White', command=lambda: exit())
+        btVoltar.imagem = imagem_voltar
+        btVoltar.pack(side=LEFT)
+
         self.windowMain.bind("<F11>", self.toggleFullScreen)
         self.windowMain.bind("<Escape>", self.quitFullScreen)
 
@@ -94,4 +100,6 @@ class Backup_BD:
         self.destino = f'{device}/{self.data_atual}-wmotos.db'
 
         #REALIZAR BACKUP PARA UNIDADE REMOVIVEL
-        shutil.copy(self.origem, self.destino)
+        shutil.copy(self.origem, self.destino),
+
+Backup_BD()        
