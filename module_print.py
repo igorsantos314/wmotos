@@ -15,12 +15,7 @@ class print_document:
 
     def setConteudoToPrint(self, conteudo):
 
-        head =  ''
-        head += '             __        __    __  __    ___    _____    ___    ____   \n'
-        head += '             \ \      / /   |  \/  |  / _ \  |_   _|  / _ \  / ___|  \n'
-        head += '              \ \ /\ / /    | |\/| | | | | |   | |   | | | | \___ \  \n'
-        head += '               \ V  V /     | |  | | | |_| |   | |   | |_| |  ___) | \n'
-        head += '                \_/\_/      |_|  |_|  \___/    |_|    \___/  |____/  \n'
+        head = '                           ORDEM DE SERVIÇO - W MOTOS  \n'
         head += "________________________________________________________________________________\n"
         head += "CIDADE:                BEJO JARDIM\n"
         head += "RUA:                   JOÃO BATISTA SENHORINHO\n"
@@ -29,7 +24,7 @@ class print_document:
         head += "WHATSAPP:              (81) 98250-0763\n"
         head += "________________________________________________________________________________\n\n"
 
-        body  = "ORDEM DE SERVIÇO\n"
+        body  = "DADOS DA ORDEM DE SERVIÇO\n"
         body += "________________________________________________________________________________\n"
         body += f"ID:                             {conteudo[0]} \n"
         body += f"DATA DE ENTRADA:                {conteudo[1]} \n"   
@@ -40,11 +35,11 @@ class print_document:
 
         body += "________________________________________________________________________________\n"
         body += "DESCRIÇÃO DO CLIENTE:\n"
-        body += f"     {conteudo[6]} \n"
+        body += f"     {conteudo[6]}"
 
         body += "________________________________________________________________________________\n"
         body += "LAUDO TECNICO:\n"
-        body += f"     {conteudo[7]}\n"
+        body += f"     {conteudo[7]}"
         body += "________________________________________________________________________________\n\n"
         
         body += f"FORMA DE PAGAMENTO:             {conteudo[8]} \n"
@@ -62,7 +57,9 @@ class print_document:
         bottom += "                           Assinatura do Responsável\n\n\n\n\n"
 
         bottom += "                  ___________________________________________                    \n"
-        bottom += "                             Assinatura do Cliente"
+        bottom += "                             Assinatura do Cliente\n\n\n"
+
+        bottom += "*Garantia Legal de 90 dias, Prevista no CDC - Art. 26, contando apartir da DATA DE SAIDA."
         
         return f"{head}{body}{bottom}"
 

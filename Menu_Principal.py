@@ -93,5 +93,3 @@ class Menu_Principal:
                 Menu_Principal()
 
         window.mainloop()
-
-Menu_Principal()        
