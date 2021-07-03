@@ -20,7 +20,8 @@ class Contabilidade:
     def login(self):
 
         windowLogin = Tk()
-
+        windowLogin.title('')
+        
         lblSenha = Label(windowLogin, text='Senha:')
         lblSenha.pack()
 
@@ -117,6 +118,13 @@ class Contabilidade:
 
         contValorPix = Label(text='', font='Arial 15', width=20, height=2, bg='White')
         contValorPix.place(x=490, y=284)
+
+        #DESPESAS
+        #lblDespesa = Label(text='DESPESAS', font='Arial 15', width=20, height=2, bg='#00FFFF')
+        #lblDespesa.place(x=10, y=384)
+
+        #contValorDespesa = Label(text='', font='Arial 15', width=20, height=2, bg='White')
+        #contValorDespesa.place(x=10, y=436)
 
         def setValeusData():
             #SETAR O VALOR TOTAL

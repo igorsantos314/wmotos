@@ -61,7 +61,6 @@ class Backup_BD:
         comboPagamento = ttk.Combobox(self.windowMain, width=17)
 
         comboPagamento['values'] = tuple(getDevices())
-        comboPagamento.current(0)
         comboPagamento.pack()
 
         btSalvar = Button(self.windowMain, text='BACKUP', command=startBackup)

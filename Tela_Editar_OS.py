@@ -180,9 +180,9 @@ class Tela_Editar_OS:
             etLaudo.insert(0, dados[7])
             setPagamento(dados[8])
             setStatus(dados[9])
-            etObra.insert(0, dados[10].replace('.',','))
-            etPecas.insert(0, dados[11].replace('.',','))
-            etOutros.insert(0, dados[12].replace('.',','))
+            etObra.insert(0, str(dados[10]).replace('.',','))
+            etPecas.insert(0, str(dados[11]).replace('.',','))
+            etOutros.insert(0, str(dados[12]).replace('.',','))
 
         def setPagamento(pag):
 

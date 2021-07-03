@@ -21,16 +21,16 @@ class print_document:
         head += '              \ \ /\ / /    | |\/| | | | | |   | |   | | | | \___ \  \n'
         head += '               \ V  V /     | |  | | | |_| |   | |   | |_| |  ___) | \n'
         head += '                \_/\_/      |_|  |_|  \___/    |_|    \___/  |____/  \n'
-        head += "--------------------------------------------------------------------------------\n"
+        head += "________________________________________________________________________________\n"
         head += "CIDADE:                BEJO JARDIM\n"
         head += "RUA:                   JOÃO BATISTA SENHORINHO\n"
         head += "NÚMERO:                155\n"
         head += "PONTO DE REFERÊNCIA:   AVENIDA DO SESC\n"
         head += "WHATSAPP:              (81) 98250-0763\n"
-        head += "--------------------------------------------------------------------------------\n\n"
+        head += "________________________________________________________________________________\n\n"
 
         body  = "ORDEM DE SERVIÇO\n"
-        body += "--------------------------------------------------------------------------------\n"
+        body += "________________________________________________________________________________\n"
         body += f"ID:                             {conteudo[0]} \n"
         body += f"DATA DE ENTRADA:                {conteudo[1]} \n"   
         body += f"DATA DE SAIDA:                  {conteudo[2]} \n"    
@@ -38,14 +38,14 @@ class print_document:
         body += f"TELEFONE:                       {conteudo[4]} \n"     
         body += f"VEICULO:                        {conteudo[5]} \n\n" 
 
-        body += "--------------------------------------------------------------------------------\n"
+        body += "________________________________________________________________________________\n"
         body += "DESCRIÇÃO DO CLIENTE:\n"
         body += f"     {conteudo[6]} \n"
 
-        body += "--------------------------------------------------------------------------------\n"
+        body += "________________________________________________________________________________\n"
         body += "LAUDO TECNICO:\n"
         body += f"     {conteudo[7]}\n"
-        body += "--------------------------------------------------------------------------------\n\n"
+        body += "________________________________________________________________________________\n\n"
         
         body += f"FORMA DE PAGAMENTO:             {conteudo[8]} \n"
         body += f"STATUS:                         {conteudo[9]} \n"
@@ -54,13 +54,16 @@ class print_document:
         body += f"OUTROS VALORES:                 R$ {conteudo[12]:.2f}\n"
         body += f"TOTAL:                          R$ {(conteudo[10] + conteudo[11] + conteudo[12]):.2f}\n"
 
-        body += "--------------------------------------------------------------------------------\n\n"
+        body += "________________________________________________________________________________\n\n"
 
         bottom = "DATA E HORA IMPRESSÃO: " + datetime.now().strftime('%d/%m/%Y %H:%M') + "\n\n\n\n\n"
 
         bottom += "                  ___________________________________________                    \n"
-        bottom += "                           Assinatura do Responsável"
+        bottom += "                           Assinatura do Responsável\n\n\n\n\n"
 
+        bottom += "                  ___________________________________________                    \n"
+        bottom += "                             Assinatura do Cliente"
+        
         return f"{head}{body}{bottom}"
 
     def createArqPrint(self, conteudo):
