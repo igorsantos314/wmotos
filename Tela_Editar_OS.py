@@ -117,11 +117,11 @@ class Tela_Editar_OS:
         etOutros.insert(0, '0')
         etOutros.place(x=410, y=390)
 
-        #SALVAR
-        imagem_salvar = PhotoImage(file=f"src/salvar_48.png")
-        btExibir = Button(self.windowMain, image=imagem_salvar, bg='White', command=lambda: save())
-        btExibir.imagem = imagem_salvar
-        btExibir.place(x=670, y=430)
+        #EDITAR
+        imagem_editar = PhotoImage(file=f"src/editar_48.png")
+        btEditar = Button(self.windowMain, image=imagem_editar, bg='White', command=lambda: save())
+        btEditar.imagem = imagem_editar
+        btEditar.place(x=670, y=430)
 
         #VOLTAR
         imagem_voltar = PhotoImage(file=f"src/voltar_48.png")
