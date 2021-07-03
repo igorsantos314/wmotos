@@ -1,5 +1,5 @@
 {
-    "path_logo":"logo_wmotos.png",
+    "path_logo":"src/logo.png",
     "path_bd":"wmotos.db",
     "color_cliente":"RED",
     "color_veiculo":"GREEN",

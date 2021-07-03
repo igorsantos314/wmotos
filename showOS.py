@@ -228,5 +228,3 @@ class consulta:
 
         # Calling mainloop 
         window.mainloop()
-
-consulta()

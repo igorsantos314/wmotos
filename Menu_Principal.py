@@ -17,33 +17,16 @@ class Menu_Principal:
     def window(self):
         # Creating tkinter window
         window = Tk()
-        window.geometry('993x480')
+        window.resizable(False, False)
+        window.geometry('850x480')
         window.title('WMOTOS - IGOR SANTOS SISTEMAS')
         window['bg'] = 'White'
 
-        # BARRA DE FUNÇÕES
-        menubar = Menu(window, fg='Black')
-        myMenu = Menu(menubar, tearoff=0)
-
-        # MENU FILE
-        """fileMenuFile = Menu(myMenu, fg='Black')
-        fileMenuFile.add_command(label='Nova', command=lambda:open('Nova'))
-        fileMenuFile.add_command(label='Exibir', command=lambda:open('Exibir'))
-        fileMenuFile.add_separator()
-        fileMenuFile.add_command(label='Contabilidade', command=lambda:open('C_Total'))
-        fileMenuFile.add_separator()
-        fileMenuFile.add_command(label='Sair', command=lambda: window.destroy())
-        menubar.add_cascade(label="ORDEM DE SERVIÇO", menu=fileMenuFile)
-
-        fileMenuBackup = Menu(myMenu, fg='Black')
-        fileMenuBackup.add_command(label='Backup', command=lambda:open('Backup'))
-        menubar.add_cascade(label="BACKUP", menu=fileMenuBackup)"""
-
         #LOGO
-        """imagem = PhotoImage(file=f"{json_ws().getPathLogo()}")
+        imagem = PhotoImage(file=f"{json_ws().getPathLogo()}")
         w = Label(window, image=imagem)
         w.imagem = imagem
-        w.pack() new_os.png"""
+        w.place(x=150, y=150)
 
         #NOVA ORDEM DE SERVIÇO
         imagem_new_os = PhotoImage(file=f"src/new_os.png")
@@ -108,10 +91,7 @@ class Menu_Principal:
 
                 #REABRIR MENU
                 Menu_Principal()
-                
-        # configurar file menu
-        window.config(menu=menubar)
 
         window.mainloop()
 
-#Menu_Principal()        
+Menu_Principal()        
