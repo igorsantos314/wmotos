@@ -22,7 +22,9 @@ class Tela_Cadastrar_OS:
     def window(self):
 
         self.windowMain = Tk()
-        self.windowMain.geometry('810x490')
+        self.windowMain.resizable(False, False)
+        self.windowMain.attributes('-fullscreen', True)  
+        self.fullScreenState = False
         self.windowMain.title('Cadastrar Ordem de Serviço')
         self.windowMain['bg'] = 'White'
 
@@ -179,4 +181,16 @@ class Tela_Cadastrar_OS:
             #DESTRUIR
             self.windowMain.destroy()
 
+        self.windowMain.bind("<F11>", self.toggleFullScreen)
+        self.windowMain.bind("<Escape>", self.quitFullScreen)
+
         self.windowMain.mainloop()
+
+    def toggleFullScreen(self, event):
+        self.fullScreenState = not self.fullScreenState
+        self.windowMain.attributes("-fullscreen", self.fullScreenState)
+
+    def quitFullScreen(self, event):
+        self.fullScreenState = False
+        self.windowMain.attributes("-fullscreen", self.fullScreenState)
+        self.windowMain.geometry('810x490')

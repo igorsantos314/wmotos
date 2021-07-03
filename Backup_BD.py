@@ -18,6 +18,8 @@ class Backup_BD:
         self.data_atual = f'{self.day}-{self.month}-{self.year}'
         self.origem = 'wmotos.db'
         self.list_devices = ['E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N']
+        self.list_color = [ 'Red', 'SaddleBrown', 'Black', 'SlateBlue', 'DarkSlateGray',
+                            'Indigo', 'DarkRed', 'DarkOrange', 'Goldenrod', 'MidnightBlue']
 
         #JANELA MAIN
         self.window_bd()
@@ -25,26 +27,38 @@ class Backup_BD:
     def window_bd(self):
 
         self.windowMain = Tk()
+        self.windowMain.resizable(False, False)
+        self.windowMain.attributes('-fullscreen', True)  
+        self.fullScreenState = False
         self.windowMain.title('BACKUP')
 
+        list_bt = []
+
         def getDevices():
-            devices_disponible = []
             
-            for device in self.list_devices:
+            for pos, device in enumerate(self.list_devices):
                 path = f"{device}:/"
 
+                #CRIAR BOTOES COM O PATH
                 if os.path.isdir(path):
-                    devices_disponible.append(path)
-
-            return devices_disponible
+                    
+                    list_bt.append(
+                        Button(text=str(path), font='Arial 12 bold', bg=self.list_color[pos], fg='white', width=8, height=2)
+                    )
+            
+            #VERRE LISTA DE BOTOES PARA POSICIONAR E ATTR COMMAND
+            for d in list_bt:
+                path = f"{d['text']}"
+                d['command'] = lambda: startBackup(path)
+                d.pack(side=LEFT, padx=2)
         
-        def startBackup():
+        def startBackup(device):
             
             if messagebox.askquestion('','NÃO DESLIGUE OU FECHE O COMPUTADOR, DESEJA CONTINUAR?'):
 
                 try:
                     #INCIAR BACKUP
-                    self.createBackup(comboPagamento.get())
+                    self.createBackup(device)
 
                     #SUCESSO
                     messagebox.showinfo('',f'BACKUP FEITO - DATA:{self.data_atual}')
@@ -55,18 +69,25 @@ class Backup_BD:
             #FECHAR A JANELA
             self.windowMain.destroy()
 
-        lblPagamento = Label(self.windowMain, text='ESCOLHA O DISPOSITIVO:')
-        lblPagamento.pack()
+        lblDevice = Label(self.windowMain, text='ESCOLHA O DISPOSITIVO:', font='Arial 12 bold')
+        lblDevice.pack()
 
-        comboPagamento = ttk.Combobox(self.windowMain, width=17)
+        #BUSCAR DISPOSITIVOS
+        getDevices()
 
-        comboPagamento['values'] = tuple(getDevices())
-        comboPagamento.pack()
-
-        btSalvar = Button(self.windowMain, text='BACKUP', command=startBackup)
-        btSalvar.pack()
+        self.windowMain.bind("<F11>", self.toggleFullScreen)
+        self.windowMain.bind("<Escape>", self.quitFullScreen)
 
         self.windowMain.mainloop()
+
+    def toggleFullScreen(self, event):
+        self.fullScreenState = not self.fullScreenState
+        self.windowMain.attributes("-fullscreen", self.fullScreenState)
+
+    def quitFullScreen(self, event):
+        self.fullScreenState = False
+        self.windowMain.attributes("-fullscreen", self.fullScreenState)
+        self.windowMain.geometry('730x460')
         
     def createBackup(self, device):
 

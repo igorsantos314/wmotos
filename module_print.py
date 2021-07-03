@@ -1,5 +1,6 @@
 import os
 from datetime import datetime
+from tkinter import messagebox
 
 class print_document:
 
@@ -72,5 +73,10 @@ class print_document:
         arquivo.close()
 
     def comprovantePrint(self):
-        # COMANDO DE IMPRESSÃO
-        os.startfile(self.caminho, "print")
+        try:
+            # COMANDO DE IMPRESSÃO
+            os.startfile(self.caminho, "print")
+            messagebox.showerror('','IMPRESSÃO REALIZADA')
+            
+        except:
+            messagebox.showerror('','ERROR[mdo_print:80] NÃO FOI POSSÍVEL REALIZAR A IMPRESSÃO')

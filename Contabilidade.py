@@ -48,8 +48,10 @@ class Contabilidade:
     def window(self):
 
         self.windowMain = Tk()
+        self.windowMain.resizable(False, False)
+        self.windowMain.attributes('-fullscreen', True)  
+        self.fullScreenState = False
         self.windowMain.title('CONTABILIDADE W MOTOS')
-        self.windowMain.geometry('730x460')
 
         #Data
         lblData = Label(self.windowMain, text='Dia:')
@@ -82,49 +84,42 @@ class Contabilidade:
         comboAno.place(x=250, y=40)
 
         #CONTANIER
-        lblContDia = Label(text='RECEITA DIA', font='Arial 15', width=20, height=2, bg='#fee440')
+        lblContDia = Label(self.windowMain, text='RECEITA DIA', font='Arial 15', width=20, height=2, bg='#fee440')
         lblContDia.place(x=10, y=80)
 
-        contValorDia = Label(text='', font='Arial 15', width=20, height=2, bg='White')
+        contValorDia = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, bg='White')
         contValorDia.place(x=10, y=132)
 
-        lblContMes = Label(text='RECEITA MÊS', font='Arial 15', width=20, height=2, bg='#00bbf9')
+        lblContMes = Label(self.windowMain, text='RECEITA MÊS', font='Arial 15', width=20, height=2, bg='#00bbf9')
         lblContMes.place(x=250, y=80)
 
-        contValorMes = Label(text='', font='Arial 15', width=20, height=2, bg='White')
+        contValorMes = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, bg='White')
         contValorMes.place(x=250, y=132)
 
-        lblContTotal = Label(text='RECEITA TOTAL', font='Arial 15', width=20, height=2, bg='#00f5d4')
+        lblContTotal = Label(self.windowMain, text='RECEITA TOTAL', font='Arial 15', width=20, height=2, bg='#00f5d4')
         lblContTotal.place(x=490, y=80)
 
-        contValorTotal = Label(text='', font='Arial 15', width=20, height=2, bg='White')
+        contValorTotal = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, bg='White')
         contValorTotal.place(x=490, y=132)
 
         #FORMA DE PAGAMENTO
-        lblContDinheiro = Label(text='DINHEIRO', font='Arial 15', width=20, height=2, bg='#ee6055')
+        lblContDinheiro = Label(self.windowMain, text='DINHEIRO', font='Arial 15', width=20, height=2, bg='#ee6055')
         lblContDinheiro.place(x=10, y=232)
 
-        contValorDinheiro = Label(text='', font='Arial 15', width=20, height=2, bg='White')
+        contValorDinheiro = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, bg='White')
         contValorDinheiro.place(x=10, y=284)
 
-        lblContCartao = Label(text='CARTÃO', font='Arial 15', width=20, height=2, bg='#60d394')
+        lblContCartao = Label(self.windowMain, text='CARTÃO', font='Arial 15', width=20, height=2, bg='#60d394')
         lblContCartao.place(x=250, y=232)
 
-        contValorCartao = Label(text='', font='Arial 15', width=20, height=2, bg='White')
+        contValorCartao = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, bg='White')
         contValorCartao.place(x=250, y=284)
 
-        lblContPix = Label(text='PIX/TED', font='Arial 15', width=20, height=2, bg='#aaf683')
+        lblContPix = Label(self.windowMain, text='PIX/TED', font='Arial 15', width=20, height=2, bg='#aaf683')
         lblContPix.place(x=490, y=232)
 
-        contValorPix = Label(text='', font='Arial 15', width=20, height=2, bg='White')
+        contValorPix = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, bg='White')
         contValorPix.place(x=490, y=284)
-
-        #DESPESAS
-        #lblDespesa = Label(text='DESPESAS', font='Arial 15', width=20, height=2, bg='#00FFFF')
-        #lblDespesa.place(x=10, y=384)
-
-        #contValorDespesa = Label(text='', font='Arial 15', width=20, height=2, bg='White')
-        #contValorDespesa.place(x=10, y=436)
 
         def setValeusData():
             #SETAR O VALOR TOTAL
@@ -148,11 +143,32 @@ class Contabilidade:
             #PIX
             contValorPix['text'] = f'R$ {bd().getContabilidadePix():.2f}'
 
-        btConsultar = Button(text='CONSULTAR', font='Arial 15', bg='SpringGreen', width=20, height=2, command=setValeusData)
-        btConsultar.place(x=250, y=380)
+        #EDITAR
+        imagem_buscar = PhotoImage(file=f"src/buscar_48.png")
+        btBuscar = Button(self.windowMain, image=imagem_buscar, bg='White', command=lambda: setValeusData())
+        btBuscar.imagem = imagem_buscar
+        btBuscar.place(x=350, y=10)
+        
+        #VOLTAR
+        imagem_voltar = PhotoImage(file=f"src/voltar_48.png")
+        btVoltar = Button(self.windowMain, image=imagem_voltar, bg='White', command=lambda: self.windowMain.destroy())
+        btVoltar.imagem = imagem_voltar
+        btVoltar.place(x=420, y=10)
 
-        #SETAR VALOR
+        #SETAR VALORES
         setValeusData()
         setValuesPagamento()
+        
+        self.windowMain.bind("<F11>", self.toggleFullScreen)
+        self.windowMain.bind("<Escape>", self.quitFullScreen)
 
         self.windowMain.mainloop()
+
+    def toggleFullScreen(self, event):
+        self.fullScreenState = not self.fullScreenState
+        self.windowMain.attributes("-fullscreen", self.fullScreenState)
+
+    def quitFullScreen(self, event):
+        self.fullScreenState = False
+        self.windowMain.attributes("-fullscreen", self.fullScreenState)
+        self.windowMain.geometry('730x460')

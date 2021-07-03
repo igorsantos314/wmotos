@@ -11,71 +11,59 @@ class consulta:
         self.window()
 
     def window(self):
-        # Creating tkinter window 
-        window = Tk()
-        window.geometry('993x480')
-        window.title('CONSULTAR OS')
-        window['bg'] = 'White'
-
-        #BARRA DE FUNÇÕES
-        menubar = Menu(window, fg='Black')
-        myMenu = Menu(menubar, tearoff=0)
-
-        #MENU FILE
-        """fileMenuFile = Menu(myMenu, fg='Black')
-        fileMenuFile.add_command(label='Editar', command=lambda:editar())
-        fileMenuFile.add_command(label='Excluir', command=lambda:deletar())
-        fileMenuFile.add_separator()
-        fileMenuFile.add_command(label='Imprimir', command=lambda:imprimir())
-        
-        menubar.add_cascade(label="File", menu=fileMenuFile)
-        """
+        # Creating tkinter self.windowMain 
+        self.windowMain = Tk()
+        self.windowMain.resizable(False, False)
+        self.windowMain.attributes('-fullscreen', True)  
+        self.fullScreenState = False
+        self.windowMain.title('CONSULTAR OS')
+        self.windowMain['bg'] = 'White'
 
         #BUSCAR
-        lblBuscar = Label(window, text='BUSCAR:', font='Arial 13', bg='White')
+        lblBuscar = Label(self.windowMain, text='BUSCAR:', font='Arial 13', bg='White')
         lblBuscar.place(x=440, y=10)
 
-        etBuscar = Entry(window, width=59, font='Arial 12')
+        etBuscar = Entry(self.windowMain, width=59, font='Arial 12')
         etBuscar.place(x=440, y=40)
 
         #EDITAR
         imagem_editar = PhotoImage(file=f"src/editar_48.png")
-        btEditar = Button(window, image=imagem_editar, bg='White', command=lambda: editar())
+        btEditar = Button(self.windowMain, image=imagem_editar, bg='White', command=lambda: editar())
         btEditar.imagem = imagem_editar
         btEditar.place(x=10, y=10)
 
         #DELETAR
         imagem_del = PhotoImage(file=f"src/deletar_48.png")
-        btDel = Button(window, image=imagem_del, bg='White', command=lambda: deletar())
+        btDel = Button(self.windowMain, image=imagem_del, bg='White', command=lambda: deletar())
         btDel.imagem = imagem_del
         btDel.place(x=80, y=10)
 
         #IMPRIMIR
         imagem_imprimir = PhotoImage(file=f"src/impressora_48.png")
-        btImprimir = Button(window, image=imagem_imprimir, bg='White', command=lambda: imprimir())
+        btImprimir = Button(self.windowMain, image=imagem_imprimir, bg='White', command=lambda: imprimir())
         btImprimir.imagem = imagem_imprimir
         btImprimir.place(x=150, y=10)
 
         #BUSCAR
         imagem_buscar = PhotoImage(file=f"src/buscar_48.png")
-        btBuscar = Button(window, image=imagem_buscar, bg='White', command=lambda: buscar())
+        btBuscar = Button(self.windowMain, image=imagem_buscar, bg='White', command=lambda: buscar())
         btBuscar.imagem = imagem_buscar
         btBuscar.place(x=220, y=10)
 
         #LIMPAR
         imagem_limpar = PhotoImage(file=f"src/limpar_48.png")
-        btLimpar = Button(window, image=imagem_limpar, bg='White', command=lambda: limpar())
+        btLimpar = Button(self.windowMain, image=imagem_limpar, bg='White', command=lambda: limpar())
         btLimpar.imagem = imagem_limpar
         btLimpar.place(x=290, y=10)
 
         #SAIR
         imagem_sair = PhotoImage(file=f"src/voltar_48.png")
-        btSair = Button(window, image=imagem_sair, bg='White', command=lambda: window.destroy())
+        btSair = Button(self.windowMain, image=imagem_sair, bg='White', command=lambda: self.windowMain.destroy())
         btSair.imagem = imagem_sair
         btSair.place(x=360, y=10)
 
         #TREEVIEW
-        style = ttk.Style(window)
+        style = ttk.Style(self.windowMain)
         style.theme_use('clam')
 
         style.configure(    "Treeview",
@@ -86,14 +74,14 @@ class consulta:
         style.map("Treeview", background=[('selected', 'Red')], foreground=[('selected', 'White')])
 
         # Using treeview widget 
-        treev2 = ttk.Treeview(window, selectmode ='browse', height=19) 
+        treev2 = ttk.Treeview(self.windowMain, selectmode ='browse', height=19) 
 
         # Calling pack method w.r.to treeview 
         treev2.place(x=10, y=80)
 
         # Constructing vertical scrollbar 
         # with treeview 
-        verscrlbar = ttk.Scrollbar(window, 
+        verscrlbar = ttk.Scrollbar(self.windowMain, 
                                 orient ="vertical", 
                                 command = treev2.yview) 
 
@@ -191,7 +179,7 @@ class consulta:
             #VERIFICA SE O ID É VALIDO
             if id != False:
                 #FECHHA A JANELA
-                window.destroy()
+                self.windowMain.destroy()
 
                 #ABRE JANELA DE EDITAR
                 Tela_Editar_OS(id)
@@ -223,8 +211,17 @@ class consulta:
         #Povoar Tabela
         getAll()
 
-        #configurar file menu
-        window.config(menu=menubar)
-
         # Calling mainloop 
-        window.mainloop()
+        self.windowMain.bind("<F11>", self.toggleFullScreen)
+        self.windowMain.bind("<Escape>", self.quitFullScreen)
+
+        self.windowMain.mainloop()
+
+    def toggleFullScreen(self, event):
+        self.fullScreenState = not self.fullScreenState
+        self.windowMain.attributes("-fullscreen", self.fullScreenState)
+
+    def quitFullScreen(self, event):
+        self.fullScreenState = False
+        self.windowMain.attributes("-fullscreen", self.fullScreenState)
+        self.windowMain.geometry('993x480')

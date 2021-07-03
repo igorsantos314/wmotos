@@ -12,49 +12,51 @@ from Backup_BD import Backup_BD
 class Menu_Principal:
 
     def __init__(self) -> None:
-        self.window()
+        self.windowMain()
 
-    def window(self):
+    def windowMain(self):
         # Creating tkinter window
-        window = Tk()
-        window.resizable(False, False)
-        window.geometry('850x480')
-        window.title('WMOTOS - IGOR SANTOS SISTEMAS')
-        window['bg'] = 'White'
+        self.window = Tk()
+        self.window.resizable(False, False)
+        self.window.attributes('-fullscreen', True)  
+        self.fullScreenState = False
+        
+        self.window.title('WMOTOS - IGOR SANTOS SISTEMAS')
+        self.window['bg'] = 'White'
 
         #LOGO
         imagem = PhotoImage(file=f"{json_ws().getPathLogo()}")
-        w = Label(window, image=imagem)
+        w = Label(self.window, image=imagem)
         w.imagem = imagem
         w.place(x=150, y=150)
 
         #NOVA ORDEM DE SERVIÇO
         imagem_new_os = PhotoImage(file=f"src/new_os.png")
-        btNewOS = Button(window, image=imagem_new_os, bg='White', command=lambda:open('Nova'))
+        btNewOS = Button(self.window, image=imagem_new_os, bg='White', command=lambda:open('Nova'))
         btNewOS.imagem = imagem_new_os
         btNewOS.place(x=10, y=10)
 
         #EXIBIR ORDENS DE SERVIÇO
         imagem_exibir = PhotoImage(file=f"src/exibir_os.png")
-        btExibir = Button(window, image=imagem_exibir, bg='White', command=lambda:open('Exibir'))
+        btExibir = Button(self.window, image=imagem_exibir, bg='White', command=lambda:open('Exibir'))
         btExibir.imagem = imagem_exibir
         btExibir.place(x=120, y=10)
 
         #EXIBIR ORDENS DE SERVIÇO
         imagem_contabilidade = PhotoImage(file=f"src/cont.png")
-        btCont = Button(window, image=imagem_contabilidade, bg='White', command=lambda:open('C_Total'))
+        btCont = Button(self.window, image=imagem_contabilidade, bg='White', command=lambda:open('C_Total'))
         btCont.imagem = imagem_contabilidade
         btCont.place(x=230, y=10)
 
         #BACKUP
         imagem_backup = PhotoImage(file=f"src/backup.png")
-        btBackup = Button(window, image=imagem_backup, bg='White', command=lambda:open('Backup'))
+        btBackup = Button(self.window, image=imagem_backup, bg='White', command=lambda:open('Backup'))
         btBackup.imagem = imagem_backup
         btBackup.place(x=340, y=10)
 
         #BACKUP
         imagem_sair = PhotoImage(file=f"src/sair.png")
-        btSair = Button(window, image=imagem_sair, bg='White', command=lambda:window.destroy())
+        btSair = Button(self.window, image=imagem_sair, bg='White', command=lambda:self.window.destroy())
         btSair.imagem = imagem_sair
         btSair.place(x=450, y=10)
 
@@ -62,7 +64,7 @@ class Menu_Principal:
         def open(w):
             
             #FECHAR MENU
-            window.destroy()
+            self.window.destroy()
 
             if w == 'Nova':
                 #ABRIR JANELA
@@ -92,4 +94,16 @@ class Menu_Principal:
                 #REABRIR MENU
                 Menu_Principal()
 
-        window.mainloop()
+        self.window.bind("<F11>", self.toggleFullScreen)
+        self.window.bind("<Escape>", self.quitFullScreen)
+
+        self.window.mainloop()
+        
+    def toggleFullScreen(self, event):
+        self.fullScreenState = not self.fullScreenState
+        self.window.attributes("-fullscreen", self.fullScreenState)
+
+    def quitFullScreen(self, event):
+        self.fullScreenState = False
+        self.window.attributes("-fullscreen", self.fullScreenState)
+        self.window.geometry('993x480')
