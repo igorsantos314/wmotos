@@ -9,30 +9,32 @@ ________________________________________________________________________________
 
 DADOS DA ORDEM DE SERVIÇO
 ________________________________________________________________________________
-ID:                             13 
-DATA DE ENTRADA:                1/7/2021 
-DATA DE SAIDA:                  1/7/2021 
-NOME DO CLIENTE:                IGOR 
-TELEFONE:                       81 982333074 
-VEICULO:                        BROS 
+ID:                             16 
+DATA DE ENTRADA:                2/7/2021 
+DATA DE SAIDA:                  2/7/2021 
+NOME DO CLIENTE:                -- 
+TELEFONE:                        
+VEICULO:                        -- 
 
 ________________________________________________________________________________
 DESCRIÇÃO DO CLIENTE:
-     CAIXA DE DIREÇÃO
+     DASDASD
+
 ________________________________________________________________________________
 LAUDO TECNICO:
-     QUEBRADA
+     DAS
+
 ________________________________________________________________________________
 
-FORMA DE PAGAMENTO:             DINHEIRO 
+FORMA DE PAGAMENTO:             CARTÃO 
 STATUS:                         CONCLUIDO 
-VALOR DE MÃO DE OBRA:           R$ 500.00 
-VALOR EM PEÇAS:                 R$ 500.00
-OUTROS VALORES:                 R$ 500.00
-TOTAL:                          R$ 1500.00
+VALOR DE MÃO DE OBRA:           R$ 400.00 
+VALOR EM PEÇAS:                 R$ 236.00
+OUTROS VALORES:                 R$ 80.00
+TOTAL:                          R$ 716.00
 ________________________________________________________________________________
 
-DATA E HORA IMPRESSÃO: 03/07/2021 08:27
+DATA E HORA IMPRESSÃO: 03/07/2021 08:35
 
 
 
@@ -47,4 +49,4 @@ DATA E HORA IMPRESSÃO: 03/07/2021 08:27
                              Assinatura do Cliente
 
 
-*Garantia Legal Prevista no CDC - Art. 26, contando apartir da DATA DE SAIDA.
+*Garantia Legal de 90 dias, Prevista no CDC - Art. 26, apartir da DATA DE SAIDA.

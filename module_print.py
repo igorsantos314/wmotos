@@ -59,7 +59,7 @@ class print_document:
         bottom += "                  ___________________________________________                    \n"
         bottom += "                             Assinatura do Cliente\n\n\n"
 
-        bottom += "*Garantia Legal de 90 dias, Prevista no CDC - Art. 26, contando apartir da DATA DE SAIDA."
+        bottom += "*Garantia Legal de 90 dias, Prevista no CDC - Art. 26, apartir da DATA DE SAIDA."
         
         return f"{head}{body}{bottom}"
 

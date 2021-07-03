@@ -100,21 +100,18 @@ class Tela_Editar_OS:
         lblObra.place(x=10, y=365)
 
         etObra = Entry(self.windowMain, font='Arial 12 bold')
-        etObra.insert(0, '0')
         etObra.place(x=10, y=390)
 
         lblPecas = Label(self.windowMain, font='Arial 12', text='Valor em Peças:', bg='White')
         lblPecas.place(x=210, y=365)
 
         etPecas = Entry(self.windowMain, font='Arial 12 bold')
-        etPecas.insert(0, '0')
         etPecas.place(x=210, y=390)
 
         lblOutros = Label(self.windowMain, font='Arial 12', text='Outros Valores:', bg='White')
         lblOutros.place(x=410, y=365)
 
         etOutros = Entry(self.windowMain, font='Arial 12 bold')
-        etOutros.insert(0, '0')
         etOutros.place(x=410, y=390)
 
         #EDITAR
