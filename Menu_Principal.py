@@ -18,7 +18,7 @@ class Menu_Principal:
         # Creating tkinter window
         window = Tk()
         window.geometry('993x480')
-        window.title('CONSULTAR OS')
+        window.title('WMOTOS - IGOR SANTOS SISTEMAS')
         window['bg'] = 'White'
 
         # BARRA DE FUNÇÕES
@@ -114,4 +114,4 @@ class Menu_Principal:
 
         window.mainloop()
 
-Menu_Principal()        
+#Menu_Principal()        
