@@ -62,6 +62,7 @@ class consulta:
         btSair.imagem = imagem_sair
         btSair.place(x=360, y=10)
 
+        #STATUS
         lblStatus = Label(text='STATUS:', bg='White')
         lblStatus.place(x=10, y=70)
 
@@ -83,6 +84,10 @@ class consulta:
         btConcluido.imagem = imagem_concluido
         btConcluido.place(x=150, y=90)
 
+        #FORMA DE PAGAMENTO
+        lblPagamento = Label(text='FORMA DE PAGAMENTO:', bg='White')
+        lblPagamento.place(x=220, y=70)
+        
         #TREEVIEW
         style = ttk.Style(self.windowMain)
         style.theme_use('clam')

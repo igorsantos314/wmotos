@@ -219,5 +219,3 @@ class Tela_Editar_OS:
         self.fullScreenState = False
         self.windowMain.attributes("-fullscreen", self.fullScreenState)
         self.windowMain.geometry('810x490')
-
-Tela_Editar_OS(17)
