@@ -56,17 +56,32 @@ class consulta:
         btLimpar.imagem = imagem_limpar
         btLimpar.place(x=290, y=10)
 
-        #CONCLUIDO
-        imagem_concluido = PhotoImage(file=f"src/concluido_48.png")
-        btConcluido = Button(self.windowMain, image=imagem_concluido, bg='White', command=lambda: atualizarStatus())
-        btConcluido.imagem = imagem_concluido
-        btConcluido.place(x=360, y=10)
-
         #SAIR
         imagem_sair = PhotoImage(file=f"src/voltar_48.png")
         btSair = Button(self.windowMain, image=imagem_sair, bg='White', command=lambda: self.windowMain.destroy())
         btSair.imagem = imagem_sair
-        btSair.place(x=430, y=10)
+        btSair.place(x=360, y=10)
+
+        lblStatus = Label(text='STATUS:', bg='White')
+        lblStatus.place(x=10, y=70)
+
+        #ESPERA
+        imagem_espera = PhotoImage(file=f"src/espera_48.png")
+        btEspera = Button(self.windowMain, image=imagem_espera, bg='White', command=lambda: statusEspera())
+        btEspera.imagem = imagem_espera
+        btEspera.place(x=10, y=90)
+
+        #EM ANDAMENTO
+        imagem_andamento = PhotoImage(file=f"src/andamento_48.png")
+        btAndamento = Button(self.windowMain, image=imagem_andamento, bg='White', command=lambda: statusAndamento())
+        btAndamento.imagem = imagem_andamento
+        btAndamento.place(x=80, y=90)
+
+        #CONCLUIDO
+        imagem_concluido = PhotoImage(file=f"src/concluido_48.png")
+        btConcluido = Button(self.windowMain, image=imagem_concluido, bg='White', command=lambda: statusConcluido())
+        btConcluido.imagem = imagem_concluido
+        btConcluido.place(x=150, y=90)
 
         #TREEVIEW
         style = ttk.Style(self.windowMain)
@@ -80,10 +95,10 @@ class consulta:
         style.map("Treeview", background=[('selected', 'Red')], foreground=[('selected', 'White')])
 
         # Using treeview widget 
-        treev2 = ttk.Treeview(self.windowMain, selectmode ='browse', height=19) 
+        treev2 = ttk.Treeview(self.windowMain, selectmode ='browse', height=14) 
 
         # Calling pack method w.r.to treeview 
-        treev2.place(x=10, y=80)
+        treev2.place(x=10, y=160)
 
         # Constructing vertical scrollbar 
         # with treeview 
@@ -211,12 +226,38 @@ class consulta:
             #CARREGA ALTERAÇÕES
             getAll()
 
-        def atualizarStatus():
+        def statusConcluido():
             id = getId()
 
             #VERIFICA SE O ID É VALIDO
             if id != False:
                 bd().updateStatusConcluido(id)
+
+                #LIMPA A TABELA
+                limparTabela()
+
+                #ATUALIZAR TABELA
+                getAll()
+        
+        def statusEspera():
+            id = getId()
+
+            #VERIFICA SE O ID É VALIDO
+            if id != False:
+                bd().updateStatusEspera(id)
+
+                #LIMPA A TABELA
+                limparTabela()
+
+                #ATUALIZAR TABELA
+                getAll()
+
+        def statusAndamento():
+            id = getId()
+
+            #VERIFICA SE O ID É VALIDO
+            if id != False:
+                bd().updateStatusAndamento(id)
 
                 #LIMPA A TABELA
                 limparTabela()

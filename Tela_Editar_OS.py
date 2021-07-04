@@ -117,7 +117,7 @@ class Tela_Editar_OS:
         etOutros.place(x=410, y=390)
 
         #EDITAR
-        imagem_editar = PhotoImage(file=f"src/editar_48.png")
+        imagem_editar = PhotoImage(file=f"src/salvar_editar_48.png")
         btEditar = Button(self.windowMain, image=imagem_editar, bg='White', command=lambda: save())
         btEditar.imagem = imagem_editar
         btEditar.place(x=670, y=430)
@@ -219,3 +219,5 @@ class Tela_Editar_OS:
         self.fullScreenState = False
         self.windowMain.attributes("-fullscreen", self.fullScreenState)
         self.windowMain.geometry('810x490')
+
+Tela_Editar_OS(17)
