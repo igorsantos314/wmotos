@@ -121,18 +121,39 @@ class Contabilidade:
         contValorPix = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, bg='White')
         contValorPix.place(x=490, y=284)
 
+        #RESERVA DE EMERGÊNCIA
+        lblReservaMes = Label(self.windowMain, text='RESERVA EMER. M', font='Arial 15', width=20, height=2, bg='#836FFF', fg='White')
+        lblReservaMes.place(x=10, y=384)
+
+        contReservaMes = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, bg='White')
+        contReservaMes.place(x=10, y=436)
+
+        lblReservaTotal = Label(self.windowMain, text='RESERVA EMER. T', font='Arial 15', width=20, height=2, bg='#00CED1', fg='White')
+        lblReservaTotal.place(x=250, y=384)
+
+        contReservaTotal = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, bg='White')
+        contReservaTotal.place(x=250, y=436)
+
         def setValeusData():
             #SETAR O VALOR TOTAL
-            contValorTotal['text'] = f'R$ {bd().getAllMaoObra():.2f}'
+            valor_total = bd().getAllMaoObra()
+            contValorTotal['text'] = f'R$ {valor_total:.2f}'
 
             #SETAR O VALOR MÊS
             m = f'/{comboMes.get()}/{comboAno.get()}'
-            contValorMes['text'] = f'R$ {bd().getContabilidadeMes(m):.2f}'
+            valor_mes = bd().getContabilidadeMes(m)
+            contValorMes['text'] = f'R$ {valor_mes:.2f}'
             
             #SETAR O VALOR DIA
             d = f'{comboData.get()}/{comboMes.get()}/{comboAno.get()}'
             contValorDia['text'] = f'R$ {bd().getContabilidadeDia(d):.2f}'
-        
+            
+            #SETAR RESERVA MENSAL
+            contReservaMes['text'] = f'R$ {(valor_mes*0.10):.2f}'
+
+            #SETAR PROJEÇÃO TOTAL
+            contReservaTotal['text'] = f'R$ {(valor_total*0.10):.2f}'
+
         def setValuesPagamento():
             #DINHEIRO
             contValorDinheiro['text'] = f'R$ {bd().getContabilidadeDinheiro():.2f}'
@@ -172,3 +193,4 @@ class Contabilidade:
         self.fullScreenState = False
         self.windowMain.attributes("-fullscreen", self.fullScreenState)
         self.windowMain.geometry('730x460')
+Contabilidade()        

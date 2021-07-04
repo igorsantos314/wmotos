@@ -80,7 +80,7 @@ class bd:
     # --- CONTABILIDADE ---
     def getAllMaoObra(self):
 
-        show = f"SELECT sum(mao_de_obra) FROM ordem_servico"
+        show = f"SELECT sum(mao_de_obra) FROM ordem_servico WHERE status='CONCLUIDO'"
         self.cur.execute(show)
 
         valor = self.cur.fetchall()[0][0]

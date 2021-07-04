@@ -88,6 +88,30 @@ class consulta:
         lblPagamento = Label(text='FORMA DE PAGAMENTO:', bg='White')
         lblPagamento.place(x=220, y=70)
         
+        #DINHEIRO
+        imagem_dinheiro = PhotoImage(file=f"src/dinheiro_48.png")
+        btDinheiro = Button(self.windowMain, image=imagem_dinheiro, bg='White', command=lambda: statusEspera())
+        btDinheiro.imagem = imagem_dinheiro
+        btDinheiro.place(x=220, y=90)
+
+        #CARTÃO
+        imagem_cartao = PhotoImage(file=f"src/cartao_48.png")
+        btCartao = Button(self.windowMain, image=imagem_cartao, bg='White', command=lambda: statusEspera())
+        btCartao.imagem = imagem_cartao
+        btCartao.place(x=290, y=90)
+
+        #PIX
+        imagem_transferencia = PhotoImage(file=f"src/transferencia_48.png")
+        btTransferencia = Button(self.windowMain, image=imagem_transferencia, bg='White', command=lambda: statusEspera())
+        btTransferencia.imagem = imagem_transferencia
+        btTransferencia.place(x=360, y=90)
+
+        #OUTRO
+        imagem_transferencia = PhotoImage(file=f"src/outro_48.png")
+        btTransferencia = Button(self.windowMain, image=imagem_transferencia, bg='White', command=lambda: statusEspera())
+        btTransferencia.imagem = imagem_transferencia
+        btTransferencia.place(x=430, y=90)
+
         #TREEVIEW
         style = ttk.Style(self.windowMain)
         style.theme_use('clam')
