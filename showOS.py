@@ -56,11 +56,17 @@ class consulta:
         btLimpar.imagem = imagem_limpar
         btLimpar.place(x=290, y=10)
 
+        #CONCLUIDO
+        imagem_concluido = PhotoImage(file=f"src/concluido_48.png")
+        btConcluido = Button(self.windowMain, image=imagem_concluido, bg='White', command=lambda: atualizarStatus())
+        btConcluido.imagem = imagem_concluido
+        btConcluido.place(x=360, y=10)
+
         #SAIR
         imagem_sair = PhotoImage(file=f"src/voltar_48.png")
         btSair = Button(self.windowMain, image=imagem_sair, bg='White', command=lambda: self.windowMain.destroy())
         btSair.imagem = imagem_sair
-        btSair.place(x=360, y=10)
+        btSair.place(x=430, y=10)
 
         #TREEVIEW
         style = ttk.Style(self.windowMain)
@@ -205,6 +211,19 @@ class consulta:
             #CARREGA ALTERAÇÕES
             getAll()
 
+        def atualizarStatus():
+            id = getId()
+
+            #VERIFICA SE O ID É VALIDO
+            if id != False:
+                bd().updateStatusConcluido(id)
+
+                #LIMPA A TABELA
+                limparTabela()
+
+                #ATUALIZAR TABELA
+                getAll()
+
         def limparTabela():
             treev2.delete(*treev2.get_children())
 
@@ -225,3 +244,5 @@ class consulta:
         self.fullScreenState = False
         self.windowMain.attributes("-fullscreen", self.fullScreenState)
         self.windowMain.geometry('993x480')
+
+consulta()

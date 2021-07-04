@@ -34,6 +34,13 @@ class bd:
         self.cur.execute(command)
         self.conection.commit()
 
+    def updateStatusConcluido(self, id):
+        #ATUALIZAR OS
+        command = f"UPDATE ordem_servico SET status='CONCLUIDO' WHERE id={id};"
+
+        self.cur.execute(command)
+        self.conection.commit()
+
     def getAllOS(self):
         show = "SELECT * FROM ordem_servico"
         self.cur.execute(show)
