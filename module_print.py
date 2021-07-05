@@ -76,7 +76,7 @@ class print_document:
         try:
             # COMANDO DE IMPRESSÃO
             os.startfile(self.caminho, "print")
-            messagebox.showerror('','IMPRESSÃO REALIZADA')
+            messagebox.showinfo('','IMPRESSÃO REALIZADA')
             
         except:
             messagebox.showerror('','ERROR[mdo_print:80] NÃO FOI POSSÍVEL REALIZAR A IMPRESSÃO')
