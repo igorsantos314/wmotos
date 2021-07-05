@@ -90,25 +90,25 @@ class consulta:
         
         #DINHEIRO
         imagem_dinheiro = PhotoImage(file=f"src/dinheiro_48.png")
-        btDinheiro = Button(self.windowMain, image=imagem_dinheiro, bg='White', command=lambda: statusEspera())
+        btDinheiro = Button(self.windowMain, image=imagem_dinheiro, bg='White', command=lambda: pagamentoDinheiro())
         btDinheiro.imagem = imagem_dinheiro
         btDinheiro.place(x=220, y=90)
 
         #CARTÃO
         imagem_cartao = PhotoImage(file=f"src/cartao_48.png")
-        btCartao = Button(self.windowMain, image=imagem_cartao, bg='White', command=lambda: statusEspera())
+        btCartao = Button(self.windowMain, image=imagem_cartao, bg='White', command=lambda: pagamentoCartao())
         btCartao.imagem = imagem_cartao
         btCartao.place(x=290, y=90)
 
         #PIX
         imagem_transferencia = PhotoImage(file=f"src/transferencia_48.png")
-        btTransferencia = Button(self.windowMain, image=imagem_transferencia, bg='White', command=lambda: statusEspera())
+        btTransferencia = Button(self.windowMain, image=imagem_transferencia, bg='White', command=lambda: pagamentoPix())
         btTransferencia.imagem = imagem_transferencia
         btTransferencia.place(x=360, y=90)
 
         #OUTRO
         imagem_transferencia = PhotoImage(file=f"src/outro_48.png")
-        btTransferencia = Button(self.windowMain, image=imagem_transferencia, bg='White', command=lambda: statusEspera())
+        btTransferencia = Button(self.windowMain, image=imagem_transferencia, bg='White', command=lambda: pagamentoOutro())
         btTransferencia.imagem = imagem_transferencia
         btTransferencia.place(x=430, y=90)
 
@@ -116,10 +116,11 @@ class consulta:
         style = ttk.Style(self.windowMain)
         style.theme_use('clam')
 
-        style.configure(    "Treeview",
-                            background="Silver",
-                            fieldbackground='Silver'
-                            )
+        style.configure(
+            "Treeview",
+            background="Silver",
+            fieldbackground='Silver'
+        )
 
         style.map("Treeview", background=[('selected', 'Red')], foreground=[('selected', 'White')])
 
@@ -255,6 +256,7 @@ class consulta:
             #CARREGA ALTERAÇÕES
             getAll()
 
+        #--- STATUS ---
         def statusConcluido():
             id = getId()
 
@@ -266,7 +268,7 @@ class consulta:
                 limparTabela()
 
                 #ATUALIZAR TABELA
-                getAll()
+                buscar()
         
         def statusEspera():
             id = getId()
@@ -279,7 +281,7 @@ class consulta:
                 limparTabela()
 
                 #ATUALIZAR TABELA
-                getAll()
+                buscar()
 
         def statusAndamento():
             id = getId()
@@ -292,7 +294,60 @@ class consulta:
                 limparTabela()
 
                 #ATUALIZAR TABELA
-                getAll()
+                buscar()
+
+        #--- FORMA DE PAGAMENTO ---
+        def pagamentoDinheiro():
+            id = getId()
+
+            #VERIFICA SE O ID É VALIDO
+            if id != False:
+                bd().updatePagamentoDinheiro(id)
+
+                #LIMPA A TABELA
+                limparTabela()
+
+                #ATUALIZAR TABELA
+                buscar()
+
+        def pagamentoCartao():
+            id = getId()
+
+            #VERIFICA SE O ID É VALIDO
+            if id != False:
+                bd().updatePagamentoCartao(id)
+
+                #LIMPA A TABELA
+                limparTabela()
+
+                #ATUALIZAR TABELA
+                buscar()
+
+        def pagamentoPix():
+            id = getId()
+
+            #VERIFICA SE O ID É VALIDO
+            if id != False:
+                bd().updatePagamentoPix(id)
+
+                #LIMPA A TABELA
+                limparTabela()
+
+                #ATUALIZAR TABELA
+                buscar()
+
+        def pagamentoOutro():
+            id = getId()
+
+            #VERIFICA SE O ID É VALIDO
+            if id != False:
+                bd().updatePagamentoOutro(id)
+
+                #LIMPA A TABELA
+                limparTabela()
+
+                #ATUALIZAR TABELA
+                buscar()
 
         def limparTabela():
             treev2.delete(*treev2.get_children())
@@ -315,4 +370,4 @@ class consulta:
         self.windowMain.attributes("-fullscreen", self.fullScreenState)
         self.windowMain.geometry('993x480')
 
-consulta()
+#consulta()

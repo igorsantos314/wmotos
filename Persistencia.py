@@ -55,6 +55,34 @@ class bd:
         self.cur.execute(command)
         self.conection.commit()
 
+    def updatePagamentoDinheiro(self, id):
+        #ATUALIZAR OS
+        command = f"UPDATE ordem_servico SET pagamento='DINHEIRO' WHERE id={id};"
+
+        self.cur.execute(command)
+        self.conection.commit()
+
+    def updatePagamentoCartao(self, id):
+        #ATUALIZAR OS
+        command = f"UPDATE ordem_servico SET pagamento='CARTÃO' WHERE id={id};"
+
+        self.cur.execute(command)
+        self.conection.commit()
+
+    def updatePagamentoPix(self, id):
+        #ATUALIZAR OS
+        command = f"UPDATE ordem_servico SET pagamento='PIX' WHERE id={id};"
+
+        self.cur.execute(command)
+        self.conection.commit()
+
+    def updatePagamentoOutro(self, id):
+        #ATUALIZAR OS
+        command = f"UPDATE ordem_servico SET pagamento='OUTRO' WHERE id={id};"
+
+        self.cur.execute(command)
+        self.conection.commit()
+
     def getAllOS(self):
         show = "SELECT * FROM ordem_servico"
         self.cur.execute(show)

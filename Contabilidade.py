@@ -122,13 +122,13 @@ class Contabilidade:
         contValorPix.place(x=490, y=284)
 
         #RESERVA DE EMERGÊNCIA
-        lblReservaMes = Label(self.windowMain, text='RESERVA EMER. M', font='Arial 15', width=20, height=2, bg='#836FFF', fg='White')
+        lblReservaMes = Label(self.windowMain, text='RESERVA DO MÊS', font='Arial 15', width=20, height=2, bg='#836FFF', fg='White')
         lblReservaMes.place(x=10, y=384)
 
         contReservaMes = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, bg='White')
         contReservaMes.place(x=10, y=436)
 
-        lblReservaTotal = Label(self.windowMain, text='RESERVA EMER. T', font='Arial 15', width=20, height=2, bg='#00CED1', fg='White')
+        lblReservaTotal = Label(self.windowMain, text='RESERVA TOTAL', font='Arial 15', width=20, height=2, bg='#00CED1', fg='White')
         lblReservaTotal.place(x=250, y=384)
 
         contReservaTotal = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, bg='White')
@@ -193,4 +193,4 @@ class Contabilidade:
         self.fullScreenState = False
         self.windowMain.attributes("-fullscreen", self.fullScreenState)
         self.windowMain.geometry('730x460')
-Contabilidade()        
+#Contabilidade()        
