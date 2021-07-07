@@ -17,9 +17,24 @@ class Contabilidade:
 
         self.login()
 
+    def toCenterScreen(self, width, height):
+        pos_x = 1900/2 - width/2
+        pos_y = 1200/2 - height/2
+        
+        if pos_x < 0:
+            pos_x = pos_x * -1
+
+        if pos_y < 0:
+            pos_y = pos_y * -1
+
+        return f'{width}x{height}+{pos_x:.0f}+{pos_y:.0f}'
+
     def login(self):
 
         windowLogin = Tk()
+        windowLogin.resizable(False, False)
+        windowLogin.geometry(self.toCenterScreen(160,70))
+        windowLogin.focus_force()
         windowLogin.title('')
         
         lblSenha = Label(windowLogin, text='Senha:')
@@ -43,15 +58,19 @@ class Contabilidade:
         bt = Button(windowLogin, text='Entrar', command=verify)
         bt.pack()
 
+        etSenha.focus_force()
+
         windowLogin.mainloop()
 
     def window(self):
 
         self.windowMain = Tk()
         self.windowMain.resizable(False, False)
-        self.windowMain.attributes('-fullscreen', True)  
-        self.fullScreenState = False
+        self.windowMain.geometry(self.toCenterScreen(730, 500))
+        self.windowMain.focus_force()
         self.windowMain.title('CONTABILIDADE W MOTOS')
+        #self.windowMain.attributes('-fullscreen', True)  
+        #self.fullScreenState = False
 
         #Data
         lblData = Label(self.windowMain, text='Dia:')
@@ -180,8 +199,8 @@ class Contabilidade:
         setValeusData()
         setValuesPagamento()
         
-        self.windowMain.bind("<F11>", self.toggleFullScreen)
-        self.windowMain.bind("<Escape>", self.quitFullScreen)
+        #self.windowMain.bind("<F11>", self.toggleFullScreen)
+        #self.windowMain.bind("<Escape>", self.quitFullScreen)
 
         self.windowMain.mainloop()
 
@@ -193,4 +212,4 @@ class Contabilidade:
         self.fullScreenState = False
         self.windowMain.attributes("-fullscreen", self.fullScreenState)
         self.windowMain.geometry('730x460')
-#Contabilidade()        
+Contabilidade()        

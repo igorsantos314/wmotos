@@ -3,5 +3,7 @@
     "path_bd":"wmotos.db",
     "color_cliente":"RED",
     "color_veiculo":"GREEN",
-    "color_telefone":"BLUE"
+    "color_telefone":"BLUE",
+    "width_screen":1920,
+    "heigth_screen":1200
 }

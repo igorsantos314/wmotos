@@ -14,12 +14,26 @@ class Menu_Principal:
     def __init__(self) -> None:
         self.windowMain()
 
+    def toCenterScreen(self, width, height):
+        pos_x = 1900/2 - width/2
+        pos_y = 1200/2 - height/2
+        
+        if pos_x < 0:
+            pos_x = pos_x * -1
+
+        if pos_y < 0:
+            pos_y = pos_y * -1
+
+        return f'{width}x{height}+{pos_x:.0f}+{pos_y:.0f}'
+
     def windowMain(self):
         # Creating tkinter window
         self.window = Tk()
         self.window.resizable(False, False)
-        self.window.attributes('-fullscreen', True)  
-        self.fullScreenState = False
+        self.window.geometry(self.toCenterScreen(810, 490))
+        self.window.focus_force()
+        #self.window.attributes('-fullscreen', True)  
+        #self.fullScreenState = False
         
         self.window.title('WMOTOS - IGOR SANTOS SISTEMAS')
         self.window['bg'] = 'White'
@@ -94,8 +108,8 @@ class Menu_Principal:
                 #REABRIR MENU
                 Menu_Principal()
 
-        self.window.bind("<F11>", self.toggleFullScreen)
-        self.window.bind("<Escape>", self.quitFullScreen)
+        #self.window.bind("<F11>", self.toggleFullScreen)
+        #self.window.bind("<Escape>", self.quitFullScreen)
 
         self.window.mainloop()
         
@@ -106,4 +120,4 @@ class Menu_Principal:
     def quitFullScreen(self, event):
         self.fullScreenState = False
         self.window.attributes("-fullscreen", self.fullScreenState)
-        self.window.geometry('993x480')
+        self.window.geometry(self.toCenterScreen())

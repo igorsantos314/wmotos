@@ -18,19 +18,33 @@ class Backup_BD:
         self.data_atual = f'{self.day}-{self.month}-{self.year}'
         self.origem = 'wmotos.db'
         self.list_devices = ['E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N']
-        self.list_color = [ 'Red', 'SaddleBrown', 'Black', 'SlateBlue', 'DarkSlateGray',
+        self.list_color = [ 'SpringGreen', 'SaddleBrown', 'Black', 'SlateBlue', 'DarkSlateGray',
                             'Indigo', 'DarkRed', 'DarkOrange', 'Goldenrod', 'MidnightBlue']
 
         #JANELA MAIN
         self.window_bd()
 
+    def toCenterScreen(self, width, height):
+        pos_x = 1900/2 - width/2
+        pos_y = 1200/2 - height/2
+        
+        if pos_x < 0:
+            pos_x = pos_x * -1
+
+        if pos_y < 0:
+            pos_y = pos_y * -1
+
+        return f'{width}x{height}+{pos_x:.0f}+{pos_y:.0f}'
+
     def window_bd(self):
 
         self.windowMain = Tk()
         self.windowMain.resizable(False, False)
-        self.windowMain.attributes('-fullscreen', True)  
-        self.fullScreenState = False
+        self.windowMain.geometry(self.toCenterScreen(400, 100))
+        self.windowMain.focus_force()
         self.windowMain.title('BACKUP')
+        #self.windowMain.attributes('-fullscreen', True)  
+        #self.fullScreenState = False
 
         list_bt = []
 
@@ -43,7 +57,7 @@ class Backup_BD:
                 if os.path.isdir(path):
                     
                     list_bt.append(
-                        Button(text=str(path), font='Arial 12 bold', bg=self.list_color[pos], fg='white', width=8, height=2)
+                        Button(text=str(path), font='Arial 12 bold', bg=self.list_color[0], fg='black', width=8, height=2)
                     )
             
             #VERRE LISTA DE BOTOES PARA POSICIONAR E ATTR COMMAND
@@ -79,10 +93,10 @@ class Backup_BD:
         imagem_voltar = PhotoImage(file=f"src/voltar_48.png")
         btVoltar = Button(self.windowMain, image=imagem_voltar, bg='White', command=lambda: self.windowMain.destroy())
         btVoltar.imagem = imagem_voltar
-        btVoltar.pack(side=LEFT)
+        btVoltar.pack(side=LEFT, padx=2)
 
-        self.windowMain.bind("<F11>", self.toggleFullScreen)
-        self.windowMain.bind("<Escape>", self.quitFullScreen)
+        #self.windowMain.bind("<F11>", self.toggleFullScreen)
+        #self.windowMain.bind("<Escape>", self.quitFullScreen)
 
         self.windowMain.mainloop()
 
@@ -100,4 +114,4 @@ class Backup_BD:
         self.destino = f'{device}/{self.data_atual}-wmotos.db'
 
         #REALIZAR BACKUP PARA UNIDADE REMOVIVEL
-        shutil.copy(self.origem, self.destino)     
+        shutil.copy(self.origem, self.destino)

@@ -20,15 +20,29 @@ class Tela_Editar_OS:
         # OBEJTO OS
         self.window()
 
+    def toCenterScreen(self, width, height):
+        pos_x = 1900/2 - width/2
+        pos_y = 1200/2 - height/2
+        
+        if pos_x < 0:
+            pos_x = pos_x * -1
+
+        if pos_y < 0:
+            pos_y = pos_y * -1
+
+        return f'{width}x{height}+{pos_x:.0f}+{pos_y:.0f}'
+
     def window(self):
 
         self.windowMain = Tk()
         self.windowMain.resizable(False, False)
-        self.windowMain.attributes('-fullscreen', True)  
-        self.fullScreenState = False
+        self.windowMain.geometry(self.toCenterScreen(810, 490))
+        self.windowMain.focus_force()
         self.windowMain.title('EDITAR ORDEM DE SERVIÇO')
         self.windowMain['bg'] = 'White'
-
+        #self.windowMain.attributes('-fullscreen', True)  
+        #self.fullScreenState = False
+        
         # Data
         lblDataEntrada = Label(self.windowMain, text='Data de Entrada:', font='Arial 12', bg='White')
         lblDataEntrada.place(x=10, y=10)
@@ -206,8 +220,8 @@ class Tela_Editar_OS:
         #SETAR DADOS
         setDados()
 
-        self.windowMain.bind("<F11>", self.toggleFullScreen)
-        self.windowMain.bind("<Escape>", self.quitFullScreen)
+        #self.windowMain.bind("<F11>", self.toggleFullScreen)
+        #self.windowMain.bind("<Escape>", self.quitFullScreen)
 
         self.windowMain.mainloop()
 

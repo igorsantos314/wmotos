@@ -10,14 +10,28 @@ class consulta:
     def __init__(self) -> None:
         self.window()
 
+    def toCenterScreen(self, width, height):
+        pos_x = 1900/2 - width/2
+        pos_y = 1200/2 - height/2
+        
+        if pos_x < 0:
+            pos_x = pos_x * -1
+
+        if pos_y < 0:
+            pos_y = pos_y * -1
+
+        return f'{width}x{height}+{pos_x:.0f}+{pos_y:.0f}'
+        
     def window(self):
         # Creating tkinter self.windowMain 
         self.windowMain = Tk()
         self.windowMain.resizable(False, False)
-        self.windowMain.attributes('-fullscreen', True)  
-        self.fullScreenState = False
+        self.windowMain.geometry(self.toCenterScreen(993, 480))
+        self.windowMain.focus_force()
         self.windowMain.title('CONSULTAR OS')
         self.windowMain['bg'] = 'White'
+        #self.windowMain.attributes('-fullscreen', True)  
+        #self.fullScreenState = False
 
         #BUSCAR
         lblBuscar = Label(self.windowMain, text='BUSCAR:', font='Arial 13', bg='White')
@@ -354,10 +368,10 @@ class consulta:
 
         #Povoar Tabela
         getAll()
-
+        
         # Calling mainloop 
-        self.windowMain.bind("<F11>", self.toggleFullScreen)
-        self.windowMain.bind("<Escape>", self.quitFullScreen)
+        #self.windowMain.bind("<F11>", self.toggleFullScreen)
+        #self.windowMain.bind("<Escape>", self.quitFullScreen)
 
         self.windowMain.mainloop()
 
