@@ -3,6 +3,7 @@ from tkinter import ttk
 from tkinter import messagebox
 from datetime import date
 from Persistencia import bd
+from util import util
 
 class Contabilidade:
 
@@ -17,23 +18,11 @@ class Contabilidade:
 
         self.login()
 
-    def toCenterScreen(self, width, height):
-        pos_x = 1900/2 - width/2
-        pos_y = 1200/2 - height/2
-        
-        if pos_x < 0:
-            pos_x = pos_x * -1
-
-        if pos_y < 0:
-            pos_y = pos_y * -1
-
-        return f'{width}x{height}+{pos_x:.0f}+{pos_y:.0f}'
-
     def login(self):
 
         windowLogin = Tk()
         windowLogin.resizable(False, False)
-        windowLogin.geometry(self.toCenterScreen(160,70))
+        windowLogin.geometry(util().toCenterScreen(160,70))
         windowLogin.focus_force()
         windowLogin.title('')
         
@@ -66,7 +55,7 @@ class Contabilidade:
 
         self.windowMain = Tk()
         self.windowMain.resizable(False, False)
-        self.windowMain.geometry(self.toCenterScreen(730, 500))
+        self.windowMain.geometry(util().toCenterScreen(730, 500))
         self.windowMain.focus_force()
         self.windowMain.title('CONTABILIDADE W MOTOS')
         #self.windowMain.attributes('-fullscreen', True)  

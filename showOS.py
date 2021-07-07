@@ -4,29 +4,18 @@ from Persistencia import bd
 from module_print import print_document
 from tkinter import messagebox
 from Tela_Editar_OS import Tela_Editar_OS
+from util import util
 
 class consulta:
 
     def __init__(self) -> None:
         self.window()
-
-    def toCenterScreen(self, width, height):
-        pos_x = 1900/2 - width/2
-        pos_y = 1200/2 - height/2
-        
-        if pos_x < 0:
-            pos_x = pos_x * -1
-
-        if pos_y < 0:
-            pos_y = pos_y * -1
-
-        return f'{width}x{height}+{pos_x:.0f}+{pos_y:.0f}'
         
     def window(self):
         # Creating tkinter self.windowMain 
         self.windowMain = Tk()
         self.windowMain.resizable(False, False)
-        self.windowMain.geometry(self.toCenterScreen(993, 480))
+        self.windowMain.geometry(util().toCenterScreen(993, 480))
         self.windowMain.focus_force()
         self.windowMain.title('CONSULTAR OS')
         self.windowMain['bg'] = 'White'

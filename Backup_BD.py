@@ -5,6 +5,7 @@ from Persistencia import bd
 from tkinter import *
 from tkinter import ttk
 import shutil
+from util import util
 
 class Backup_BD:
 
@@ -24,23 +25,11 @@ class Backup_BD:
         #JANELA MAIN
         self.window_bd()
 
-    def toCenterScreen(self, width, height):
-        pos_x = 1900/2 - width/2
-        pos_y = 1200/2 - height/2
-        
-        if pos_x < 0:
-            pos_x = pos_x * -1
-
-        if pos_y < 0:
-            pos_y = pos_y * -1
-
-        return f'{width}x{height}+{pos_x:.0f}+{pos_y:.0f}'
-
     def window_bd(self):
 
         self.windowMain = Tk()
         self.windowMain.resizable(False, False)
-        self.windowMain.geometry(self.toCenterScreen(400, 100))
+        self.windowMain.geometry(util().toCenterScreen(400, 100))
         self.windowMain.focus_force()
         self.windowMain.title('BACKUP')
         #self.windowMain.attributes('-fullscreen', True)  
