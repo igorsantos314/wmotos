@@ -33,7 +33,7 @@ class Contabilidade:
         etSenha = Entry(windowLogin, font='Arial 12 bold', show='*')
         etSenha.pack()
 
-        def verify():
+        def verify(event):
             
             if etSenha.get() == json_ws().getPwCont():
                 #DESTRUIR JANELA
@@ -45,10 +45,8 @@ class Contabilidade:
                 messagebox.showerror('', 'SENHA INCORRETA !')
                 windowLogin.destroy()
 
-        bt = Button(windowLogin, text='Entrar', command=verify)
-        bt.pack()
-
         etSenha.focus_force()
+        windowLogin.bind('<Return>', verify)
 
         windowLogin.mainloop()
 
