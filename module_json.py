@@ -41,3 +41,9 @@ class json_ws:
 
     def getHeightScreen(self):
         return self.dict['heigth_screen']
+
+    def getPwCont(self):
+        return self.dict['pw_cont']
+    
+    def getPwConfig(self):
+        return self.dict['pw_config']

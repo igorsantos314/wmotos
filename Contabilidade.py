@@ -4,6 +4,7 @@ from tkinter import messagebox
 from datetime import date
 from Persistencia import bd
 from util import util
+from module_json import json_ws
 
 class Contabilidade:
 
@@ -34,7 +35,7 @@ class Contabilidade:
 
         def verify():
             
-            if etSenha.get() == '3098':
+            if etSenha.get() == json_ws().getPwCont():
                 #DESTRUIR JANELA
                 windowLogin.destroy()
 
@@ -201,4 +202,3 @@ class Contabilidade:
         self.fullScreenState = False
         self.windowMain.attributes("-fullscreen", self.fullScreenState)
         self.windowMain.geometry('730x460')
-Contabilidade()        

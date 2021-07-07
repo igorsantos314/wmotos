@@ -1,7 +1,5 @@
 from tkinter import ttk
 from tkinter import *
-from tkinter import messagebox
-import os
 from Contabilidade import Contabilidade
 from showOS import consulta
 from Tela_Cadastrar_OS import Tela_Cadastrar_OS
@@ -9,6 +7,7 @@ from Contabilidade import Contabilidade
 from module_json import json_ws
 from Backup_BD import Backup_BD
 from util import util
+from Config import Config
 
 class Menu_Principal:
 
@@ -57,11 +56,17 @@ class Menu_Principal:
         btBackup.imagem = imagem_backup
         btBackup.place(x=340, y=10)
 
-        #BACKUP
+        #CONFIGURAÇÕES
+        imagem_config = PhotoImage(file=f"src/config.png")
+        btConfig = Button(self.window, image=imagem_config, bg='White', command=lambda:open('Config'))
+        btConfig.imagem = imagem_config
+        btConfig.place(x=450, y=10)
+
+        #SAIR
         imagem_sair = PhotoImage(file=f"src/sair.png")
         btSair = Button(self.window, image=imagem_sair, bg='White', command=lambda:self.window.destroy())
         btSair.imagem = imagem_sair
-        btSair.place(x=450, y=10)
+        btSair.place(x=560, y=10)
 
         #FECHAR MENU PARA CONTROLE DE TELAS
         def open(w):
@@ -94,6 +99,13 @@ class Menu_Principal:
                 #ABRIR JANELA
                 Backup_BD()
 
+                #REABRIR MENU
+                Menu_Principal()
+
+            elif w == 'Config':
+                #ABRIR JANELA
+                Config()
+                
                 #REABRIR MENU
                 Menu_Principal()
 

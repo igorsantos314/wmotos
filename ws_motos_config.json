@@ -1,9 +1,11 @@
 {
-    "path_logo":"src/logo.png",
-    "path_bd":"wmotos.db",
     "color_cliente":"RED",
-    "color_veiculo":"GREEN",
     "color_telefone":"BLUE",
-    "width_screen":1920,
-    "heigth_screen":1200
+    "color_veiculo":"GREEN",
+    "heigth_screen":1200,
+    "path_bd":"wmotos.db",
+    "path_logo":"src/logo.png",
+    "pw_config":"admin13579",
+    "pw_cont":"3098",
+    "width_screen":1920
 }
