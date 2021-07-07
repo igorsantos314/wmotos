@@ -193,4 +193,6 @@ class Tela_Cadastrar_OS:
     def quitFullScreen(self, event):
         self.fullScreenState = False
         self.windowMain.attributes("-fullscreen", self.fullScreenState)
-        self.windowMain.geometry('810x490')
+        self.windowMain.geometry('1300x700')
+    
+Tela_Cadastrar_OS()
