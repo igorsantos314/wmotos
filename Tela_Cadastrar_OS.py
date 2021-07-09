@@ -135,6 +135,21 @@ class Tela_Cadastrar_OS:
         btVoltar = Button(self.windowMain, image=imagem_voltar, bg='White', command=lambda: exit())
         btVoltar.imagem = imagem_voltar
         btVoltar.place(x=740, y=430)
+        
+        def verificarCampos():
+
+            #VERIFICA SE TEM NUMERO NOS CAMPOS DE VALORES
+            if etObra.get() == '' or etObra.get() == ' ':
+                etObra.delete(0, END)
+                etObra.insert(0, "0")
+            
+            if etPecas.get() == '' or etPecas.get() == ' ':
+                etPecas.delete(0, END)
+                etPecas.insert(0, "0")
+
+            if etOutros.get() == '' or etOutros.get() == ' ':
+                etOutros.delete(0, END)
+                etOutros.insert(0, "0")
 
         # Funcoes
         def save():
@@ -147,6 +162,9 @@ class Tela_Cadastrar_OS:
             else:
                 # SALVAR
                 if messagebox.askyesno('', 'SALVAR OS?'):
+                
+                    #VERIFICA OS CAMPOS DE VALORES
+                    verificarCampos()
 
                     bd().insertOS(
                         etDataEntrada.get(),
@@ -171,14 +189,24 @@ class Tela_Cadastrar_OS:
         def clear():
             # LIMPAR
             etDataEntrada.delete(0, END)
+            etDataEntrada.insert(0, self.data_atual)
+
             etDataSaida.delete(0, END)
+            etDataSaida.insert(0, self.data_atual)
+
             etCliente.delete(0, END)
             etTelefone.delete(0, END)
             etVeiculo.delete(0, END)
             stDesc.delete("1.0", END)
             stLaudo.delete("1.0", END)
+
+            etObra.delete(0, END)
             etObra.insert(0, '0')
+
+            etPecas.delete(0, END)
             etPecas.insert(0, '0')
+
+            etOutros.delete(0, END)
             etOutros.insert(0, '0')
             
         def exit():

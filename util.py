@@ -1,11 +1,13 @@
+from module_json import json_ws
+
 class util:
 
     def __init__(self) -> None:
         pass
 
     def toCenterScreen(self, width, height):
-        pos_x = 1900/2 - width/2
-        pos_y = 1200/2 - height/2
+        pos_x = float(json_ws().getWidthScreen())/2 - width/2
+        pos_y = float(json_ws().getHeightScreen())/2 - height/2
         
         if pos_x < 0:
             pos_x = pos_x * -1

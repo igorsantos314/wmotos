@@ -146,7 +146,7 @@ class consulta:
         treev2.configure(xscrollcommand = verscrlbar.set) 
 
         # Defining number of columns 
-        treev2["columns"] = ("1", "2", "3", "4", "5", "8", "9", "10", "11") 
+        treev2["columns"] = ("1", "2", "3", "4", "5", "8", "9", "10", "11", "12", "13") 
 
         # Defining heading 
         treev2['show'] = 'headings'
@@ -158,12 +158,12 @@ class consulta:
         treev2.column("3", width = 90, anchor ='se') 
         treev2.column("4", width = 120, anchor ='se')
         treev2.column("5", width = 90, anchor ='se') 
-        #treev2.column("6", width = 150, anchor ='se')
-        #treev2.column("7", width = 150, anchor ='se') 
-        treev2.column("8", width = 150, anchor ='se')
+        treev2.column("8", width = 90, anchor ='se')
         treev2.column("9", width = 120, anchor ='se') 
-        treev2.column("10", width = 120, anchor ='se')
-        treev2.column("11", width = 120, anchor ='se')
+        treev2.column("10", width = 72, anchor ='se')
+        treev2.column("11", width = 72, anchor ='se')
+        treev2.column("12", width = 72, anchor ='se')
+        treev2.column("13", width = 72, anchor ='se')
 
         # Assigning the heading names to the 
         # respective columns 
@@ -172,13 +172,13 @@ class consulta:
         treev2.heading("3", text ="Data Saida")
         treev2.heading("4", text ="Cliente")
         treev2.heading("5", text ="Veiculo")
-        #treev2.heading("6", text ="Descrição")
-        #treev2.heading("7", text ="Laudo Tecnico")
         treev2.heading("8", text ="Forma de Pagamento")
         treev2.heading("9", text ="Status")
-        treev2.heading("10", text ="Valor Mão de Obra")
-        treev2.heading("11", text ="Valor de Peças")
-
+        treev2.heading("10", text ="M. de Obra")
+        treev2.heading("11", text ="Peças")
+        treev2.heading("12", text ="Outros")
+        treev2.heading("13", text ="Total")
+        
         def getId():
             if len(treev2.selection()) == 0:
                 messagebox.showwarning('','POR FAVOR SELECIONE UMA OS')
@@ -196,7 +196,8 @@ class consulta:
         def getAll():
             #VARRER LISTA E ADICIONAR NA TABELA
             for i in bd().getAllOS():
-                treev2.insert("", 'end', text ="L1", values =(i[0], i[1], i[2], i[3], i[5], i[8], i[9], i[10], i[11]))
+                total = i[10] + i[11] + i[12]
+                treev2.insert("", 'end', text ="L1", values =(i[0], i[1], i[2], i[3], i[5], i[8], i[9], i[10], i[11], i[12], total))
 
         def buscar():
             
@@ -373,4 +374,4 @@ class consulta:
         self.windowMain.attributes("-fullscreen", self.fullScreenState)
         self.windowMain.geometry('993x480')
 
-#consulta()
+consulta()
