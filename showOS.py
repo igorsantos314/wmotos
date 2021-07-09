@@ -160,10 +160,10 @@ class consulta:
         treev2.column("5", width = 90, anchor ='se') 
         treev2.column("8", width = 90, anchor ='se')
         treev2.column("9", width = 120, anchor ='se') 
-        treev2.column("10", width = 72, anchor ='se')
-        treev2.column("11", width = 72, anchor ='se')
-        treev2.column("12", width = 72, anchor ='se')
-        treev2.column("13", width = 72, anchor ='se')
+        treev2.column("10", width = 75, anchor ='se')
+        treev2.column("11", width = 75, anchor ='se')
+        treev2.column("12", width = 75, anchor ='se')
+        treev2.column("13", width = 75, anchor ='se')
 
         # Assigning the heading names to the 
         # respective columns 
@@ -196,7 +196,7 @@ class consulta:
         def getAll():
             #VARRER LISTA E ADICIONAR NA TABELA
             for i in bd().getAllOS():
-                total = i[10] + i[11] + i[12]
+                total = f"{(i[10] + i[11] + i[12]):.2f}"
                 treev2.insert("", 'end', text ="L1", values =(i[0], i[1], i[2], i[3], i[5], i[8], i[9], i[10], i[11], i[12], total))
 
         def buscar():
@@ -206,7 +206,8 @@ class consulta:
 
             #VARRER LISTA E ADICIONAR NA TABELA
             for i in bd().getNomeVeiculoOS(etBuscar.get().upper()):
-                treev2.insert("", 'end', text ="L1", values =(i[0], i[1], i[2], i[3], i[5], i[8], i[9], i[10], i[11]))
+                total = f"{(i[10] + i[11] + i[12]):.2f}"
+                treev2.insert("", 'end', text ="L1", values =(i[0], i[1], i[2], i[3], i[5], i[8], i[9], i[10], i[11], i[12], total))
 
         def limpar():
             #LIMPAR CAMPO DE CONSULTA

@@ -144,32 +144,32 @@ class Contabilidade:
         def setValeusData():
             #SETAR O VALOR TOTAL
             valor_total = bd().getAllMaoObra()
-            contValorTotal['text'] = f'R$ {valor_total:.2f}'
+            contValorTotal['text'] = f'R$ {valor_total:.2f}'.replace('.', ',')
 
             #SETAR O VALOR MÊS
             m = f'/{comboMes.get()}/{comboAno.get()}'
             valor_mes = bd().getContabilidadeMes(m)
-            contValorMes['text'] = f'R$ {valor_mes:.2f}'
+            contValorMes['text'] = f'R$ {valor_mes:.2f}'.replace('.', ',')
             
             #SETAR O VALOR DIA
             d = f'{comboData.get()}/{comboMes.get()}/{comboAno.get()}'
-            contValorDia['text'] = f'R$ {bd().getContabilidadeDia(d):.2f}'
+            contValorDia['text'] = f'R$ {bd().getContabilidadeDia(d):.2f}'.replace('.', ',')
             
             #SETAR RESERVA MENSAL
-            contReservaMes['text'] = f'R$ {(valor_mes*0.10):.2f}'
+            contReservaMes['text'] = f'R$ {(valor_mes*0.10):.2f}'.replace('.', ',')
 
             #SETAR PROJEÇÃO TOTAL
-            contReservaTotal['text'] = f'R$ {(valor_total*0.10):.2f}'
+            contReservaTotal['text'] = f'R$ {(valor_total*0.10):.2f}'.replace('.', ',')
 
         def setValuesPagamento():
             #DINHEIRO
-            contValorDinheiro['text'] = f'R$ {bd().getContabilidadeDinheiro():.2f}'
+            contValorDinheiro['text'] = f'R$ {bd().getContabilidadeDinheiro():.2f}'.replace('.', ',')
 
             #CARTAO
-            contValorCartao['text'] = f'R$ {bd().getContabilidadeCartao():.2f}'
+            contValorCartao['text'] = f'R$ {bd().getContabilidadeCartao():.2f}'.replace('.', ',')
 
             #PIX
-            contValorPix['text'] = f'R$ {bd().getContabilidadePix():.2f}'
+            contValorPix['text'] = f'R$ {bd().getContabilidadePix():.2f}'.replace('.', ',')
 
         #EDITAR
         imagem_buscar = PhotoImage(file=f"src/buscar_48.png")
