@@ -21,14 +21,14 @@ class Menu_Principal:
         self.window.geometry(util().toCenterScreen(810, 580))
         self.window.focus_force()
         
-        self.window.title('Pything Systems')
+        self.window.title('Pything Sistemas - BY: IGOR SANTOS')
         self.window['bg'] = 'White'
-
+        
         #LOGO
         imagem = PhotoImage(file=f"{json_ws().getPathLogo()}")
-        w = Label(self.window, image=imagem, height=400)
+        w = Label(self.window, image=imagem)
         w.imagem = imagem
-        w.place(x=150, y=155)
+        w.place(x=0, y=-5)
 
         #NOVA ORDEM DE SERVIÇO
         imagem_new_os = PhotoImage(file=f"src/new_os.png")
@@ -567,8 +567,6 @@ class consulta:
         self.windowMain.focus_force()
         self.windowMain.title('CONSULTAR OS')
         self.windowMain['bg'] = 'White'
-        #self.windowMain.attributes('-fullscreen', True)  
-        #self.fullScreenState = False
 
         #BUSCAR
         lblBuscar = Label(self.windowMain, text='BUSCAR:', font='Arial 13', bg='White')
@@ -673,7 +671,7 @@ class consulta:
             fieldbackground='Silver'
         )
 
-        style.map("Treeview", background=[('selected', 'Red')], foreground=[('selected', 'White')])
+        style.map("Treeview", background=[('selected', '#00DB73')], foreground=[('selected', 'Black')])
 
         # Using treeview widget 
         treev2 = ttk.Treeview(self.windowMain, selectmode ='browse', height=14) 
@@ -907,10 +905,6 @@ class consulta:
 
         #Povoar Tabela
         getAll()
-        
-        # Calling mainloop 
-        #self.windowMain.bind("<F11>", self.toggleFullScreen)
-        #self.windowMain.bind("<Escape>", self.quitFullScreen)
 
         self.windowMain.mainloop()
 

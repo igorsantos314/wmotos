@@ -21,7 +21,7 @@ class Menu_Principal:
         self.window.geometry(util().toCenterScreen(810, 580))
         self.window.focus_force()
         
-        self.window.title('Pything Systems')
+        self.window.title('Pything Sistemas')
         self.window['bg'] = 'White'
 
         #LOGO

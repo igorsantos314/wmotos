@@ -19,8 +19,6 @@ class consulta:
         self.windowMain.focus_force()
         self.windowMain.title('CONSULTAR OS')
         self.windowMain['bg'] = 'White'
-        #self.windowMain.attributes('-fullscreen', True)  
-        #self.fullScreenState = False
 
         #BUSCAR
         lblBuscar = Label(self.windowMain, text='BUSCAR:', font='Arial 13', bg='White')
