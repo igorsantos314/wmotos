@@ -4,7 +4,7 @@
     "color_veiculo":"GREEN",
     "heigth_screen":1200,
     "path_bd":"wmotos.db",
-    "path_logo":"src/logo.png",
+    "path_logo":"src/Background_Logo.png",
     "pw_config":"admin13579",
     "pw_cont":"3098",
     "width_screen":1920

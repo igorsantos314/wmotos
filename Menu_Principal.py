@@ -18,19 +18,17 @@ class Menu_Principal:
         # Creating tkinter window
         self.window = Tk()
         self.window.resizable(False, False)
-        self.window.geometry(util().toCenterScreen(810, 490))
+        self.window.geometry(util().toCenterScreen(810, 580))
         self.window.focus_force()
-        #self.window.attributes('-fullscreen', True)  
-        #self.fullScreenState = False
         
-        self.window.title('WMOTOS - IGOR SANTOS SISTEMAS')
+        self.window.title('Pything Systems')
         self.window['bg'] = 'White'
 
         #LOGO
         imagem = PhotoImage(file=f"{json_ws().getPathLogo()}")
         w = Label(self.window, image=imagem)
         w.imagem = imagem
-        w.place(x=150, y=150)
+        w.place(x=0, y=-5)
 
         #NOVA ORDEM DE SERVIÇO
         imagem_new_os = PhotoImage(file=f"src/new_os.png")
@@ -122,3 +120,5 @@ class Menu_Principal:
         self.fullScreenState = False
         self.window.attributes("-fullscreen", self.fullScreenState)
         self.window.geometry(self.toCenterScreen())
+
+Menu_Principal()

@@ -125,7 +125,7 @@ class consulta:
             fieldbackground='Silver'
         )
 
-        style.map("Treeview", background=[('selected', 'Red')], foreground=[('selected', 'White')])
+        style.map("Treeview", background=[('selected', '#00DB73')], foreground=[('selected', 'Black')])
 
         # Using treeview widget 
         treev2 = ttk.Treeview(self.windowMain, selectmode ='browse', height=14) 
@@ -359,10 +359,6 @@ class consulta:
 
         #Povoar Tabela
         getAll()
-        
-        # Calling mainloop 
-        #self.windowMain.bind("<F11>", self.toggleFullScreen)
-        #self.windowMain.bind("<Escape>", self.quitFullScreen)
 
         self.windowMain.mainloop()
 
@@ -375,4 +371,4 @@ class consulta:
         self.windowMain.attributes("-fullscreen", self.fullScreenState)
         self.windowMain.geometry('993x480')
 
-consulta()
+#consulta()

@@ -22,7 +22,7 @@ DESCRIÇÃO DO CLIENTE:
 LAUDO TECNICO:
      ALGO________________________________________________________________________________
 
-FORMA DE PAGAMENTO:             DINHEIRO 
+FORMA DE PAGAMENTO:             CARTÃO 
 STATUS:                         CONCLUIDO 
 VALOR DE MÃO DE OBRA:           R$ 20.00 
 VALOR EM PEÇAS:                 R$ 50.00
@@ -30,7 +30,7 @@ OUTROS VALORES:                 R$ 100.00
 TOTAL:                          R$ 170.00
 ________________________________________________________________________________
 
-DATA E HORA IMPRESSÃO: 04/07/2021 21:58
+DATA E HORA IMPRESSÃO: 13/07/2021 21:25
 
 
 
@@ -43,6 +43,3 @@ DATA E HORA IMPRESSÃO: 04/07/2021 21:58
 
                   ___________________________________________                    
                              Assinatura do Cliente
-
-
-*Garantia Legal de 90 dias, Prevista no CDC - Art. 26, apartir da DATA DE SAIDA.
