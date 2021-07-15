@@ -12,8 +12,27 @@ import shutil
 class Menu_Principal:
 
     def __init__(self) -> None:
+        #self.validationConnection()
         self.windowMain()
 
+    """def validationConnection(self):
+        try:
+            if validation().getStatus() == "True":
+                self.windowMain()
+            else:
+                self.windowError = Tk()
+                self.windowError.resizable(False, False)
+                self.windowError.title('Opss')
+                self.windowError.geometry(util().toCenterScreen(250, 30))
+                self.windowError['bg'] = 'Black'
+                
+                lbl = Label(text='ACESSO NEGADO !', font='Arial 12 bold', fg='Red', bg='Black')
+                lbl.pack()
+
+                self.windowError.mainloop()
+        except:
+            pass
+    """
     def windowMain(self):
         # Creating tkinter window
         self.window = Tk()
@@ -21,9 +40,9 @@ class Menu_Principal:
         self.window.geometry(util().toCenterScreen(810, 580))
         self.window.focus_force()
         
-        self.window.title('Pything Sistemas - BY: IGOR SANTOS')
+        self.window.title('IGTEC - By:Igor Santos')
         self.window['bg'] = 'White'
-        
+
         #LOGO
         imagem = PhotoImage(file=f"{json_ws().getPathLogo()}")
         w = Label(self.window, image=imagem)
