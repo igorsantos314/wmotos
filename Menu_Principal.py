@@ -129,9 +129,6 @@ class Menu_Principal:
                 #REABRIR MENU
                 Menu_Principal()
 
-        #self.window.bind("<F11>", self.toggleFullScreen)
-        #self.window.bind("<Escape>", self.quitFullScreen)
-
         self.window.mainloop()
         
     def toggleFullScreen(self, event):
