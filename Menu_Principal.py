@@ -1,5 +1,7 @@
 from tkinter import ttk
 from tkinter import *
+from tkinter import messagebox
+from tkinter.font import Font
 from Contabilidade import Contabilidade
 from showOS import consulta
 from Tela_Cadastrar_OS import Tela_Cadastrar_OS
@@ -8,12 +10,32 @@ from module_json import json_ws
 from Backup_BD import Backup_BD
 from util import util
 from Config import Config
+#from module_validation import validation
 
 class Menu_Principal:
 
     def __init__(self) -> None:
+        #self.validationConnection()
         self.windowMain()
 
+    """def validationConnection(self):
+        try:
+            if validation().getStatus() == "True":
+                self.windowMain()
+            else:
+                self.windowError = Tk()
+                self.windowError.resizable(False, False)
+                self.windowError.title('Opss')
+                self.windowError.geometry(util().toCenterScreen(250, 30))
+                self.windowError['bg'] = 'Black'
+                
+                lbl = Label(text='ACESSO NEGADO !', font='Arial 12 bold', fg='Red', bg='Black')
+                lbl.pack()
+
+                self.windowError.mainloop()
+        except:
+            pass
+    """
     def windowMain(self):
         # Creating tkinter window
         self.window = Tk()
@@ -120,5 +142,3 @@ class Menu_Principal:
         self.fullScreenState = False
         self.window.attributes("-fullscreen", self.fullScreenState)
         self.window.geometry(self.toCenterScreen())
-
-Menu_Principal()
