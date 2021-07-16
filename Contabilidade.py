@@ -25,7 +25,7 @@ class Contabilidade:
         windowLogin.resizable(False, False)
         windowLogin.geometry(util().toCenterScreen(160,70))
         windowLogin.focus_force()
-        windowLogin.title('')
+        windowLogin.title('IGTEC')
         
         lblSenha = Label(windowLogin, text='Senha:')
         lblSenha.pack()
@@ -56,7 +56,7 @@ class Contabilidade:
         self.windowMain.resizable(False, False)
         self.windowMain.geometry(util().toCenterScreen(730, 500))
         self.windowMain.focus_force()
-        self.windowMain.title('CONTABILIDADE W MOTOS')
+        self.windowMain.title('IGTEC - CONTABILIDADE')
         #self.windowMain.attributes('-fullscreen', True)  
         #self.fullScreenState = False
 

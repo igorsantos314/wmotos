@@ -17,7 +17,7 @@ class consulta:
         self.windowMain.resizable(False, False)
         self.windowMain.geometry(util().toCenterScreen(993, 480))
         self.windowMain.focus_force()
-        self.windowMain.title('CONSULTAR OS')
+        self.windowMain.title('IGTEC - CONSULTAR OS')
         self.windowMain['bg'] = 'White'
 
         #BUSCAR
@@ -41,7 +41,7 @@ class consulta:
 
         #IMPRIMIR
         imagem_imprimir = PhotoImage(file=f"src/impressora_48.png")
-        btImprimir = Button(self.windowMain, image=imagem_imprimir, bg='White', command=lambda: imprimir())
+        btImprimir = Button(self.windowMain, image=imagem_imprimir, bg='White', command=lambda: imprimir(None))
         btImprimir.imagem = imagem_imprimir
         btImprimir.place(x=150, y=10)
 
@@ -228,7 +228,7 @@ class consulta:
             #FECHAR JANELA PELO BOTÃO OU PELO ESC
             self.windowMain.destroy()
 
-        def imprimir():
+        def imprimir(event):
             
             id = getId()
 
@@ -388,6 +388,12 @@ class consulta:
         self.windowMain.bind('<Return>', editar)
         self.windowMain.bind('<Escape>', voltar)
 
+        #MINUSCULO
+        self.windowMain.bind('<p>', imprimir)
+
+        #MAIUSCULO
+        self.windowMain.bind('<P>', imprimir)
+        
         self.windowMain.mainloop()
 
     def CalcularTroco(self, valor):
@@ -470,4 +476,4 @@ class consulta:
         self.windowMain.attributes("-fullscreen", self.fullScreenState)
         self.windowMain.geometry('993x480')
 
-consulta()
+#consulta()

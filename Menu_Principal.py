@@ -45,7 +45,7 @@ class Menu_Principal:
         
         self.window.title('IGTEC - By:Igor Santos')
         self.window['bg'] = 'White'
-
+        
         #LOGO
         imagem = PhotoImage(file=f"{json_ws().getPathLogo()}")
         w = Label(self.window, image=imagem)

@@ -27,7 +27,7 @@ class Tela_Cadastrar_OS:
         self.windowMain.resizable(False, False)
         self.windowMain.geometry(util().toCenterScreen(810, 490))
         self.windowMain.focus_force()
-        self.windowMain.title('Cadastrar Ordem de Serviço')
+        self.windowMain.title('IGTEC - CADASTRAR ORDEM DE SERVIÇO')
         self.windowMain['bg'] = 'White'
         #self.windowMain.attributes('-fullscreen', True)  
         #self.fullScreenState = False

@@ -31,9 +31,7 @@ class Backup_BD:
         self.windowMain.resizable(False, False)
         self.windowMain.geometry(util().toCenterScreen(400, 100))
         self.windowMain.focus_force()
-        self.windowMain.title('BACKUP')
-        #self.windowMain.attributes('-fullscreen', True)  
-        #self.fullScreenState = False
+        self.windowMain.title('IGTEC - BACKUP')
 
         list_bt = []
 

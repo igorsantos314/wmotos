@@ -32,7 +32,7 @@ class Config:
         windowLogin.resizable(False, False)
         windowLogin.geometry(util().toCenterScreen(160,70))
         windowLogin.focus_force()
-        windowLogin.title('')
+        windowLogin.title('IGTEC')
         
         lblSenha = Label(windowLogin, text='Senha:')
         lblSenha.pack()
