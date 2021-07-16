@@ -15,5 +15,5 @@ setup(
     version="1.0",
     description="Sistema para Gerenciar Oficina",
     options={"build_exe": build_exe_options},
-    executables=[Executable("App.py", base=base, icon="pything_icon.ico")]
+    executables=[Executable("App.py", base=base, icon="igtec_icon.ico")]
 )

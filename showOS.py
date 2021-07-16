@@ -29,7 +29,7 @@ class consulta:
 
         #EDITAR
         imagem_editar = PhotoImage(file=f"src/editar_48.png")
-        btEditar = Button(self.windowMain, image=imagem_editar, bg='White', command=lambda: editar())
+        btEditar = Button(self.windowMain, image=imagem_editar, bg='White', command=lambda: editar(None))
         btEditar.imagem = imagem_editar
         btEditar.place(x=10, y=10)
 
@@ -59,7 +59,7 @@ class consulta:
 
         #SAIR
         imagem_sair = PhotoImage(file=f"src/voltar_48.png")
-        btSair = Button(self.windowMain, image=imagem_sair, bg='White', command=lambda: self.windowMain.destroy())
+        btSair = Button(self.windowMain, image=imagem_sair, bg='White', command=lambda: voltar(None))
         btSair.imagem = imagem_sair
         btSair.place(x=360, y=10)
 
@@ -112,6 +112,16 @@ class consulta:
         btTransferencia = Button(self.windowMain, image=imagem_transferencia, bg='White', command=lambda: pagamentoOutro())
         btTransferencia.imagem = imagem_transferencia
         btTransferencia.place(x=430, y=90)
+
+        #FORMA DE PAGAMENTO
+        lblTroco = Label(text='CLIENTE PAGOU:', bg='White')
+        lblTroco.place(x=500, y=70)
+
+        #TROCO
+        imagem_troco = PhotoImage(file=f"src/troco_48.png")
+        btTroco = Button(self.windowMain, image=imagem_troco, bg='White', command=lambda: troco())
+        btTroco.imagem = imagem_troco
+        btTroco.place(x=500, y=90)
 
         #TREEVIEW
         style = ttk.Style(self.windowMain)
@@ -214,6 +224,10 @@ class consulta:
             #LIMPAR TABELA
             limparTabela()
 
+        def voltar(event):
+            #FECHAR JANELA PELO BOTÃO OU PELO ESC
+            self.windowMain.destroy()
+
         def imprimir():
             
             id = getId()
@@ -226,7 +240,7 @@ class consulta:
                 #IMPRIMIR
                 print_document(conteudo)
         
-        def editar():
+        def editar(event):
             
             id = getId()
 
@@ -352,13 +366,100 @@ class consulta:
                 #ATUALIZAR TABELA
                 buscar()
 
+        def troco():
+            if len(treev2.selection()) == 0:
+                messagebox.showwarning('','POR FAVOR SELECIONE UMA OS')
+
+            else:
+                itemSelecionado = treev2.selection()[0]
+
+                #PEGAR VALORES
+                val = float(treev2.item(itemSelecionado, "values")[10])
+                
+                #CHAMAR JANELA DE TROCO
+                self.CalcularTroco(val)
+
         def limparTabela():
             treev2.delete(*treev2.get_children())
 
         #Povoar Tabela
         getAll()
 
+        self.windowMain.bind('<Return>', editar)
+        self.windowMain.bind('<Escape>', voltar)
+
         self.windowMain.mainloop()
+
+    def CalcularTroco(self, valor):
+
+        self.windowTroco = Tk()
+        self.windowTroco.title('IGTEC - TROCO')
+        self.windowTroco.resizable(False, False)
+        self.windowTroco.geometry(util().toCenterScreen(400, 250))
+        self.windowTroco.focus_force()
+
+        #TOTAL DA OS
+        lblTotal = Label(self.windowTroco, text='Total:', font='Arial 15')
+        lblTotal.place(x=10, y=30)
+        
+        etValor = Entry(self.windowTroco, font='Arial 15 bold')
+        etValor.insert(0, f"{valor:.2f}".replace('.', ','))
+        etValor['state'] = 'disabled'
+        etValor.place(x=130, y=30)
+
+        #DESCONTO
+        lblDesc = Label(self.windowTroco, text='Desconto:', font='Arial 15')
+        lblDesc.place(x=10, y=80)
+
+        etDesc = Entry(self.windowTroco, font='Arial 15 bold')
+        etDesc.insert(0, "0,00")
+        etDesc.place(x=130, y=80)
+
+        #RECEBEU DO CLIENTE
+        lblRecebeu = Label(self.windowTroco, text='Pagou:', font='Arial 15')
+        lblRecebeu.place(x=10, y=130)
+
+        etRecebeu = Entry(self.windowTroco, font='Arial 15 bold')
+        etRecebeu.place(x=130, y=130)
+        
+        #TROCO
+        lblTroco = Label(self.windowTroco, text='Troco:', font='Arial 15')
+        lblTroco.place(x=10, y=180)
+
+        etTroco = Entry(self.windowTroco, font='Arial 15 bold', state='disabled')
+        etTroco.place(x=130, y=180)
+
+        etManual = Label(self.windowTroco, text='<Esc> - Voltar    <Enter> - Calcular Troco')
+        etManual.place(x=10, y=230)
+
+        def calc(event):
+
+            if etDesc.get() != '' or etRecebeu.get() != '':
+                desconto = float(etDesc.get().replace(',','.'))
+                troco = float(etRecebeu.get().replace(',','.')) - (valor - desconto)
+
+                #HABILITAR PARA EDIÇÃO
+                etTroco['state'] = 'normal'
+
+                #SETAR O VALOR DO TROCO
+                etTroco.delete(0, END)
+                etTroco.insert(0, f"{troco}".replace('.',','))
+
+                #DESABILITAR
+                etTroco['state'] = 'disabled'
+            else:
+                messagebox.showerror('','PREENCHA TODOS OS CAMPOS PARA CALCULAR !')
+
+        def sair(event):
+            self.windowTroco.destroy()
+
+        #FOCAR NO QUE NO CAMPO DE PAGOU
+        etRecebeu.focus_force()
+
+        self.windowTroco.bind('<Return>', calc)
+        self.windowTroco.bind('<Escape>', sair)
+
+        self.windowTroco.mainloop()
 
     def toggleFullScreen(self, event):
         self.fullScreenState = not self.fullScreenState
@@ -369,4 +470,4 @@ class consulta:
         self.windowMain.attributes("-fullscreen", self.fullScreenState)
         self.windowMain.geometry('993x480')
 
-#consulta()
+consulta()

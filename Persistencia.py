@@ -96,6 +96,13 @@ class bd:
 
         #RETORNA LISTA DE OS
         return self.cur.fetchall()
+    
+    def getValor(self, id):
+        show = f"SELECT * FROM ordem_servico WHERE id={id}"
+        self.cur.execute(show)
+        
+        #RETORNA O VALOR DA OS PELO ID
+        return self.cur.fetchall()
 
     def getNomeVeiculoOS(self, str):
 
