@@ -18,11 +18,11 @@ class print_document:
 
         head = '                           ORDEM DE SERVIÇO - W MOTOS  \n'
         head += "________________________________________________________________________________\n"
-        head += "CIDADE:                BEJO JARDIM\n"
-        head += "RUA:                   JOÃO BATISTA SENHORINHO\n"
-        head += "NÚMERO:                155\n"
-        head += "PONTO DE REFERÊNCIA:   AVENIDA DO SESC\n"
-        head += "WHATSAPP:              (81) 98250-0763\n"
+        head += "CIDADE:                         BEJO JARDIM\n"
+        head += "RUA:                            JOÃO BATISTA SENHORINHO\n"
+        head += "NÚMERO:                         155\n"
+        head += "PONTO DE REFERÊNCIA:            AVENIDA DO SESC\n"
+        head += "WHATSAPP:                       (81) 98250-0763\n"
         head += "________________________________________________________________________________\n\n"
 
         body  = "DADOS DA ORDEM DE SERVIÇO\n"
@@ -52,7 +52,7 @@ class print_document:
 
         body += "________________________________________________________________________________\n\n"
 
-        bottom = "DATA E HORA IMPRESSÃO: " + datetime.now().strftime('%d/%m/%Y %H:%M') + "\n\n\n\n\n"
+        bottom = "IGTEC - IMPRESSO EM: " + datetime.now().strftime('%d/%m/%Y as %H:%M') + "\n\n\n\n\n"
 
         bottom += "                  ___________________________________________                    \n"
         bottom += "                           Assinatura do Responsável\n\n\n\n\n"
@@ -74,7 +74,7 @@ class print_document:
         try:
             # COMANDO DE IMPRESSÃO
             os.startfile(self.caminho, "print")
-            messagebox.showinfo('','IMPRESSÃO REALIZADA')
+            messagebox.showinfo('','AGUARDE, FOI ENVIADO PARA A IMPRESSORA!')
             
         except:
             messagebox.showerror('','ERROR[mdo_print:80] NÃO FOI POSSÍVEL REALIZAR A IMPRESSÃO')

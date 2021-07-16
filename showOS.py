@@ -389,10 +389,10 @@ class consulta:
         self.windowMain.bind('<Escape>', voltar)
 
         #MINUSCULO
-        self.windowMain.bind('<p>', imprimir)
+        #self.windowMain.bind('<p>', imprimir)
 
         #MAIUSCULO
-        self.windowMain.bind('<P>', imprimir)
+        #self.windowMain.bind('<P>', imprimir)
         
         self.windowMain.mainloop()
 
