@@ -395,9 +395,9 @@ class consulta:
         self.windowMain.bind('<Control-P>', imprimir)
         
         #MANUAL
-        lblAjuda = Label(text='<Esc> Voltar   <Enter> Editar   <Ctrl+p> Imprimir')
+        lblAjuda = Label(text='<Esc> Voltar    <Enter> Editar    <Ctrl+p> Imprimir')
         lblAjuda.place(x=10, y=480)
-
+        
         self.windowMain.mainloop()
 
     def CalcularTroco(self, valor):

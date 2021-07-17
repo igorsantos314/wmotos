@@ -44,7 +44,7 @@ class Backup_BD:
                 if os.path.isdir(path):
                     
                     list_bt.append(
-                        Button(text=str(path), font='Arial 12 bold', bg=self.list_color[0], fg='black', width=8, height=2)
+                        Button(text=str(path), font='Arial 12 bold', bg='Black', fg='White', width=8, height=2)
                     )
             
             #VERRE LISTA DE BOTOES PARA POSICIONAR E ATTR COMMAND
@@ -70,20 +70,17 @@ class Backup_BD:
             #FECHAR A JANELA
             self.windowMain.destroy()
 
+        def voltar(event):
+            self.windowMain.destroy()
+
         lblDevice = Label(self.windowMain, text='ESCOLHA O DISPOSITIVO:', font='Arial 12 bold')
         lblDevice.pack()
 
         #BUSCAR DISPOSITIVOS
         getDevices()
-
-        #VOLTAR
-        imagem_voltar = PhotoImage(file=f"src/voltar_48.png")
-        btVoltar = Button(self.windowMain, image=imagem_voltar, bg='White', command=lambda: self.windowMain.destroy())
-        btVoltar.imagem = imagem_voltar
-        btVoltar.pack(side=LEFT, padx=2)
-
-        #self.windowMain.bind("<F11>", self.toggleFullScreen)
-        #self.windowMain.bind("<Escape>", self.quitFullScreen)
+        
+        #ATALHO
+        self.windowMain.bind("<Escape>", voltar)
 
         self.windowMain.mainloop()
 

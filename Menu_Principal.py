@@ -129,6 +129,12 @@ class Menu_Principal:
                 #REABRIR MENU
                 Menu_Principal()
 
+        def voltar(event):
+            self.window.destroy()
+
+        #ATALHO
+        self.window.bind("<Escape>", voltar)
+
         self.window.mainloop()
         
     def toggleFullScreen(self, event):
