@@ -5,18 +5,18 @@ from cx_Freeze import setup, Executable
 build_exe_options = {"packages": ["os"], "includes": [
     "tkinter", 
     "sqlite3", 
-    "Backup_BD", 
-    "Config", 
-    "Contabilidade", 
-    "Menu_Principal", 
+    "Tela_Backup_BD", 
+    "Tela_Config", 
+    "Tela_Contabilidade", 
+    "Tela_Menu_Principal",
+    "Tela_Show_OS",
+    "Tela_Cadastrar_OS",
+    "Tela_Editar_OS",
+    "util",
     "module_json",
     "module_print",
     "Persistencia",
-    "Programa",
-    "showOS",
-    "Tela_Cadastrar_OS",
-    "Tela_Editar_OS",
-    "util"
+    "IGTEC"
     ]}
 
 # GUI applications require a different base on Windows (the default is for
@@ -26,9 +26,9 @@ if sys.platform == "win32":
     base = "Win32GUI"
 
 setup(
-    name="OficeSystem",
-    version="1.0",
+    name="IGTEC - OS",
+    version="2.0",
     description="Sistema para Gerenciar Oficina",
     options={"build_exe": build_exe_options},
-    executables=[Executable("Programa.py", base=base, icon="igtec_icon.ico")]
+    executables=[Executable("IGTEC.py", base=base, icon="igtec_icon.ico")]
 )

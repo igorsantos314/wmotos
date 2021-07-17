@@ -126,13 +126,13 @@ class Tela_Cadastrar_OS:
 
         #SALVAR
         imagem_salvar = PhotoImage(file=f"src/salvar_48.png")
-        btExibir = Button(self.windowMain, image=imagem_salvar, bg='White', command=lambda: save())
+        btExibir = Button(self.windowMain, image=imagem_salvar, bg='White', bd=0, command=lambda: save())
         btExibir.imagem = imagem_salvar
         btExibir.place(x=670, y=430)
 
         #VOLTAR
         imagem_voltar = PhotoImage(file=f"src/voltar_48.png")
-        btVoltar = Button(self.windowMain, image=imagem_voltar, bg='White', command=lambda: exit())
+        btVoltar = Button(self.windowMain, image=imagem_voltar, bg='White', bd=0, command=lambda: exit())
         btVoltar.imagem = imagem_voltar
         btVoltar.place(x=740, y=430)
         

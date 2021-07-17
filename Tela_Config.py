@@ -1,4 +1,3 @@
-from showOS import consulta
 from module_json import json_ws
 from tkinter import scrolledtext
 from tkinter import *

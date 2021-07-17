@@ -125,12 +125,12 @@ class consulta:
 
         #TREEVIEW
         style = ttk.Style(self.windowMain)
-        style.theme_use('clam')
+        style.theme_use('vista')
 
         style.configure(
             "Treeview",
-            background="Silver",
-            fieldbackground='Silver'
+            background="White",
+            fieldbackground='White'
         )
 
         style.map("Treeview", background=[('selected', '#00DB73')], foreground=[('selected', 'Black')])
@@ -180,7 +180,7 @@ class consulta:
         treev2.heading("3", text ="Data Saida")
         treev2.heading("4", text ="Cliente")
         treev2.heading("5", text ="Veiculo")
-        treev2.heading("8", text ="Forma de Pagamento")
+        treev2.heading("8", text ="Pagamento")
         treev2.heading("9", text ="Status")
         treev2.heading("10", text ="M. de Obra")
         treev2.heading("11", text ="Peças")

@@ -1,16 +1,12 @@
-from tkinter import ttk
 from tkinter import *
-from tkinter import messagebox
 from tkinter.font import Font
-from Contabilidade import Contabilidade
-from showOS import consulta
+from Tela_Contabilidade import Contabilidade
+from Tela_Show_OS import consulta
 from Tela_Cadastrar_OS import Tela_Cadastrar_OS
-from Contabilidade import Contabilidade
 from module_json import json_ws
-from Backup_BD import Backup_BD
+from Tela_Backup_BD import Backup_BD
 from util import util
-from Config import Config
-#from module_validation import validation
+from Tela_Config import Config
 
 class Menu_Principal:
 
