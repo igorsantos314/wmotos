@@ -15,7 +15,7 @@ class consulta:
         # Creating tkinter self.windowMain 
         self.windowMain = Tk()
         self.windowMain.resizable(False, False)
-        self.windowMain.geometry(util().toCenterScreen(993, 480))
+        self.windowMain.geometry(util().toCenterScreen(993, 500))
         self.windowMain.focus_force()
         self.windowMain.title('IGTEC - CONSULTAR OS')
         self.windowMain['bg'] = 'White'
@@ -387,13 +387,17 @@ class consulta:
 
         self.windowMain.bind('<Return>', editar)
         self.windowMain.bind('<Escape>', voltar)
-
+        
         #MINUSCULO
-        #self.windowMain.bind('<p>', imprimir)
+        self.windowMain.bind('<Control-p>', imprimir)
 
         #MAIUSCULO
-        #self.windowMain.bind('<P>', imprimir)
+        self.windowMain.bind('<Control-P>', imprimir)
         
+        #MANUAL
+        lblAjuda = Label(text='<Esc> Voltar   <Enter> Editar   <Ctrl+p> Imprimir')
+        lblAjuda.place(x=10, y=480)
+
         self.windowMain.mainloop()
 
     def CalcularTroco(self, valor):

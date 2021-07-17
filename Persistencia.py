@@ -14,8 +14,15 @@ class bd:
 
     def insertOS(self, data_entrada, saida, nome_cliente, telefone, veiculo, desc, laudo_tecnico, forma_pagamento, status, valor_mao_obra, valor_pecas, valor_outros):
 
-        #INSERIR DADOS NA TABELA GASTOS
+        #INSERIR DADOS NA TABELA ORDEMS DE SERVIÇO
         command = f'INSERT INTO ordem_servico(entrada, saida, cliente, telefone, veiculo, descricao, laudo, pagamento, status, mao_de_obra, valor_de_pecas, valor_outros) VALUES("{data_entrada}", "{saida}", "{nome_cliente}", "{telefone}", "{veiculo}", "{desc}", "{laudo_tecnico}", "{forma_pagamento}", "{status}", {valor_mao_obra}, {valor_pecas}, {valor_outros})'
+        
+        self.cur.execute(command)
+        self.conection.commit()
+
+    def insertProduto(self, nome, valorCompra, valorVenda):
+        #INSERIR DADOS NA TABELA PRODUTO
+        command = f'INSERT INTO produto(nome, valor_compra, valor_venda) VALUES("{nome}", {valorCompra}, {valorVenda})'
         
         self.cur.execute(command)
         self.conection.commit()
@@ -107,6 +114,13 @@ class bd:
     def getNomeVeiculoOS(self, str):
 
         show = f"SELECT * FROM ordem_servico WHERE cliente LIKE '%{str}%' OR veiculo LIKE '%{str}%'"
+        self.cur.execute(show)
+
+        #RETORNA LISTA DE OS
+        return self.cur.fetchall()
+
+    def getAllProduto(self):
+        show = "SELECT * FROM produto"
         self.cur.execute(show)
 
         #RETORNA LISTA DE OS
