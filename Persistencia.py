@@ -205,8 +205,66 @@ class bd:
         #RETORNA O VALOR DO MÊS
         return valor
 
-    # --- BACKUP ---
-    def toJson(self):
+    def getReceitaMaoObra(self, ano):
 
-        for os in self.getAllOS():
-            pass
+        listReceita = []
+
+        #VARRER TODOS OS MESES
+        for mes in range(1, 13):
+            
+            #PEGAR O VALOR DE MAO DE OBRA DE CADA MES
+            show = f"SELECT sum(mao_de_obra) from ordem_servico WHERE saida like '%/{mes}/{ano}'"
+
+            self.cur.execute(show)
+            service = self.cur.fetchall()
+
+            if service[0][0] != None:
+                listReceita.append(service[0][0])
+            else:
+                listReceita.append(0)
+
+        return listReceita
+
+    def getReceitaPecas(self, ano):
+
+        listReceita = []
+
+        #VARRER TODOS OS MESES
+        for mes in range(1, 13):
+            
+            #PEGAR O VALOR DE PECAS DE CADA MES
+            show = f"SELECT sum(valor_de_pecas) from ordem_servico WHERE saida like '%/{mes}/{ano}'"
+
+            self.cur.execute(show)
+            pecas = self.cur.fetchall()
+            
+            if pecas[0][0] != None:
+                listReceita.append(pecas[0][0])
+            else:
+                listReceita.append(0)
+
+        return listReceita
+
+    def getReceitaOutros(self, ano):
+
+        listReceita = []
+
+        #VARRER TODOS OS MESES
+        for mes in range(1, 13):
+            
+            #PEGAR O VALOR DE OUTROS DE CADA MES
+            show = f"SELECT sum(valor_outros) from ordem_servico WHERE saida like '%/{mes}/{ano}'"
+
+            self.cur.execute(show)
+            outros = self.cur.fetchall()
+            
+            if outros[0][0] != None:
+                listReceita.append(outros[0][0])
+            else:
+                listReceita.append(0)
+
+        return listReceita
+
+"""print(bd().getReceitaMaoObra(2021))
+print(bd().getReceitaPecas(2021))
+print(bd().getReceitaOutros(2021))"""

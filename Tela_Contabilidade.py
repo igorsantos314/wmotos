@@ -5,6 +5,7 @@ from datetime import date
 from Persistencia import bd
 from util import util
 from module_json import json_ws
+from Tela_Plot_Graficos import plotGraphs
 
 class Contabilidade:
 
@@ -17,7 +18,8 @@ class Contabilidade:
 
         self.id = id
 
-        self.login()
+        self.window()
+        #self.login()
 
     def login(self):
 
@@ -170,32 +172,40 @@ class Contabilidade:
             #PIX
             contValorPix['text'] = f'R$ {bd().getContabilidadePix():.2f}'.replace('.', ',')
 
+        def setGraph():
+            
+            #ANO CORRENTE
+            ano = comboAno.get()
+
+            #PEGAR RECEITA DE MAO DE OBRA, PECAS E OUTROS E PLOTAR GRAFICO
+            plotGraphs().generateGraphYear(
+                bd().getReceitaMaoObra(ano),
+                bd().getReceitaPecas(ano),
+                bd().getReceitaOutros(ano)
+            )
+
         #EDITAR
         imagem_buscar = PhotoImage(file=f"src/buscar_48.png")
         btBuscar = Button(self.windowMain, image=imagem_buscar, bg='White', bd=0, command=lambda: setValeusData())
         btBuscar.imagem = imagem_buscar
         btBuscar.place(x=350, y=10)
         
+        #GRAFICO
+        imagem_grafico = PhotoImage(file=f"src/grafico_48.png")
+        btGrafico = Button(self.windowMain, image=imagem_grafico, bg='White', bd=0, command=lambda: setGraph())
+        btGrafico.imagem = imagem_grafico
+        btGrafico.place(x=420, y=10)
+
         #VOLTAR
         imagem_voltar = PhotoImage(file=f"src/voltar_48.png")
         btVoltar = Button(self.windowMain, image=imagem_voltar, bg='White', bd=0, command=lambda: self.windowMain.destroy())
         btVoltar.imagem = imagem_voltar
-        btVoltar.place(x=420, y=10)
+        btVoltar.place(x=490, y=10)
 
         #SETAR VALORES
         setValeusData()
         setValuesPagamento()
         
-        #self.windowMain.bind("<F11>", self.toggleFullScreen)
-        #self.windowMain.bind("<Escape>", self.quitFullScreen)
-
         self.windowMain.mainloop()
 
-    def toggleFullScreen(self, event):
-        self.fullScreenState = not self.fullScreenState
-        self.windowMain.attributes("-fullscreen", self.fullScreenState)
-
-    def quitFullScreen(self, event):
-        self.fullScreenState = False
-        self.windowMain.attributes("-fullscreen", self.fullScreenState)
-        self.windowMain.geometry('730x460')
+#Contabilidade()

@@ -4,7 +4,10 @@ from cx_Freeze import setup, Executable
 # Dependencies are automatically detected, but it might need fine tuning.
 build_exe_options = {"packages": ["os"], "includes": [
     "tkinter", 
-    "sqlite3", 
+    "sqlite3",
+    "pylab",
+    "numpy",
+    "matplotlib.pyplot",
     "Tela_Backup_BD", 
     "Tela_Config", 
     "Tela_Contabilidade", 
@@ -12,6 +15,7 @@ build_exe_options = {"packages": ["os"], "includes": [
     "Tela_Show_OS",
     "Tela_Cadastrar_OS",
     "Tela_Editar_OS",
+    "Tela_Plot_Graficos",
     "util",
     "module_json",
     "module_print",
