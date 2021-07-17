@@ -6,6 +6,7 @@ from Tela_Cadastrar_OS import Tela_Cadastrar_OS
 from module_json import json_ws
 from Tela_Backup_BD import Backup_BD
 from util import util
+from tkinter import messagebox
 from Tela_Config import Config
 
 class Menu_Principal:
@@ -68,10 +69,10 @@ class Menu_Principal:
         
         #PRODUTO
         imagem_produto = PhotoImage(file=f"src/produto.png")
-        btCont = Button(self.window, image=imagem_produto, bg='White', bd=0, command=lambda:open('C_Total'))
+        btCont = Button(self.window, image=imagem_produto, bg='White', bd=0, command=lambda: messagebox.showinfo('','EM DESENVOLVIMENTO ...'))
         btCont.imagem = imagem_produto
         btCont.place(x=340, y=10)
-
+        
         #BACKUP
         imagem_backup = PhotoImage(file=f"src/backup.png")
         btBackup = Button(self.window, image=imagem_backup, bg='White', bd=0, command=lambda:open('Backup'))

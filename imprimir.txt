@@ -9,32 +9,28 @@ ________________________________________________________________________________
 
 DADOS DA ORDEM DE SERVIÇO
 ________________________________________________________________________________
-ID:                             18 
-DATA DE ENTRADA:                7/7/2021 
-DATA DE SAIDA:                  7/7/2021 
-NOME DO CLIENTE:                IGOR 
+ID:                             15 
+DATA DE ENTRADA:                2/7/2021 
+DATA DE SAIDA:                  2/7/2021 
+NOME DO CLIENTE:                -- 
 TELEFONE:                        
-VEICULO:                        SANTOS 
+VEICULO:                        -- 
 
 ________________________________________________________________________________
 DESCRIÇÃO DO CLIENTE:
-     DASDASD
-ADASDADSD
-________________________________________________________________________________
+     --________________________________________________________________________________
 LAUDO TECNICO:
-     WASDASDSAD
-ASDDASDASDAD
-________________________________________________________________________________
+     --________________________________________________________________________________
 
-FORMA DE PAGAMENTO:             OUTRO 
+FORMA DE PAGAMENTO:             DINHEIRO 
 STATUS:                         CONCLUIDO 
-VALOR DE MÃO DE OBRA:           R$ 200.00 
-VALOR EM PEÇAS:                 R$ 100.00
-OUTROS VALORES:                 R$ 50.00
-TOTAL:                          R$ 350.00
+VALOR DE MÃO DE OBRA:           R$ 10.50 
+VALOR EM PEÇAS:                 R$ 20.50
+OUTROS VALORES:                 R$ 10.50
+TOTAL:                          R$ 41.50
 ________________________________________________________________________________
 
-IGTEC - IMPRESSO EM: 17/07/2021 as 08:05
+IGTEC - IMPRESSO EM: 17/07/2021 as 19:35
 
 
 

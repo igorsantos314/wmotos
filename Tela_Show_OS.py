@@ -382,6 +382,28 @@ class consulta:
         def limparTabela():
             treev2.delete(*treev2.get_children())
 
+        def popup(event):
+            self.menuPopup.post(event.x_root, event.y_root)
+        
+        #MENU POPUP
+        self.menuPopup = Menu(self.windowMain, tearoff=0)
+        self.menuPopup.add_command(label="Editar", command=lambda: editar(None))
+        self.menuPopup.add_command(label="Imprimir", command=lambda: imprimir(None))
+        self.menuPopup.add_separator()
+        
+        self.menuPopup.add_command(label="Em Espera", command=lambda: statusEspera())
+        self.menuPopup.add_command(label="Em Andamento", command=lambda: statusAndamento())
+        self.menuPopup.add_command(label="Concluido", command=lambda: statusConcluido())
+        self.menuPopup.add_separator()
+
+        self.menuPopup.add_command(label="Dinheiro", command=lambda: pagamentoDinheiro())
+        self.menuPopup.add_command(label="Cartão", command=lambda: pagamentoCartao())
+        self.menuPopup.add_command(label="Pix", command=lambda: pagamentoPix())
+        self.menuPopup.add_command(label="Outro", command=lambda: pagamentoOutro())
+        self.menuPopup.add_separator()
+
+        self.menuPopup.add_command(label="Excluir", command=lambda: deletar())
+
         #Povoar Tabela
         getAll()
 
@@ -394,8 +416,11 @@ class consulta:
         #MAIUSCULO
         self.windowMain.bind('<Control-P>', imprimir)
         
+        #CAPTURA BOTAO DIREITO DO MOUSE NO TREVIEW
+        treev2.bind("<Button-3>", popup)
+
         #MANUAL
-        lblAjuda = Label(text='<Esc> Voltar    <Enter> Editar    <Ctrl+p> Imprimir')
+        lblAjuda = Label(text='<Esc> Voltar    <Enter> Editar    <Ctrl+p> Imprimir', bg='White')
         lblAjuda.place(x=10, y=480)
         
         self.windowMain.mainloop()
@@ -404,12 +429,13 @@ class consulta:
 
         self.windowTroco = Tk()
         self.windowTroco.title('IGTEC - TROCO')
+        self.windowTroco['bg'] = 'White'
         self.windowTroco.resizable(False, False)
         self.windowTroco.geometry(util().toCenterScreen(400, 250))
         self.windowTroco.focus_force()
 
         #TOTAL DA OS
-        lblTotal = Label(self.windowTroco, text='Total:', font='Arial 15')
+        lblTotal = Label(self.windowTroco, text='Total:', font='Arial 15', bg='White')
         lblTotal.place(x=10, y=30)
         
         etValor = Entry(self.windowTroco, font='Arial 15 bold')
@@ -418,7 +444,7 @@ class consulta:
         etValor.place(x=130, y=30)
 
         #DESCONTO
-        lblDesc = Label(self.windowTroco, text='Desconto:', font='Arial 15')
+        lblDesc = Label(self.windowTroco, text='Desconto:', font='Arial 15', bg='White')
         lblDesc.place(x=10, y=80)
 
         etDesc = Entry(self.windowTroco, font='Arial 15 bold')
@@ -426,21 +452,21 @@ class consulta:
         etDesc.place(x=130, y=80)
 
         #RECEBEU DO CLIENTE
-        lblRecebeu = Label(self.windowTroco, text='Pagou:', font='Arial 15')
+        lblRecebeu = Label(self.windowTroco, text='Pagou:', font='Arial 15', bg='White')
         lblRecebeu.place(x=10, y=130)
 
         etRecebeu = Entry(self.windowTroco, font='Arial 15 bold')
         etRecebeu.place(x=130, y=130)
         
         #TROCO
-        lblTroco = Label(self.windowTroco, text='Troco:', font='Arial 15')
+        lblTroco = Label(self.windowTroco, text='Troco:', font='Arial 15', bg='White')
         lblTroco.place(x=10, y=180)
 
         etTroco = Entry(self.windowTroco, font='Arial 15 bold', state='disabled')
         etTroco.place(x=130, y=180)
 
-        etManual = Label(self.windowTroco, text='<Esc> - Voltar    <Enter> - Calcular Troco')
-        etManual.place(x=10, y=230)
+        lblManual = Label(self.windowTroco, text='<Esc> - Voltar    <Enter> - Calcular Troco', bg='White')
+        lblManual.place(x=10, y=230)
 
         def calc(event):
 
@@ -480,4 +506,4 @@ class consulta:
         self.windowMain.attributes("-fullscreen", self.fullScreenState)
         self.windowMain.geometry('993x480')
 
-#consulta()
+consulta()
