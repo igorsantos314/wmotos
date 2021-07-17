@@ -29,37 +29,37 @@ class consulta:
 
         #EDITAR
         imagem_editar = PhotoImage(file=f"src/editar_48.png")
-        btEditar = Button(self.windowMain, image=imagem_editar, bg='White', command=lambda: editar(None))
+        btEditar = Button(self.windowMain, image=imagem_editar, bg='White', bd=0, command=lambda: editar(None))
         btEditar.imagem = imagem_editar
         btEditar.place(x=10, y=10)
 
         #DELETAR
         imagem_del = PhotoImage(file=f"src/deletar_48.png")
-        btDel = Button(self.windowMain, image=imagem_del, bg='White', command=lambda: deletar())
+        btDel = Button(self.windowMain, image=imagem_del, bg='White', bd=0, command=lambda: deletar())
         btDel.imagem = imagem_del
         btDel.place(x=80, y=10)
 
         #IMPRIMIR
         imagem_imprimir = PhotoImage(file=f"src/impressora_48.png")
-        btImprimir = Button(self.windowMain, image=imagem_imprimir, bg='White', command=lambda: imprimir(None))
+        btImprimir = Button(self.windowMain, image=imagem_imprimir, bg='White', bd=0, command=lambda: imprimir(None))
         btImprimir.imagem = imagem_imprimir
         btImprimir.place(x=150, y=10)
 
         #BUSCAR
         imagem_buscar = PhotoImage(file=f"src/buscar_48.png")
-        btBuscar = Button(self.windowMain, image=imagem_buscar, bg='White', command=lambda: buscar())
+        btBuscar = Button(self.windowMain, image=imagem_buscar, bg='White', bd=0, command=lambda: buscar())
         btBuscar.imagem = imagem_buscar
         btBuscar.place(x=220, y=10)
 
         #LIMPAR
         imagem_limpar = PhotoImage(file=f"src/limpar_48.png")
-        btLimpar = Button(self.windowMain, image=imagem_limpar, bg='White', command=lambda: limpar())
+        btLimpar = Button(self.windowMain, image=imagem_limpar, bg='White', bd=0, command=lambda: limpar())
         btLimpar.imagem = imagem_limpar
         btLimpar.place(x=290, y=10)
 
         #SAIR
         imagem_sair = PhotoImage(file=f"src/voltar_48.png")
-        btSair = Button(self.windowMain, image=imagem_sair, bg='White', command=lambda: voltar(None))
+        btSair = Button(self.windowMain, image=imagem_sair, bg='White', bd=0, command=lambda: voltar(None))
         btSair.imagem = imagem_sair
         btSair.place(x=360, y=10)
 
@@ -69,19 +69,19 @@ class consulta:
 
         #ESPERA
         imagem_espera = PhotoImage(file=f"src/espera_48.png")
-        btEspera = Button(self.windowMain, image=imagem_espera, bg='White', command=lambda: statusEspera())
+        btEspera = Button(self.windowMain, image=imagem_espera, bg='White', bd=0, command=lambda: statusEspera())
         btEspera.imagem = imagem_espera
         btEspera.place(x=10, y=90)
 
         #EM ANDAMENTO
         imagem_andamento = PhotoImage(file=f"src/andamento_48.png")
-        btAndamento = Button(self.windowMain, image=imagem_andamento, bg='White', command=lambda: statusAndamento())
+        btAndamento = Button(self.windowMain, image=imagem_andamento, bg='White', bd=0, command=lambda: statusAndamento())
         btAndamento.imagem = imagem_andamento
         btAndamento.place(x=80, y=90)
 
         #CONCLUIDO
         imagem_concluido = PhotoImage(file=f"src/concluido_48.png")
-        btConcluido = Button(self.windowMain, image=imagem_concluido, bg='White', command=lambda: statusConcluido())
+        btConcluido = Button(self.windowMain, image=imagem_concluido, bg='White', bd=0, command=lambda: statusConcluido())
         btConcluido.imagem = imagem_concluido
         btConcluido.place(x=150, y=90)
 
@@ -91,35 +91,35 @@ class consulta:
         
         #DINHEIRO
         imagem_dinheiro = PhotoImage(file=f"src/dinheiro_48.png")
-        btDinheiro = Button(self.windowMain, image=imagem_dinheiro, bg='White', command=lambda: pagamentoDinheiro())
+        btDinheiro = Button(self.windowMain, image=imagem_dinheiro, bg='White', bd=0, command=lambda: pagamentoDinheiro())
         btDinheiro.imagem = imagem_dinheiro
         btDinheiro.place(x=220, y=90)
 
         #CARTÃO
         imagem_cartao = PhotoImage(file=f"src/cartao_48.png")
-        btCartao = Button(self.windowMain, image=imagem_cartao, bg='White', command=lambda: pagamentoCartao())
+        btCartao = Button(self.windowMain, image=imagem_cartao, bg='White', bd=0, command=lambda: pagamentoCartao())
         btCartao.imagem = imagem_cartao
         btCartao.place(x=290, y=90)
 
         #PIX
         imagem_transferencia = PhotoImage(file=f"src/transferencia_48.png")
-        btTransferencia = Button(self.windowMain, image=imagem_transferencia, bg='White', command=lambda: pagamentoPix())
+        btTransferencia = Button(self.windowMain, image=imagem_transferencia, bg='White', bd=0, command=lambda: pagamentoPix())
         btTransferencia.imagem = imagem_transferencia
         btTransferencia.place(x=360, y=90)
 
         #OUTRO
         imagem_transferencia = PhotoImage(file=f"src/outro_48.png")
-        btTransferencia = Button(self.windowMain, image=imagem_transferencia, bg='White', command=lambda: pagamentoOutro())
+        btTransferencia = Button(self.windowMain, image=imagem_transferencia, bg='White', bd=0, command=lambda: pagamentoOutro())
         btTransferencia.imagem = imagem_transferencia
         btTransferencia.place(x=430, y=90)
 
         #FORMA DE PAGAMENTO
-        lblTroco = Label(text='CLIENTE PAGOU:', bg='White')
+        lblTroco = Label(text='CLIENTE PAGOU:', bg='White', bd=0)
         lblTroco.place(x=500, y=70)
 
         #TROCO
         imagem_troco = PhotoImage(file=f"src/troco_48.png")
-        btTroco = Button(self.windowMain, image=imagem_troco, bg='White', command=lambda: troco())
+        btTroco = Button(self.windowMain, image=imagem_troco, bg='White', bd=0, command=lambda: troco())
         btTroco.imagem = imagem_troco
         btTroco.place(x=500, y=90)
 

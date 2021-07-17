@@ -44,7 +44,7 @@ class Backup_BD:
                 if os.path.isdir(path):
                     
                     list_bt.append(
-                        Button(text=str(path), font='Arial 12 bold', bg='Black', fg='White', width=8, height=2)
+                        Button(text=str(path), font='Arial 12 bold', bg='Black', fg='White', bd=0, width=8, height=2)
                     )
             
             #VERRE LISTA DE BOTOES PARA POSICIONAR E ATTR COMMAND

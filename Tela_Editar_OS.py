@@ -122,13 +122,13 @@ class Tela_Editar_OS:
 
         #EDITAR
         imagem_editar = PhotoImage(file=f"src/salvar_editar_48.png")
-        btEditar = Button(self.windowMain, image=imagem_editar, bg='White', command=lambda: save())
+        btEditar = Button(self.windowMain, image=imagem_editar, bg='White', bd=0, command=lambda: save())
         btEditar.imagem = imagem_editar
         btEditar.place(x=670, y=430)
 
         #VOLTAR
         imagem_voltar = PhotoImage(file=f"src/voltar_48.png")
-        btVoltar = Button(self.windowMain, image=imagem_voltar, bg='White', command=lambda: exit())
+        btVoltar = Button(self.windowMain, image=imagem_voltar, bg='White', bd=0, command=lambda: exit())
         btVoltar.imagem = imagem_voltar
         btVoltar.place(x=740, y=430)
 

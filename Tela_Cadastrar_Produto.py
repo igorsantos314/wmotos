@@ -13,7 +13,7 @@ class Tela_Cadastrar_Produto:
 
         self.windowMain = Tk()
         self.windowMain.resizable(False, False)
-        self.windowMain.geometry(util().toCenterScreen(810, 490))
+        self.windowMain.geometry(util().toCenterScreen(400, 210))
         self.windowMain.focus_force()
         self.windowMain.title('IGTEC - CADASTRAR PRODUTO')
         self.windowMain['bg'] = 'White'
@@ -63,13 +63,13 @@ class Tela_Cadastrar_Produto:
 
         #SALVAR
         imagem_salvar = PhotoImage(file=f"src/salvar_48.png")
-        btExibir = Button(self.windowMain, image=imagem_salvar, bg='White', command=lambda: save())
+        btExibir = Button(self.windowMain, image=imagem_salvar, bg='White', bd=0, command=lambda: save())
         btExibir.imagem = imagem_salvar
         btExibir.place(x=270, y=150)
 
         #VOLTAR
         imagem_voltar = PhotoImage(file=f"src/voltar_48.png")
-        btVoltar = Button(self.windowMain, image=imagem_voltar, bg='White', command=lambda: exit())
+        btVoltar = Button(self.windowMain, image=imagem_voltar, bg='White', bd=0, command=lambda: exit())
         btVoltar.imagem = imagem_voltar
         btVoltar.place(x=340, y=150)
         

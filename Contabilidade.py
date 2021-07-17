@@ -55,13 +55,12 @@ class Contabilidade:
         self.windowMain = Tk()
         self.windowMain.resizable(False, False)
         self.windowMain.geometry(util().toCenterScreen(730, 500))
+        self.windowMain['bg'] = 'White'
         self.windowMain.focus_force()
         self.windowMain.title('IGTEC - CONTABILIDADE')
-        #self.windowMain.attributes('-fullscreen', True)  
-        #self.fullScreenState = False
 
         #Data
-        lblData = Label(self.windowMain, text='Dia:')
+        lblData = Label(self.windowMain, text='Dia:', bg='White')
         lblData.place(x=10, y=20)
 
         comboData = ttk.Combobox(self.windowMain, width = 8) 
@@ -71,7 +70,7 @@ class Contabilidade:
         comboData.place(x=10, y=40)
 
         #Mes
-        lblMes = Label(self.windowMain, text='Mês:')
+        lblMes = Label(self.windowMain, text='Mês:', bg='White')
         lblMes.place(x=130, y=20)
 
         comboMes = ttk.Combobox(self.windowMain, width = 8) 
@@ -81,7 +80,7 @@ class Contabilidade:
         comboMes.place(x=130, y=40)
 
         #Ano
-        lblAno = Label(self.windowMain, text='Ano:')
+        lblAno = Label(self.windowMain, text='Ano:', bg='White')
         lblAno.place(x=250, y=20)
 
         comboAno = ttk.Combobox(self.windowMain, width = 8) 
@@ -173,13 +172,13 @@ class Contabilidade:
 
         #EDITAR
         imagem_buscar = PhotoImage(file=f"src/buscar_48.png")
-        btBuscar = Button(self.windowMain, image=imagem_buscar, bg='White', command=lambda: setValeusData())
+        btBuscar = Button(self.windowMain, image=imagem_buscar, bg='White', bd=0, command=lambda: setValeusData())
         btBuscar.imagem = imagem_buscar
         btBuscar.place(x=350, y=10)
         
         #VOLTAR
         imagem_voltar = PhotoImage(file=f"src/voltar_48.png")
-        btVoltar = Button(self.windowMain, image=imagem_voltar, bg='White', command=lambda: self.windowMain.destroy())
+        btVoltar = Button(self.windowMain, image=imagem_voltar, bg='White', bd=0, command=lambda: self.windowMain.destroy())
         btVoltar.imagem = imagem_voltar
         btVoltar.place(x=420, y=10)
 
