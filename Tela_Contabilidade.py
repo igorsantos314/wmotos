@@ -202,13 +202,19 @@ class Contabilidade:
 
         #VOLTAR
         imagem_voltar = PhotoImage(file=f"src/voltar_48.png")
-        btVoltar = Button(self.windowMain, image=imagem_voltar, bg='White', bd=0, command=lambda: self.windowMain.destroy())
+        btVoltar = Button(self.windowMain, image=imagem_voltar, bg='White', bd=0, command=lambda: exit(None))
         btVoltar.imagem = imagem_voltar
         btVoltar.place(x=490, y=10)
+
+        def exit(event):
+            self.windowMain.destroy()
 
         #SETAR VALORES
         setValeusData()
         setValuesPagamento()
+        
+        #CAPTURAR TELCAS
+        self.windowMain.bind('<Escape>', exit)
         
         self.windowMain.mainloop()
 

@@ -128,7 +128,7 @@ class Tela_Editar_OS:
 
         #VOLTAR
         imagem_voltar = PhotoImage(file=f"src/voltar_48.png")
-        btVoltar = Button(self.windowMain, image=imagem_voltar, bg='White', bd=0, command=lambda: exit())
+        btVoltar = Button(self.windowMain, image=imagem_voltar, bg='White', bd=0, command=lambda: exit(None))
         btVoltar.imagem = imagem_voltar
         btVoltar.place(x=740, y=430)
 
@@ -171,13 +171,11 @@ class Tela_Editar_OS:
             etDataSaida.delete(0, END)
             etCliente.delete(0, END)
             etVeiculo.delete(0, END)
-            #etDesc.delete(0, END)
-            #etLaudo.delete(0, END)
             etObra.delete(0, END)
             etPecas.delete(0, END)
             etOutros.delete(0, END)
 
-        def exit():
+        def exit(event):
             self.windowMain.destroy()
 
         def setDados():
@@ -206,12 +204,12 @@ class Tela_Editar_OS:
             for pos, i in enumerate(comboStatus['values']):
                 if i == status:
                     comboStatus.current(pos)
-        
+
         #SETAR DADOS
         setDados()
-
-        #self.windowMain.bind("<F11>", self.toggleFullScreen)
-        #self.windowMain.bind("<Escape>", self.quitFullScreen)
+        
+        #CAPTURAR TELCAS
+        self.windowMain.bind('<Escape>', exit)
 
         self.windowMain.mainloop()
 

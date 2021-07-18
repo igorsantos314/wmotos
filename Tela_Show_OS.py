@@ -25,8 +25,8 @@ class consulta:
         lblBuscar = Label(self.windowMain, text='BUSCAR:', font='Arial 13', bg='White')
         lblBuscar.place(x=10, y=100)
 
-        etBuscar = Entry(self.windowMain, width=59, font='Arial 12')
-        etBuscar.place(x=100, y=100)
+        etBuscar = Entry(self.windowMain, width=96, font='Arial 12')
+        etBuscar.place(x=104, y=100)
 
         #STATUS
         lblStatus = Label(text='STATUS:', bg='White')
@@ -163,8 +163,6 @@ class consulta:
                 id = int(treev2.item(itemSelecionado, "values")[0])
                 
                 return id
-            #Deletar Item
-            #treev2.delete(itemSelecionado)
 
         def getAll():
             #VARRER LISTA E ADICIONAR NA TABELA
@@ -444,12 +442,12 @@ class consulta:
         etTroco = Entry(self.windowTroco, font='Arial 15 bold', state='disabled')
         etTroco.place(x=130, y=180)
 
-        lblManual = Label(self.windowTroco, text='<Esc> - Voltar    <Enter> - Calcular Troco', bg='White')
+        lblManual = Label(self.windowTroco, text='<Esc> Voltar    <Enter> Calcular Troco', bg='White')
         lblManual.place(x=10, y=230)
 
         def calc(event):
 
-            if etDesc.get() != '' or etRecebeu.get() != '':
+            try:
                 desconto = float(etDesc.get().replace(',','.'))
                 troco = float(etRecebeu.get().replace(',','.')) - (valor - desconto)
 
@@ -462,17 +460,23 @@ class consulta:
 
                 #DESABILITAR
                 etTroco['state'] = 'disabled'
-            else:
-                messagebox.showerror('','PREENCHA TODOS OS CAMPOS PARA CALCULAR !')
+            except:
+                messagebox.showerror('','PREENCHA OS CAMPOS CORRETAMENTE!')
 
-        def sair(event):
+                #FOCAR NA JANELA
+                self.windowTroco.focus_force()
+
+                #FOCAR NO CAMPO
+                etRecebeu.focus_force()
+
+        def exit(event):
             self.windowTroco.destroy()
 
         #FOCAR NO QUE NO CAMPO DE PAGOU
         etRecebeu.focus_force()
 
         self.windowTroco.bind('<Return>', calc)
-        self.windowTroco.bind('<Escape>', sair)
+        self.windowTroco.bind('<Escape>', exit)
 
         self.windowTroco.mainloop()
 

@@ -132,7 +132,7 @@ class Tela_Cadastrar_OS:
 
         #VOLTAR
         imagem_voltar = PhotoImage(file=f"src/voltar_48.png")
-        btVoltar = Button(self.windowMain, image=imagem_voltar, bg='White', bd=0, command=lambda: exit())
+        btVoltar = Button(self.windowMain, image=imagem_voltar, bg='White', bd=0, command=lambda: exit(None))
         btVoltar.imagem = imagem_voltar
         btVoltar.place(x=740, y=430)
         
@@ -209,13 +209,14 @@ class Tela_Cadastrar_OS:
             etOutros.delete(0, END)
             etOutros.insert(0, '0')
             
-        def exit():
+        def exit(event):
             #DESTRUIR
             self.windowMain.destroy()
         
         etDataEntrada.focus_force()
-        #self.windowMain.bind("<F11>", self.toggleFullScreen)
-        #self.windowMain.bind("<Escape>", self.quitFullScreen)
+
+        #CAPTURAR TELCAS
+        self.windowMain.bind('<Escape>', exit)
 
         self.windowMain.mainloop()
 

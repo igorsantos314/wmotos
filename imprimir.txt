@@ -9,32 +9,34 @@ ________________________________________________________________________________
 
 DADOS DA ORDEM DE SERVIÇO
 ________________________________________________________________________________
-ID:                             21 
-DATA DE ENTRADA:                9/7/2021 
-DATA DE SAIDA:                  9/7/2021 
-NOME DO CLIENTE:                JOSEFA DOS SANTOS 
-TELEFONE:                       81982333074 
-VEICULO:                        CB 1000 
+ID:                             16 
+DATA DE ENTRADA:                2/7/2021 
+DATA DE SAIDA:                  2/7/2021 
+NOME DO CLIENTE:                -- 
+TELEFONE:                        
+VEICULO:                        -- 
 
 ________________________________________________________________________________
 DESCRIÇÃO DO CLIENTE:
-     ALGO
+     DASDASD
+
 
 ________________________________________________________________________________
 LAUDO TECNICO:
-     ALGO CONSERTADO
+     DAS
+
 
 ________________________________________________________________________________
 
-FORMA DE PAGAMENTO:             OUTRO 
+FORMA DE PAGAMENTO:             PIX 
 STATUS:                         CONCLUIDO 
-VALOR DE MÃO DE OBRA:           R$ 50.00 
-VALOR EM PEÇAS:                 R$ 10.00
-OUTROS VALORES:                 R$ 0.00
-TOTAL:                          R$ 60.00
+VALOR DE MÃO DE OBRA:           R$ 400.00 
+VALOR EM PEÇAS:                 R$ 236.00
+OUTROS VALORES:                 R$ 100.00
+TOTAL:                          R$ 736.00
 ________________________________________________________________________________
 
-IGTEC - IMPRESSO EM: 18/07/2021 as 19:18
+IGTEC - IMPRESSO EM: 18/07/2021 as 19:37
 
 
 
