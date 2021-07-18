@@ -95,55 +95,55 @@ class Contabilidade:
         comboAno.place(x=250, y=40)
 
         #CONTANIER
-        lblContDia = Label(self.windowMain, text='RECEITA DIA', font='Arial 15', width=20, height=2, bg='#fee440')
+        lblContDia = Label(self.windowMain, text='RECEITA DIA', font='Arial 15', width=20, height=2, borderwidth = 1, relief="ridge", bg='#fee440')
         lblContDia.place(x=10, y=80)
 
-        contValorDia = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, bg='White')
-        contValorDia.place(x=10, y=132)
+        contValorDia = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, borderwidth = 1, relief="ridge", bg='White')
+        contValorDia.place(x=10, y=129)
 
-        lblContMes = Label(self.windowMain, text='RECEITA MÊS', font='Arial 15', width=20, height=2, bg='#00bbf9')
+        lblContMes = Label(self.windowMain, text='RECEITA MÊS', font='Arial 15', width=20, height=2, borderwidth = 1, relief="ridge", bg='#00bbf9')
         lblContMes.place(x=250, y=80)
 
-        contValorMes = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, bg='White')
-        contValorMes.place(x=250, y=132)
+        contValorMes = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, borderwidth = 1, relief="ridge", bg='White')
+        contValorMes.place(x=250, y=129)
 
-        lblContTotal = Label(self.windowMain, text='RECEITA TOTAL', font='Arial 15', width=20, height=2, bg='#00f5d4')
+        lblContTotal = Label(self.windowMain, text='RECEITA TOTAL', font='Arial 15', width=20, height=2, borderwidth = 1, relief="ridge", bg='#00f5d4')
         lblContTotal.place(x=490, y=80)
 
-        contValorTotal = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, bg='White')
-        contValorTotal.place(x=490, y=132)
+        contValorTotal = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, borderwidth = 1, relief="ridge", bg='White')
+        contValorTotal.place(x=490, y=129)
 
         #FORMA DE PAGAMENTO
-        lblContDinheiro = Label(self.windowMain, text='DINHEIRO', font='Arial 15', width=20, height=2, bg='#ee6055')
+        lblContDinheiro = Label(self.windowMain, text='DINHEIRO', font='Arial 15', width=20, height=2, borderwidth = 1, relief="ridge", bg='#ee6055')
         lblContDinheiro.place(x=10, y=232)
 
-        contValorDinheiro = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, bg='White')
-        contValorDinheiro.place(x=10, y=284)
+        contValorDinheiro = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, borderwidth = 1, relief="ridge", bg='White')
+        contValorDinheiro.place(x=10, y=281)
 
-        lblContCartao = Label(self.windowMain, text='CARTÃO', font='Arial 15', width=20, height=2, bg='#60d394')
+        lblContCartao = Label(self.windowMain, text='CARTÃO', font='Arial 15', width=20, borderwidth = 1, relief="ridge", height=2, bg='#60d394')
         lblContCartao.place(x=250, y=232)
 
-        contValorCartao = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, bg='White')
-        contValorCartao.place(x=250, y=284)
+        contValorCartao = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, bg='White', borderwidth = 1, relief="ridge")
+        contValorCartao.place(x=250, y=281)
 
-        lblContPix = Label(self.windowMain, text='PIX/TED', font='Arial 15', width=20, height=2, bg='#aaf683')
+        lblContPix = Label(self.windowMain, text='PIX/TED', font='Arial 15', width=20, height=2, borderwidth = 1, relief="ridge", bg='#aaf683')
         lblContPix.place(x=490, y=232)
 
-        contValorPix = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, bg='White')
-        contValorPix.place(x=490, y=284)
+        contValorPix = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, bg='White', borderwidth = 1, relief="ridge")
+        contValorPix.place(x=490, y=281)
 
         #RESERVA DE EMERGÊNCIA
-        lblReservaMes = Label(self.windowMain, text='RESERVA DO MÊS', font='Arial 15', width=20, height=2, bg='#836FFF', fg='White')
+        lblReservaMes = Label(self.windowMain, text='RESERVA DO MÊS', font='Arial 15', width=20, height=2, borderwidth = 1, relief="ridge", bg='#836FFF', fg='White')
         lblReservaMes.place(x=10, y=384)
 
-        contReservaMes = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, bg='White')
-        contReservaMes.place(x=10, y=436)
+        contReservaMes = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, bg='White', borderwidth = 1, relief="ridge")
+        contReservaMes.place(x=10, y=433)
 
-        lblReservaTotal = Label(self.windowMain, text='RESERVA TOTAL', font='Arial 15', width=20, height=2, bg='#00CED1', fg='White')
+        lblReservaTotal = Label(self.windowMain, text='RESERVA TOTAL', font='Arial 15', width=20, height=2, borderwidth = 1, relief="ridge", bg='#00CED1', fg='White')
         lblReservaTotal.place(x=250, y=384)
 
-        contReservaTotal = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, bg='White')
-        contReservaTotal.place(x=250, y=436)
+        contReservaTotal = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, bg='White' , borderwidth = 1, relief="ridge")
+        contReservaTotal.place(x=250, y=433)
 
         def setValeusData():
             #SETAR O VALOR TOTAL

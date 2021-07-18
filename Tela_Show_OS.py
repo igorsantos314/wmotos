@@ -471,7 +471,7 @@ class consulta:
 
         def exit(event):
             self.windowTroco.destroy()
-
+        
         #FOCAR NO QUE NO CAMPO DE PAGOU
         etRecebeu.focus_force()
 
@@ -489,4 +489,4 @@ class consulta:
         self.windowMain.attributes("-fullscreen", self.fullScreenState)
         self.windowMain.geometry('993x480')
 
-consulta()
+#consulta()

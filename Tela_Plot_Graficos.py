@@ -54,8 +54,8 @@ class plotGraphs:
     def generateGraphYear(self, ano, mao_obra, pecas, outros):
         
         #DADOS DA AMOSTRAGEM
-        months = ['JAN', 'FEV', 'MARC', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ']
-
+        months = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ']
+        
         barWidth = 0.30
         matplotlib.pyplot.figure(figsize=(10,5))
 
@@ -74,7 +74,7 @@ class plotGraphs:
         matplotlib.pyplot.xticks([r + barWidth for r in range(len(mao_obra))], months)
         matplotlib.pyplot.ylabel('VALOR R$')
 
-        matplotlib.pyplot.title(f'GRÁFICO DO ANO DE {ano}')
+        matplotlib.pyplot.title(f'GRÁFICO DA RECEITA DO ANO DE {ano}')
 
         #CRIANDO E EXIBINDO O GRAFICO
         matplotlib.pyplot.legend()
