@@ -23,106 +23,70 @@ class consulta:
 
         #BUSCAR
         lblBuscar = Label(self.windowMain, text='BUSCAR:', font='Arial 13', bg='White')
-        lblBuscar.place(x=440, y=10)
+        lblBuscar.place(x=10, y=100)
 
         etBuscar = Entry(self.windowMain, width=59, font='Arial 12')
-        etBuscar.place(x=440, y=40)
-
-        #EDITAR
-        imagem_editar = PhotoImage(file=f"src/editar_48.png")
-        btEditar = Button(self.windowMain, image=imagem_editar, bg='White', bd=0, command=lambda: editar(None))
-        btEditar.imagem = imagem_editar
-        btEditar.place(x=10, y=10)
-
-        #DELETAR
-        imagem_del = PhotoImage(file=f"src/deletar_48.png")
-        btDel = Button(self.windowMain, image=imagem_del, bg='White', bd=0, command=lambda: deletar())
-        btDel.imagem = imagem_del
-        btDel.place(x=80, y=10)
-
-        #IMPRIMIR
-        imagem_imprimir = PhotoImage(file=f"src/impressora_48.png")
-        btImprimir = Button(self.windowMain, image=imagem_imprimir, bg='White', bd=0, command=lambda: imprimir(None))
-        btImprimir.imagem = imagem_imprimir
-        btImprimir.place(x=150, y=10)
-
-        #BUSCAR
-        imagem_buscar = PhotoImage(file=f"src/buscar_48.png")
-        btBuscar = Button(self.windowMain, image=imagem_buscar, bg='White', bd=0, command=lambda: buscar())
-        btBuscar.imagem = imagem_buscar
-        btBuscar.place(x=220, y=10)
-
-        #LIMPAR
-        imagem_limpar = PhotoImage(file=f"src/limpar_48.png")
-        btLimpar = Button(self.windowMain, image=imagem_limpar, bg='White', bd=0, command=lambda: limpar())
-        btLimpar.imagem = imagem_limpar
-        btLimpar.place(x=290, y=10)
-
-        #SAIR
-        imagem_sair = PhotoImage(file=f"src/voltar_48.png")
-        btSair = Button(self.windowMain, image=imagem_sair, bg='White', bd=0, command=lambda: voltar(None))
-        btSair.imagem = imagem_sair
-        btSair.place(x=360, y=10)
+        etBuscar.place(x=100, y=100)
 
         #STATUS
         lblStatus = Label(text='STATUS:', bg='White')
-        lblStatus.place(x=10, y=70)
+        lblStatus.place(x=10, y=10)
 
         #ESPERA
         imagem_espera = PhotoImage(file=f"src/espera_48.png")
         btEspera = Button(self.windowMain, image=imagem_espera, bg='White', bd=0, command=lambda: statusEspera())
         btEspera.imagem = imagem_espera
-        btEspera.place(x=10, y=90)
+        btEspera.place(x=10, y=30)
 
         #EM ANDAMENTO
         imagem_andamento = PhotoImage(file=f"src/andamento_48.png")
         btAndamento = Button(self.windowMain, image=imagem_andamento, bg='White', bd=0, command=lambda: statusAndamento())
         btAndamento.imagem = imagem_andamento
-        btAndamento.place(x=80, y=90)
+        btAndamento.place(x=80, y=30)
 
         #CONCLUIDO
         imagem_concluido = PhotoImage(file=f"src/concluido_48.png")
         btConcluido = Button(self.windowMain, image=imagem_concluido, bg='White', bd=0, command=lambda: statusConcluido())
         btConcluido.imagem = imagem_concluido
-        btConcluido.place(x=150, y=90)
+        btConcluido.place(x=150, y=30)
 
         #FORMA DE PAGAMENTO
         lblPagamento = Label(text='FORMA DE PAGAMENTO:', bg='White')
-        lblPagamento.place(x=220, y=70)
+        lblPagamento.place(x=220, y=10)
         
         #DINHEIRO
         imagem_dinheiro = PhotoImage(file=f"src/dinheiro_48.png")
         btDinheiro = Button(self.windowMain, image=imagem_dinheiro, bg='White', bd=0, command=lambda: pagamentoDinheiro())
         btDinheiro.imagem = imagem_dinheiro
-        btDinheiro.place(x=220, y=90)
+        btDinheiro.place(x=220, y=30)
 
         #CARTÃO
         imagem_cartao = PhotoImage(file=f"src/cartao_48.png")
         btCartao = Button(self.windowMain, image=imagem_cartao, bg='White', bd=0, command=lambda: pagamentoCartao())
         btCartao.imagem = imagem_cartao
-        btCartao.place(x=290, y=90)
+        btCartao.place(x=290, y=30)
 
         #PIX
         imagem_transferencia = PhotoImage(file=f"src/transferencia_48.png")
         btTransferencia = Button(self.windowMain, image=imagem_transferencia, bg='White', bd=0, command=lambda: pagamentoPix())
         btTransferencia.imagem = imagem_transferencia
-        btTransferencia.place(x=360, y=90)
+        btTransferencia.place(x=360, y=30)
 
         #OUTRO
         imagem_transferencia = PhotoImage(file=f"src/outro_48.png")
         btTransferencia = Button(self.windowMain, image=imagem_transferencia, bg='White', bd=0, command=lambda: pagamentoOutro())
         btTransferencia.imagem = imagem_transferencia
-        btTransferencia.place(x=430, y=90)
+        btTransferencia.place(x=430, y=30)
 
-        #FORMA DE PAGAMENTO
+        #CLIENTE PAGOU
         lblTroco = Label(text='CLIENTE PAGOU:', bg='White', bd=0)
-        lblTroco.place(x=500, y=70)
+        lblTroco.place(x=500, y=10)
 
         #TROCO
         imagem_troco = PhotoImage(file=f"src/troco_48.png")
         btTroco = Button(self.windowMain, image=imagem_troco, bg='White', bd=0, command=lambda: troco())
         btTroco.imagem = imagem_troco
-        btTroco.place(x=500, y=90)
+        btTroco.place(x=500, y=30)
 
         #TREEVIEW
         style = ttk.Style(self.windowMain)
@@ -137,10 +101,10 @@ class consulta:
         style.map("Treeview", background=[('selected', '#00BFFF')], foreground=[('selected', 'Black')])
 
         # Using treeview widget 
-        treev2 = ttk.Treeview(self.windowMain, selectmode ='browse', height=14) 
+        treev2 = ttk.Treeview(self.windowMain, selectmode ='browse', height=15) 
 
         # Calling pack method w.r.to treeview 
-        treev2.place(x=10, y=160)
+        treev2.place(x=10, y=140)
 
         # Constructing vertical scrollbar 
         # with treeview 
@@ -208,7 +172,7 @@ class consulta:
                 total = f"{(i[10] + i[11] + i[12]):.2f}"
                 treev2.insert("", 'end', text ="L1", values =(i[0], i[1], i[2], i[3], i[5], i[8], i[9], i[10], i[11], i[12], total))
 
-        def buscar():
+        def buscar(event):
             
             #LIMPA A TABELA
             limparTabela()
@@ -218,7 +182,7 @@ class consulta:
                 total = f"{(i[10] + i[11] + i[12]):.2f}"
                 treev2.insert("", 'end', text ="L1", values =(i[0], i[1], i[2], i[3], i[5], i[8], i[9], i[10], i[11], i[12], total))
 
-        def limpar():
+        def limpar(event):
             #LIMPAR CAMPO DE CONSULTA
             etBuscar.delete(0, END)
 
@@ -256,7 +220,7 @@ class consulta:
                 #REABRE A TELA DE EXIBIR
                 consulta()
 
-        def deletar():
+        def deletar(event):
             id = getId()
 
             #VERIFICA SE O ID É VALIDO
@@ -286,7 +250,7 @@ class consulta:
                 limparTabela()
 
                 #ATUALIZAR TABELA
-                buscar()
+                buscar(None)
         
         def statusEspera():
             id = getId()
@@ -299,7 +263,7 @@ class consulta:
                 limparTabela()
 
                 #ATUALIZAR TABELA
-                buscar()
+                buscar(None)
 
         def statusAndamento():
             id = getId()
@@ -312,7 +276,7 @@ class consulta:
                 limparTabela()
 
                 #ATUALIZAR TABELA
-                buscar()
+                buscar(None)
 
         #--- FORMA DE PAGAMENTO ---
         def pagamentoDinheiro():
@@ -326,7 +290,7 @@ class consulta:
                 limparTabela()
 
                 #ATUALIZAR TABELA
-                buscar()
+                buscar(None)
 
         def pagamentoCartao():
             id = getId()
@@ -339,7 +303,7 @@ class consulta:
                 limparTabela()
 
                 #ATUALIZAR TABELA
-                buscar()
+                buscar(None)
 
         def pagamentoPix():
             id = getId()
@@ -352,7 +316,7 @@ class consulta:
                 limparTabela()
 
                 #ATUALIZAR TABELA
-                buscar()
+                buscar(None)
 
         def pagamentoOutro():
             id = getId()
@@ -365,7 +329,7 @@ class consulta:
                 limparTabela()
 
                 #ATUALIZAR TABELA
-                buscar()
+                buscar(None)
 
         def troco():
             if len(treev2.selection()) == 0:
@@ -397,32 +361,45 @@ class consulta:
         self.menuPopup.add_command(label="Concluido", command=lambda: statusConcluido())
         self.menuPopup.add_separator()
 
-        self.menuPopup.add_command(label="Dinheiro", command=lambda: pagamentoDinheiro())
-        self.menuPopup.add_command(label="Cartão", command=lambda: pagamentoCartao())
-        self.menuPopup.add_command(label="Pix", command=lambda: pagamentoPix())
+        self.menuPopup.add_command(label="Pagamento em Dinheiro", command=lambda: pagamentoDinheiro())
+        self.menuPopup.add_command(label="Pagamento em Cartão", command=lambda: pagamentoCartao())
+        self.menuPopup.add_command(label="Pagamento com Pix", command=lambda: pagamentoPix())
         self.menuPopup.add_command(label="Outro", command=lambda: pagamentoOutro())
         self.menuPopup.add_separator()
 
-        self.menuPopup.add_command(label="Excluir", command=lambda: deletar())
+        self.menuPopup.add_command(label="Excluir", command=lambda: deletar(None))
 
         if json_ws().getShowOsInit() == "True":
             #Povoar Tabela
             getAll()
+        
+        """ def key_press(event):
+            key = event
+            print(key, 'is pressed')
 
-        self.windowMain.bind('<Return>', editar)
+        self.windowMain.bind('<Key>', key_press)"""
+
+        #CAPTURA DE BOTOES
         self.windowMain.bind('<Escape>', voltar)
         
         #MINUSCULO
         self.windowMain.bind('<Control-p>', imprimir)
+        self.windowMain.bind('<Control-l>', limpar)
 
         #MAIUSCULO
         self.windowMain.bind('<Control-P>', imprimir)
+        self.windowMain.bind('<Control-L>', limpar)
         
-        #CAPTURA BOTAO DIREITO DO MOUSE NO TREVIEW
+        #CAPTURA BOTAO NO TREVIEW
         treev2.bind("<Button-3>", popup)
+        treev2.bind('<Return>', editar)
+        treev2.bind('<Delete>', deletar)
+
+        #CAPTURA DO CAMPO DE CONSULTA
+        etBuscar.bind('<Return>', buscar)
 
         #MANUAL
-        lblAjuda = Label(text='<Esc> Voltar    <Enter> Editar    <Ctrl+p> Imprimir', bg='White')
+        lblAjuda = Label(text='<Esc> Voltar    <Enter> Editar    <Ctrl+p> Imprimir    <Ctrl+l> Limpar', bg='White')
         lblAjuda.place(x=10, y=480)
         
         self.windowMain.mainloop()
@@ -508,4 +485,4 @@ class consulta:
         self.windowMain.attributes("-fullscreen", self.fullScreenState)
         self.windowMain.geometry('993x480')
 
-#consulta()
+consulta()
