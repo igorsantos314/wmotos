@@ -6,7 +6,7 @@ from Persistencia import bd
 from util import util
 from module_json import json_ws
 from Tela_Plot_Graficos import plotGraphs
-import hashlib 
+import hashlib
 
 class Contabilidade:
 

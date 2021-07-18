@@ -6,6 +6,8 @@ from tkinter import *
 from tkinter import ttk
 import shutil
 from util import util
+import hashlib
+from module_json import json_ws
 
 class Backup_BD:
 
@@ -23,7 +25,40 @@ class Backup_BD:
                             'Indigo', 'DarkRed', 'DarkOrange', 'Goldenrod', 'MidnightBlue']
 
         #JANELA MAIN
-        self.window_bd()
+        self.login()
+
+    def login(self):
+
+        windowLogin = Tk()
+        windowLogin.resizable(False, False)
+        windowLogin.geometry(util().toCenterScreen(160,70))
+        windowLogin.focus_force()
+        windowLogin.title('IGTEC')
+        
+        lblSenha = Label(windowLogin, text='Senha:')
+        lblSenha.pack()
+
+        etSenha = Entry(windowLogin, font='Arial 12 bold', show='*')
+        etSenha.pack()
+
+        def verify(event):
+            hash =  hashlib.md5(etSenha.get().encode())
+            senha = hash.hexdigest()
+
+            if senha == json_ws().getPwCont():
+                #DESTRUIR JANELA
+                windowLogin.destroy()
+
+                #CHAMAR CONTABILIDADE
+                self.window_bd()
+            else:
+                messagebox.showerror('', 'SENHA INCORRETA !')
+                windowLogin.destroy()
+
+        etSenha.focus_force()
+        windowLogin.bind('<Return>', verify)
+
+        windowLogin.mainloop()
 
     def window_bd(self):
 
@@ -62,7 +97,8 @@ class Backup_BD:
                     self.createBackup(device)
 
                     #SUCESSO
-                    messagebox.showinfo('',f'BACKUP FEITO - DATA:{self.data_atual}')
+                    data = self.data_atual.replace('-','/')
+                    messagebox.showinfo('',f'BACKUP FEITO - DATA:{data}')
 
                 except:
                     messagebox.showerror('','NÃO FOI POSSIVEL REALIZAR O BACKUP')
