@@ -5,6 +5,7 @@ from tkinter import ttk
 from tkinter import messagebox
 import json
 from util import util
+import hashlib
 
 class Config:
 
@@ -40,8 +41,10 @@ class Config:
         etSenha.pack()
 
         def verify(event):
-            
-            if etSenha.get() == json_ws().getPwConfig():
+            hash =  hashlib.md5(etSenha.get().encode())
+            senha = hash.hexdigest()
+
+            if senha == json_ws().getPwConfig():
                 #DESTRUIR JANELA
                 windowLogin.destroy()
 

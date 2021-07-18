@@ -6,6 +6,7 @@ from Persistencia import bd
 from util import util
 from module_json import json_ws
 from Tela_Plot_Graficos import plotGraphs
+import hashlib 
 
 class Contabilidade:
 
@@ -18,8 +19,8 @@ class Contabilidade:
 
         self.id = id
 
-        self.window()
-        #self.login()
+        #self.window()
+        self.login()
 
     def login(self):
 
@@ -36,8 +37,10 @@ class Contabilidade:
         etSenha.pack()
 
         def verify(event):
-            
-            if etSenha.get() == json_ws().getPwCont():
+            hash =  hashlib.md5(etSenha.get().encode())
+            senha = hash.hexdigest()
+
+            if senha == json_ws().getPwCont():
                 #DESTRUIR JANELA
                 windowLogin.destroy()
 
@@ -179,6 +182,7 @@ class Contabilidade:
 
             #PEGAR RECEITA DE MAO DE OBRA, PECAS E OUTROS E PLOTAR GRAFICO
             plotGraphs().generateGraphYear(
+                ano,
                 bd().getReceitaMaoObra(ano),
                 bd().getReceitaPecas(ano),
                 bd().getReceitaOutros(ano)

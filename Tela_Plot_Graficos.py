@@ -51,7 +51,7 @@ class plotGraphs:
         #EXIBIR GRAFICO
         show()
 
-    def generateGraphYear(self, mao_obra, pecas, outros):
+    def generateGraphYear(self, ano, mao_obra, pecas, outros):
         
         #DADOS DA AMOSTRAGEM
         months = ['JAN', 'FEV', 'MARC', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ']
@@ -65,16 +65,16 @@ class plotGraphs:
         r3 = [(x + barWidth) for x in r2]
 
         #CRIANDO BARRAS
-        matplotlib.pyplot.bar(r1, mao_obra, color='SpringGreen', width=barWidth, label='MÃO DE OBRA')
-        matplotlib.pyplot.bar(r2, pecas, color='DodgerBlue', width=barWidth, label='VENDA DE PEÇAS')
-        matplotlib.pyplot.bar(r3, outros, color='Red', width=barWidth, label='OUTROS')
-
+        matplotlib.pyplot.bar(r1, mao_obra, color='#00864B', width=barWidth, label='MÃO DE OBRA')
+        matplotlib.pyplot.bar(r2, pecas, color='#CBBE00', width=barWidth, label='VENDA DE PEÇAS')
+        matplotlib.pyplot.bar(r3, outros, color='#A3218E', width=barWidth, label='OUTROS')
+        
         #ADICIONANDO LEGENDAS AS BARRAS
         matplotlib.pyplot.xlabel('MESES')
         matplotlib.pyplot.xticks([r + barWidth for r in range(len(mao_obra))], months)
         matplotlib.pyplot.ylabel('VALOR R$')
 
-        matplotlib.pyplot.title('GRÁFICO DO ANO')
+        matplotlib.pyplot.title(f'GRÁFICO DO ANO DE {ano}')
 
         #CRIANDO E EXIBINDO O GRAFICO
         matplotlib.pyplot.legend()

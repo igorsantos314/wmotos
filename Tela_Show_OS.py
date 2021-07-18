@@ -5,6 +5,7 @@ from module_print import print_document
 from tkinter import messagebox
 from Tela_Editar_OS import Tela_Editar_OS
 from util import util
+from module_json import json_ws
 
 class consulta:
 
@@ -133,7 +134,7 @@ class consulta:
             fieldbackground='White'
         )
 
-        style.map("Treeview", background=[('selected', '#00DB73')], foreground=[('selected', 'Black')])
+        style.map("Treeview", background=[('selected', '#00BFFF')], foreground=[('selected', 'Black')])
 
         # Using treeview widget 
         treev2 = ttk.Treeview(self.windowMain, selectmode ='browse', height=14) 
@@ -404,8 +405,9 @@ class consulta:
 
         self.menuPopup.add_command(label="Excluir", command=lambda: deletar())
 
-        #Povoar Tabela
-        getAll()
+        if json_ws().getShowOsInit() == "True":
+            #Povoar Tabela
+            getAll()
 
         self.windowMain.bind('<Return>', editar)
         self.windowMain.bind('<Escape>', voltar)

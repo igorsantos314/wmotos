@@ -47,3 +47,6 @@ class json_ws:
     
     def getPwConfig(self):
         return self.dict['pw_config']
+
+    def getShowOsInit(self):
+        return self.dict['show_os_init']
