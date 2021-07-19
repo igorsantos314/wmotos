@@ -67,7 +67,7 @@ class plotGraphs:
         #CRIANDO BARRAS
         matplotlib.pyplot.bar(r1, mao_obra, color='#00864B', width=barWidth, label='MÃO DE OBRA')
         matplotlib.pyplot.bar(r2, pecas, color='#CBBE00', width=barWidth, label='VENDA DE PEÇAS')
-        matplotlib.pyplot.bar(r3, outros, color='#A3218E', width=barWidth, label='OUTROS')
+        matplotlib.pyplot.bar(r3, outros, color='#A3218E', width=barWidth, label='OUTROS SERVIÇOS (TERCERIZADO)')
         
         #ADICIONANDO LEGENDAS AS BARRAS
         matplotlib.pyplot.xlabel('MESES')

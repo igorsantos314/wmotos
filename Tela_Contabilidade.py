@@ -18,7 +18,7 @@ class Contabilidade:
         self.data_atual = f'{self.day}/{self.month}/{self.year}'
 
         self.id = id
-
+        
         #self.window()
         self.login()
 

@@ -31,8 +31,8 @@ class Menu_Principal:
 
                 self.windowError.mainloop()
         except:
-            pass
-    """
+            pass"""
+    
     def windowMain(self):
         # Creating tkinter window
         self.window = Tk()
