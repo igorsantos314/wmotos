@@ -15,6 +15,9 @@ build_exe_options = {"packages": ["os"], "includes": [
     "Tela_Show_OS",
     "Tela_Cadastrar_OS",
     "Tela_Editar_OS",
+    "Tela_Cadastrar_Produto",
+    "Tela_Editar_Produto",
+    "Tela_Vender_Produtos",
     "Tela_Plot_Graficos",
     "util",
     "module_json",
@@ -34,5 +37,5 @@ setup(
     version="2.0",
     description="Sistema para Gerenciar Oficina",
     options={"build_exe": build_exe_options},
-    executables=[Executable("IGTEC.py", base=base, icon="igtec_icon.ico")]
+    executables=[Executable("IGTEC.py", base=base, icon="icon.ico")]
 )

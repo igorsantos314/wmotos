@@ -312,7 +312,7 @@ class Tela_Vender_Produtos:
             
             #CHAMAR SETOR DE VENDAS
             Tela_Vender_Produtos()
-            
+
         #INICIALIZAR VALORES
         refreshValores()
 
@@ -332,4 +332,4 @@ class Tela_Vender_Produtos:
 
         self.windowMain.mainloop()
 
-Tela_Vender_Produtos()
+#Tela_Vender_Produtos()

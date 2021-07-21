@@ -9,9 +9,9 @@ class Tela_Editar_Produto:
     def __init__(self, id):
         self.id = id
         self.window()
-
+    
     def window(self):
-
+        
         self.windowMain = Tk()
         self.windowMain.resizable(False, False)
         self.windowMain.geometry(util().toCenterScreen(400, 210))
