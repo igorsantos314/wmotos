@@ -312,10 +312,7 @@ class Tela_Vender_Produtos:
             
             #CHAMAR SETOR DE VENDAS
             Tela_Vender_Produtos()
-
-        def produtosCadastrados(event):
-            pass
-
+            
         #INICIALIZAR VALORES
         refreshValores()
 

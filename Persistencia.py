@@ -46,9 +46,23 @@ class bd:
         self.cur.execute(command)
         self.conection.commit()
 
+    def delProduto(self, id):
+        #DELETAR OS
+        command = f'DELETE FROM produto WHERE id={id}'
+        
+        self.cur.execute(command)
+        self.conection.commit()
+
     def updateOS(self, id, data_entrada, saida, nome_cliente, telefone, veiculo, desc, laudo_tecnico, forma_pagamento, status, valor_mao_obra, valor_pecas, valor_outros):
         #ATUALIZAR OS
         command = f"UPDATE ordem_servico SET entrada='{data_entrada}', saida='{saida}', cliente='{nome_cliente}', telefone='{telefone}', veiculo='{veiculo}', descricao='{desc}', laudo='{laudo_tecnico}', pagamento='{forma_pagamento}', status='{status}', mao_de_obra={valor_mao_obra}, valor_de_pecas={valor_pecas}, valor_outros={valor_outros} WHERE id={id};"
+
+        self.cur.execute(command)
+        self.conection.commit()
+
+    def updateProduto(self, id, nome, valor_compra, valor_venda):
+        #ATUALIZAR OS
+        command = f"UPDATE produto SET nome='{nome}', valor_compra={valor_compra}, valor_venda={valor_venda} WHERE id={id};"
 
         self.cur.execute(command)
         self.conection.commit()
@@ -157,6 +171,13 @@ class bd:
         self.cur.execute(show)
         
         #RETORNA LISTA DE OS
+        return self.cur.fetchall()
+
+    def getProdutoId(self, id):
+        show = f"SELECT * FROM produto WHERE id={id}"
+        self.cur.execute(show)
+        
+        #RETORNA O PRODUTO
         return self.cur.fetchall()
 
     # --- CONTABILIDADE ---

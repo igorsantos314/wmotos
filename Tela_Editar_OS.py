@@ -212,12 +212,3 @@ class Tela_Editar_OS:
         self.windowMain.bind('<Escape>', exit)
 
         self.windowMain.mainloop()
-
-    def toggleFullScreen(self, event):
-        self.fullScreenState = not self.fullScreenState
-        self.windowMain.attributes("-fullscreen", self.fullScreenState)
-
-    def quitFullScreen(self, event):
-        self.fullScreenState = False
-        self.windowMain.attributes("-fullscreen", self.fullScreenState)
-        self.windowMain.geometry('810x490')

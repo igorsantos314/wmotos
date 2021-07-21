@@ -98,7 +98,7 @@ class consulta:
             fieldbackground='White'
         )
 
-        style.map("Treeview", background=[('selected', '#00BFFF')], foreground=[('selected', 'Black')])
+        style.map("Treeview", background=[('selected', 'DodgerBlue')], foreground=[('selected', 'White')])
 
         # Using treeview widget 
         treev2 = ttk.Treeview(self.windowMain, selectmode ='browse', height=15) 
@@ -397,8 +397,8 @@ class consulta:
         etBuscar.bind('<Return>', buscar)
 
         #MANUAL
-        lblAjuda = Label(text='<Esc> Voltar    <Enter> Editar    <Ctrl+p> Imprimir    <Ctrl+l> Limpar', bg='White')
-        lblAjuda.place(x=10, y=480)
+        lblAjuda = Label(text='<Esc> Voltar    <Enter> Editar    <Del> Deletar    <Ctrl+p> Imprimir    <Ctrl+l> Limpar', bg='White')
+        lblAjuda.place(x=10, y=475)
         
         self.windowMain.mainloop()
 
@@ -480,13 +480,4 @@ class consulta:
 
         self.windowTroco.mainloop()
 
-    def toggleFullScreen(self, event):
-        self.fullScreenState = not self.fullScreenState
-        self.windowMain.attributes("-fullscreen", self.fullScreenState)
-
-    def quitFullScreen(self, event):
-        self.fullScreenState = False
-        self.windowMain.attributes("-fullscreen", self.fullScreenState)
-        self.windowMain.geometry('993x480')
-
-#consulta()
+consulta()

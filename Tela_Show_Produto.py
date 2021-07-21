@@ -1,3 +1,4 @@
+from Tela_Editar_Produto import Tela_Editar_Produto
 from Persistencia import bd
 from tkinter import *
 from tkinter import ttk
@@ -38,58 +39,113 @@ class Tela_Show_Produto:
         style.map("Treeview", background=[('selected', 'DodgerBlue')], foreground=[('selected', 'White')])
 
         # Using treeview widget 
-        treev2 = ttk.Treeview(self.windowMain, selectmode ='browse', height=15) 
+        treevProduto = ttk.Treeview(self.windowMain, selectmode ='browse', height=15) 
 
         # Calling pack method w.r.to treeview 
-        treev2.place(x=10, y=50)
+        treevProduto.place(x=10, y=50)
 
         # Constructing vertical scrollbar 
         # with treeview 
         verscrlbar = ttk.Scrollbar(self.windowMain, 
                                 orient ="vertical",
-                                command = treev2.yview) 
+                                command = treevProduto.yview) 
 
         # scrollbar 
         #verscrlbar.pack(side ='right', fill ='x') 
 
         # Configuring treeview 
-        treev2.configure(xscrollcommand = verscrlbar.set) 
+        treevProduto.configure(xscrollcommand = verscrlbar.set) 
 
         # Defining number of columns 
-        treev2["columns"] = ("1", "2", "4", "5", "6")
+        treevProduto["columns"] = ("1", "2", "4", "5", "6")
 
         # Defining heading 
-        treev2['show'] = 'headings'
+        treevProduto['show'] = 'headings'
 
         # Assigning the width and anchor to the 
         # respective columns 
-        treev2.column("1", width = 60, anchor ='c') 
-        treev2.column("2", width = 250, anchor ='se')
-        treev2.column("4", width = 100, anchor ='se')
-        treev2.column("5", width = 100, anchor ='se') 
-        treev2.column("6", width = 100, anchor ='se')
+        treevProduto.column("1", width = 60, anchor ='c') 
+        treevProduto.column("2", width = 250, anchor ='se')
+        treevProduto.column("4", width = 100, anchor ='se')
+        treevProduto.column("5", width = 100, anchor ='se') 
+        treevProduto.column("6", width = 100, anchor ='se')
 
         # Assigning the heading names to the 
         # respective columns 
-        treev2.heading("1", text ="Id") 
-        treev2.heading("2", text ="Nome do Produto") 
-        treev2.heading("4", text ="Valor de Compra")
-        treev2.heading("5", text ="Valor de Venda")
-        treev2.heading("6", text ="Lucro UND.")
+        treevProduto.heading("1", text ="Id") 
+        treevProduto.heading("2", text ="Nome do Produto") 
+        treevProduto.heading("4", text ="Valor de Compra")
+        treevProduto.heading("5", text ="Valor de Venda")
+        treevProduto.heading("6", text ="Lucro UND.")
         
-        def getAll():
-            #VARRER LISTA E ADICIONAR NA TABELA
-            for i in bd().getAllProduto():
-                lucro = f"{(i[3] - i[2]):.2f}"
-                treev2.insert("", 'end', text ="L1", values =(i[0], i[1], i[2], i[3], lucro))
-        
-        #POVOAR TABELA
-        getAll()
+        def getId():
+            if len(treevProduto.selection()) == 0:
+                messagebox.showwarning('','POR FAVOR SELECIONE UMA OS')
+                return False
+            else:
+                itemSelecionado = treevProduto.selection()[0]
+
+                #PEGAR VALORES
+                id = int(treevProduto.item(itemSelecionado, "values")[0])
+                
+                return id
+
+        def editar(event):
+            
+            id = getId()
+
+            #VERIFICA SE O ID É VALIDO
+            if id != False:
+                print(id)
+                #FECHHA A JANELA
+                self.windowMain.destroy()
+
+                #ABRE JANELA DE EDITAR
+                Tela_Editar_Produto(id)
+
+                #REABRE A TELA DE EXIBIR
+                Tela_Show_Produto()
+
+        def buscar(event):
+            #LIMPAR TABELA
+            treevProduto.delete(*treevProduto.get_children())
+
+            #INSERIR NO TREEVIEW DE PRODUTO
+            for produto in bd().getNomeProduto(etNomeProduto.get().upper()):
+                lucro = produto[3]-produto[2]
+                treevProduto.insert("", 'end', text ="L1", values=(produto[0], produto[1], produto[2], produto[3], lucro))
+
+        def excluir(event):
+            id = getId()
+
+            #VERIFICA SE O ID É VALIDO
+            if id != False:
+
+                if messagebox.askquestion('', 'EXCLUIR PRODUTO?'):
+                    #DELETAR O PRODUTO
+                    bd().delProduto(id)
+
+                    #ATUALIZA A TABELA
+                    buscar(None)
+
+        def sair(event):
+            self.windowMain.destroy()
 
         #MANUAL
-        lblAjuda = Label(text='<Esc> Voltar   <Enter> Editar', bg='White')
+        lblAjuda = Label(text='<Esc> Voltar   <Enter> Editar    <Del> Excluir', bg='White')
         lblAjuda.place(x=10, y=390)
+
+        #FOCA NO CAMPO DE CONSULTA
+        etNomeProduto.focus_force()
+
+        #TECLAS DE ATALHO
+        treevProduto.bind('<Return>', editar)
+        treevProduto.bind('<Delete>', excluir)
+
+        etNomeProduto.bind('<Return>', buscar)
+
+        self.windowMain.bind('<Escape>', sair)
 
         self.windowMain.mainloop()
 
-#Tela_Show_Produtos()
+#Tela_Show_Produto()
