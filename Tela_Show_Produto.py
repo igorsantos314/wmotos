@@ -76,11 +76,10 @@ class Tela_Show_Produtos:
         treev2.heading("4", text ="Valor de Compra")
         treev2.heading("5", text ="Valor de Venda")
         treev2.heading("6", text ="Lucro UND.")
-
+        
         def getAll():
             #VARRER LISTA E ADICIONAR NA TABELA
             for i in bd().getAllProduto():
-                print(i)
                 lucro = f"{(i[3] - i[2]):.2f}"
                 treev2.insert("", 'end', text ="L1", values =(i[0], i[1], i[2], i[3], lucro))
         
@@ -88,7 +87,7 @@ class Tela_Show_Produtos:
         getAll()
 
         #MANUAL
-        lblAjuda = Label(text='<Esc> Voltar   <Enter> Editar')
+        lblAjuda = Label(text='<Esc> Voltar   <Enter> Editar', bg='White')
         lblAjuda.place(x=10, y=390)
 
         self.windowMain.mainloop()
