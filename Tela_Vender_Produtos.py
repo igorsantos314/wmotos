@@ -3,6 +3,8 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 from util import util
+from Tela_Cadastrar_Produto import Tela_Cadastrar_Produto
+from Tela_Show_Produto import Tela_Show_Produto
 
 class Tela_Vender_Produtos:
 
@@ -18,29 +20,17 @@ class Tela_Vender_Produtos:
         
         self.windowMain = Tk()
         self.windowMain.resizable(False, False)
-        self.windowMain.geometry(util().toCenterScreen(940, 550))
+        self.windowMain.geometry(util().toCenterScreen(1000, 550))
         self.windowMain.focus_force()
         self.windowMain.title('IGTEC - VENDER PRODUTOS')
         self.windowMain['bg'] = 'White'
-        
-        #NOVO PRODUTO
-        imagem_novo_produto = PhotoImage(file=f"src/novo_produto_48.png")
-        btNovo_produto = Button(self.windowMain, image=imagem_novo_produto, bg='White', bd=0, command=lambda: '')
-        btNovo_produto.imagem = imagem_novo_produto
-        btNovo_produto.place(x=10, y=10)
-
-        #EXIBIR PRODUTOS
-        imagem_produtos = PhotoImage(file=f"src/produtos_48.png")
-        btProdutos = Button(self.windowMain, image=imagem_produtos, bg='White', bd=0, command=lambda: '')
-        btProdutos.imagem = imagem_produtos
-        btProdutos.place(x=80, y=10)
 
         #TREEVIEW BUSCAR PRODUTO
         lblNomeProduto = Label(self.windowMain, text='BUSCAR:', font='Arial 12', bg='White')
-        lblNomeProduto.place(x=10, y=90)
+        lblNomeProduto.place(x=10, y=120)
         
         etNomeProduto = Entry(self.windowMain, font='Arial 12', width=35)
-        etNomeProduto.place(x=105, y=90)
+        etNomeProduto.place(x=105, y=120)
 
         style = ttk.Style(self.windowMain)
         style.theme_use('vista')
@@ -51,14 +41,14 @@ class Tela_Vender_Produtos:
             fieldbackground='White'
         )
 
-        style.map("Treeview", background=[('selected', 'DarkTurquoise')], foreground=[('selected', 'Black')])
+        style.map("Treeview", background=[('selected', 'DodgerBlue')], foreground=[('selected', 'White')])
 
         # Using treeview widget 
-        treevProduto = ttk.Treeview(self.windowMain, selectmode ='browse', height=15) 
+        treevProduto = ttk.Treeview(self.windowMain, selectmode ='browse', height=13) 
 
         # Calling pack method w.r.to treeview 
-        treevProduto.place(x=10, y=120)
-
+        treevProduto.place(x=10, y=160)
+        
         # Constructing vertical scrollbar 
         # with treeview 
         verscrlbar = ttk.Scrollbar(self.windowMain, 
@@ -90,13 +80,18 @@ class Tela_Vender_Produtos:
         treevProduto.heading("3", text ="Valor")
 
         #TREEVIEW DE VENDA DE PRODUTOS
-        lblVenda = Label(self.windowMain, text='CARRINHO:', font='Arial 18 bold', bg='White')
-        lblVenda.place(x=440, y=5)
+        imagem_produtos = PhotoImage(file=f"src/carrinho_compras.png")
+        lblVendas = Label(self.windowMain, image=imagem_produtos, bg='White', bd=0)
+        lblVendas.imagem = imagem_produtos
+        lblVendas.place(x=280, y=10)
 
-        treevVenda = ttk.Treeview(self.windowMain, selectmode ='browse', height=19) 
+        lblVenda = Label(self.windowMain, text='SETOR DE VENDAS', font='Arial 30 bold', bg='White', fg='DodgerBlue')
+        lblVenda.place(x=390, y=35)
+
+        treevVenda = ttk.Treeview(self.windowMain, selectmode ='browse', height=15) 
 
         # Calling pack method w.r.to treeview 
-        treevVenda.place(x=440, y=40)
+        treevVenda.place(x=440, y=120)
 
         # Constructing vertical scrollbar 
         # with treeview 
@@ -105,40 +100,46 @@ class Tela_Vender_Produtos:
                                 command = treevVenda.yview) 
 
         # scrollbar 
-        verscrlbarVenda.pack(side ='right', fill ='x') 
+        #verscrlbarVenda.pack(side ='right', fill ='x') 
 
         # Configuring treeview 
         treevVenda.configure(xscrollcommand = verscrlbarVenda.set) 
 
         # Defining number of columns 
-        treevVenda["columns"] = ("1", "2", "3", "4")
+        treevVenda["columns"] = ("1", "2", "3", "4", "5")
 
         # Defining heading 
         treevVenda['show'] = 'headings'
 
         # Assigning the width and anchor to the 
         # respective columns 
-        treevVenda.column("1", width = 250, anchor ='c') 
-        treevVenda.column("2", width = 60, anchor ='se')
-        treevVenda.column("3", width = 60, anchor ='se')
+        treevVenda.column("1", width = 70, anchor ='c') 
+        treevVenda.column("2", width = 250, anchor ='se')
+        treevVenda.column("3", width = 70, anchor ='se')
         treevVenda.column("4", width = 70, anchor ='se')
+        treevVenda.column("5", width = 70, anchor ='se')
 
         # Assigning the heading names to the 
         # respective columns 
-        treevVenda.heading("1", text ="Nome do Produto") 
-        treevVenda.heading("2", text ="Subtotal")
-        treevVenda.heading("3", text ="Quant.")
-        treevVenda.heading("4", text ="Total")
+        treevVenda.heading("1", text ="Id Prod.")
+        treevVenda.heading("2", text ="Produto") 
+        treevVenda.heading("3", text ="Subtotal")
+        treevVenda.heading("4", text ="Quant.")
+        treevVenda.heading("5", text ="Total")
 
         # -- VALORES --
-        lblSubTotal = Label(text='SUBTOTAL: ', font='Arial 20', bg='White', fg='Blue')
+        lblSubTotal = Label(text='SUBTOTAL: ', font='Arial 20', bg='White', fg='DodgerBlue')
         lblSubTotal.place(x=10, y=470)
 
-        lblQuant = Label(text='QUANT: ', font='Arial 20', bg='White', fg='Red')
+        lblQuant = Label(text='QUANT: ', font='Arial 20', bg='White', fg='DarkOrange')
         lblQuant.place(x=440, y=470)
 
         lblTotal = Label(text='TOTAL: ', font='Arial 20 bold', bg='White', fg='Green')
         lblTotal.place(x=650, y=470)
+
+        # -- AJUDA --
+        lblAjuda = Label(text='<F1> Cadastrar Produto    <F2> Produtos Cadastrados    <F3> Salvar Venda    <F4> Cancelar', bg='White')
+        lblAjuda.place(x=10, y=525)
 
         def refreshValores():
             #SETAR VALORES
@@ -163,6 +164,9 @@ class Tela_Vender_Produtos:
                 #LINHA SELECIONADA
                 produtoSelecionado = treevProduto.selection()[0]
 
+                #PEGA O ID
+                id = treevProduto.item(produtoSelecionado, "values")[0]
+
                 #PEGA O NOME
                 nome = treevProduto.item(produtoSelecionado, "values")[1]
 
@@ -173,7 +177,7 @@ class Tela_Vender_Produtos:
                 total = int(quant) * valor
 
                 #INSERIR NO CARRINHO
-                treevVenda.insert("", 'end', text ="L1", values=(nome, valor, quant, total))
+                treevVenda.insert("", 'end', text ="L1", values=(id, nome, valor, quant, total))
 
                 #ATUALIZAR VALORES
                 self.total += total
@@ -194,8 +198,8 @@ class Tela_Vender_Produtos:
                 #LINHA SELECIONADA
                 produtoSelecionado = treevVenda.selection()[0]
 
-                subtotal = float(treevVenda.item(produtoSelecionado, "values")[1])
-                quantidade = int(treevVenda.item(produtoSelecionado, "values")[2])
+                subtotal = float(treevVenda.item(produtoSelecionado, "values")[2])
+                quantidade = int(treevVenda.item(produtoSelecionado, "values")[3])
                 
                 total = subtotal * quantidade
 
@@ -226,20 +230,91 @@ class Tela_Vender_Produtos:
             else:
                 #DESABILITAR TREEVIEW PRODUTO
 
-                self.lblFundo = Label(self.windowMain, bg='DarkTurquoise', width=20, height=5)
+                self.lblFundo = Label(self.windowMain, bg='DodgerBlue', width=20, height=5)
                 self.lblFundo.pack(pady=200)
                 
-                self.lblQuant = Label(self.windowMain, text='Quantidade:', font='Arial 12', bg='DarkTurquoise', fg='White')
-                self.lblQuant.place(x=405, y=210)
+                self.lblQuant = Label(self.windowMain, text='Quantidade:', font='Arial 12 bold', bg='DodgerBlue', fg='White')
+                self.lblQuant.place(x=435, y=210)
 
-                self.etQuant = Entry(self.windowMain, font='Arial 12', width=10)
+                self.etQuant = Entry(self.windowMain, font='Arial 12 bold', width=10)
                 self.etQuant.insert(0, '1')
-                self.etQuant.place(x=405, y=240)
+                self.etQuant.place(x=435, y=240)
                     
                 self.etQuant.focus_force()
 
                 self.etQuant.bind('<Return>', addCarrinho)
                 self.etQuant.bind('<Escape>', fecharQuantidade)
+
+        def limpar():
+            #LIMPA AS TABELAS
+            treevProduto.delete(*treevProduto.get_children())
+            treevVenda.delete(*treevVenda.get_children())
+
+            #RESETA OS VALORES
+            self.total = 0
+            self.subtotal = 0
+            self.quant = 0
+
+            refreshValores()
+        
+        def salvar(event):
+            
+            #VERIFICA SE TEM ALGUM ITEM NO CARRINHO
+            if len(treevVenda.get_children()) != 0:
+                if messagebox.askquestion('','SALVAR VENDA?'):
+                    
+                    list_prod = []
+
+                    for item in treevVenda.get_children():
+                        
+                        tuple_dados = ( treevVenda.item(item, "values")[0],
+                                        treevVenda.item(item, "values")[1],
+                                        treevVenda.item(item, "values")[2],
+                                        treevVenda.item(item, "values")[3])
+                        
+                        list_prod.append(tuple_dados)
+                    
+                    #ENVIAR PRO BANCO DE DADOS
+                    bd().insertVendaProduto(list_prod)
+
+                    #LIMPAR VENDA
+                    limpar()
+                    
+                    messagebox.showinfo('','SALVO !')
+            else:
+                messagebox.showwarning('','CARRINHO VAZIO :(')
+
+        def cancelarVenda(event):
+
+            if messagebox.askquestion('','CANCELAR VENDA?'):
+                limpar()
+        
+        def sair():
+            #FECHAR JANELA
+            self.windowMain.destroy()
+
+        def cadastrarProduto(event):
+            #FECHAR JANELA
+            sair()
+
+            #ABRIR TELA DE CADASTRAR PRODUTO
+            Tela_Cadastrar_Produto()
+
+            #CHAMAR SETOR DE VENDAS
+            Tela_Vender_Produtos()
+
+        def exibirProdutos(event):
+            #FECHAR JANELA
+            sair()
+
+            #ABRIR TELA DE CADASTRAR PRODUTO
+            Tela_Show_Produto()
+            
+            #CHAMAR SETOR DE VENDAS
+            Tela_Vender_Produtos()
+
+        def produtosCadastrados(event):
+            pass
 
         #INICIALIZAR VALORES
         refreshValores()
@@ -252,6 +327,11 @@ class Tela_Vender_Produtos:
         treevVenda.bind('<Delete>', removerCarrinho)
 
         etNomeProduto.bind('<Return>', buscar)
+
+        self.windowMain.bind('<F1>', cadastrarProduto)
+        self.windowMain.bind('<F2>', exibirProdutos)
+        self.windowMain.bind('<F3>', salvar)
+        self.windowMain.bind('<F4>', cancelarVenda)
 
         self.windowMain.mainloop()
 

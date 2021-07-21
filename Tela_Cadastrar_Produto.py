@@ -69,7 +69,7 @@ class Tela_Cadastrar_Produto:
 
         #VOLTAR
         imagem_voltar = PhotoImage(file=f"src/voltar_48.png")
-        btVoltar = Button(self.windowMain, image=imagem_voltar, bg='White', bd=0, command=lambda: exit())
+        btVoltar = Button(self.windowMain, image=imagem_voltar, bg='White', bd=0, command=lambda: self.windowMain.destroy())
         btVoltar.imagem = imagem_voltar
         btVoltar.place(x=340, y=150)
         
@@ -77,5 +77,3 @@ class Tela_Cadastrar_Produto:
         etNomeProduto.focus_force()
 
         self.windowMain.mainloop()
-
-Tela_Cadastrar_Produto()

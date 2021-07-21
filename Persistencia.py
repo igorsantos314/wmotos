@@ -27,6 +27,18 @@ class bd:
         self.cur.execute(command)
         self.conection.commit()
 
+    def insertVendaProduto(self, list_produtos):
+
+        #SETA O ID
+        id = self.getIdVenda()
+
+        for p in list_produtos:
+            #INSERIR DADOS NA TABELA VENDER PRODUTO
+            command = f'INSERT INTO vender_produtos(id_venda, id_produto, nome_produto, subtotal, quantidade) VALUES({id}, {p[0]}, "{p[1]}", {p[2]}, {p[3]})'
+
+            self.cur.execute(command)
+            self.conection.commit()
+
     def delOS(self, id):
         #DELETAR OS
         command = f'DELETE FROM ordem_servico WHERE id={id}'
@@ -89,6 +101,20 @@ class bd:
 
         self.cur.execute(command)
         self.conection.commit()
+    
+    def getIdVenda(self):
+        show = "SELECT * FROM vender_produtos"
+
+        self.cur.execute(show)
+
+        #RETORNA LISTA DE OS
+        prod = self.cur.fetchall()
+
+        if len(prod) == 0:
+            return 0
+        else:
+            #PEGA O ULTIMO ID DE VENDA E SOMA 1
+            return prod[-1][0]+1
 
     def getAllOS(self):
         show = "SELECT * FROM ordem_servico"
@@ -272,6 +298,7 @@ class bd:
 
         return listReceita
 
+print(bd().getIdVenda())
 """print(bd().getReceitaMaoObra(2021))
 print(bd().getReceitaPecas(2021))
 print(bd().getReceitaOutros(2021))"""

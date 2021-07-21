@@ -8,6 +8,7 @@ from Tela_Backup_BD import Backup_BD
 from util import util
 from tkinter import messagebox
 from Tela_Config import Config
+from Tela_Vender_Produtos import Tela_Vender_Produtos
 
 class Menu_Principal:
 
@@ -69,7 +70,7 @@ class Menu_Principal:
         
         #PRODUTO
         imagem_produto = PhotoImage(file=f"src/produto.png")
-        btCont = Button(self.window, image=imagem_produto, bg='White', bd=0, command=lambda: messagebox.showinfo('','EM DESENVOLVIMENTO ...'))
+        btCont = Button(self.window, image=imagem_produto, bg='White', bd=0, command=lambda: open('Prod'))
         btCont.imagem = imagem_produto
         btCont.place(x=340, y=10)
         
@@ -114,6 +115,13 @@ class Menu_Principal:
             elif w == 'C_Total':
                 #ABRIR JANELA
                 Contabilidade()
+
+                #REABRIR MENU
+                Menu_Principal()
+
+            elif w == 'Prod':
+                #ABRIR JANELA
+                Tela_Vender_Produtos()
 
                 #REABRIR MENU
                 Menu_Principal()

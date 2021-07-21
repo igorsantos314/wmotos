@@ -4,7 +4,7 @@ from tkinter import ttk
 from tkinter import messagebox
 from util import util
 
-class Tela_Show_Produtos:
+class Tela_Show_Produto:
 
     def __init__(self) -> None:
         self.window()
@@ -27,7 +27,7 @@ class Tela_Show_Produtos:
 
         #TREEVIEW
         style = ttk.Style(self.windowMain)
-        style.theme_use('clam')
+        style.theme_use('vista')
 
         style.configure(
             "Treeview",
@@ -35,7 +35,7 @@ class Tela_Show_Produtos:
             fieldbackground='White'
         )
 
-        style.map("Treeview", background=[('selected', '#00DB73')], foreground=[('selected', 'Black')])
+        style.map("Treeview", background=[('selected', 'DodgerBlue')], foreground=[('selected', 'White')])
 
         # Using treeview widget 
         treev2 = ttk.Treeview(self.windowMain, selectmode ='browse', height=15) 
@@ -50,7 +50,7 @@ class Tela_Show_Produtos:
                                 command = treev2.yview) 
 
         # scrollbar 
-        verscrlbar.pack(side ='right', fill ='x') 
+        #verscrlbar.pack(side ='right', fill ='x') 
 
         # Configuring treeview 
         treev2.configure(xscrollcommand = verscrlbar.set) 
@@ -92,4 +92,4 @@ class Tela_Show_Produtos:
 
         self.windowMain.mainloop()
 
-Tela_Show_Produtos()
+#Tela_Show_Produtos()
