@@ -2,11 +2,9 @@
     "color_cliente":"RED",
     "color_telefone":"BLUE",
     "color_veiculo":"GREEN",
-    "heigth_screen":1200,
     "path_bd":"wmotos.db",
     "path_logo":"src/Background_Logo.png",
     "pw_config":"88ccd19c90c2420bbd8661f471f2b29c",
     "pw_cont":"ada5e0b63ef60e2239fa8abdd4aa2f8e",
-    "show_os_init":"True",
-    "width_screen":1920
+    "show_os_init":"True"
 }

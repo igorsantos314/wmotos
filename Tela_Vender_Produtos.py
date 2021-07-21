@@ -7,17 +7,22 @@ from util import util
 class Tela_Vender_Produtos:
 
     def __init__(self) -> None:
+        #VARIAVEIS GLOBAIS
+        self.subtotal = 0
+        self.quant = 0
+        self.total = 0
+
         self.window()
 
     def window(self):
-
+        
         self.windowMain = Tk()
         self.windowMain.resizable(False, False)
         self.windowMain.geometry(util().toCenterScreen(940, 550))
         self.windowMain.focus_force()
         self.windowMain.title('IGTEC - VENDER PRODUTOS')
         self.windowMain['bg'] = 'White'
-
+        
         #NOVO PRODUTO
         imagem_novo_produto = PhotoImage(file=f"src/novo_produto_48.png")
         btNovo_produto = Button(self.windowMain, image=imagem_novo_produto, bg='White', bd=0, command=lambda: '')
@@ -46,7 +51,7 @@ class Tela_Vender_Produtos:
             fieldbackground='White'
         )
 
-        style.map("Treeview", background=[('selected', '#00DB73')], foreground=[('selected', 'Black')])
+        style.map("Treeview", background=[('selected', 'DarkTurquoise')], foreground=[('selected', 'Black')])
 
         # Using treeview widget 
         treevProduto = ttk.Treeview(self.windowMain, selectmode ='browse', height=15) 
@@ -85,7 +90,6 @@ class Tela_Vender_Produtos:
         treevProduto.heading("3", text ="Valor")
 
         #TREEVIEW DE VENDA DE PRODUTOS
-
         lblVenda = Label(self.windowMain, text='CARRINHO:', font='Arial 18 bold', bg='White')
         lblVenda.place(x=440, y=5)
 
@@ -114,25 +118,96 @@ class Tela_Vender_Produtos:
 
         # Assigning the width and anchor to the 
         # respective columns 
-        treevVenda.column("1", width = 70, anchor ='c') 
-        treevVenda.column("2", width = 250, anchor ='se')
+        treevVenda.column("1", width = 250, anchor ='c') 
+        treevVenda.column("2", width = 60, anchor ='se')
         treevVenda.column("3", width = 60, anchor ='se')
         treevVenda.column("4", width = 70, anchor ='se')
 
         # Assigning the heading names to the 
         # respective columns 
-        treevVenda.heading("1", text ="Venda Id") 
-        treevVenda.heading("2", text ="Nome do Produto")
+        treevVenda.heading("1", text ="Nome do Produto") 
+        treevVenda.heading("2", text ="Subtotal")
         treevVenda.heading("3", text ="Quant.")
-        treevVenda.heading("4", text ="Valor Total")
+        treevVenda.heading("4", text ="Total")
+
+        # -- VALORES --
+        lblSubTotal = Label(text='SUBTOTAL: ', font='Arial 20', bg='White', fg='Blue')
+        lblSubTotal.place(x=10, y=470)
+
+        lblQuant = Label(text='QUANT: ', font='Arial 20', bg='White', fg='Red')
+        lblQuant.place(x=440, y=470)
+
+        lblTotal = Label(text='TOTAL: ', font='Arial 20 bold', bg='White', fg='Green')
+        lblTotal.place(x=650, y=470)
+
+        def refreshValores():
+            #SETAR VALORES
+            lblSubTotal['text'] = f'SUBTOTAL:  R$ {self.subtotal:.2f}'
+            lblQuant['text'] = f'QUANT: {self.quant}'
+            lblTotal['text'] = f'TOTAL: R$ {self.total:.2f}'
+
+        def buscar(event):
+            #LIMPAR TABELA
+            treevProduto.delete(*treevProduto.get_children())
+
+            #INSERIR NO TREEVIEW DE PRODUTO
+            for produto in bd().getNomeProduto(etNomeProduto.get().upper()):
+                treevProduto.insert("", 'end', text ="L1", values=(produto[0], produto[1], produto[3]))
 
         def addCarrinho(event):
             
             quant = self.etQuant.get()
 
             if quant != '':
+                
+                #LINHA SELECIONADA
+                produtoSelecionado = treevProduto.selection()[0]
+
+                #PEGA O NOME
+                nome = treevProduto.item(produtoSelecionado, "values")[1]
+
+                #PEGA O VALOR
+                valor = float(treevProduto.item(produtoSelecionado, "values")[2])
+                
+                #CALULAR O VALOR TOTAL
+                total = int(quant) * valor
+
+                #INSERIR NO CARRINHO
+                treevVenda.insert("", 'end', text ="L1", values=(nome, valor, quant, total))
+
+                #ATUALIZAR VALORES
+                self.total += total
+                self.subtotal += valor
+                self.quant += int(quant)
+
+                refreshValores()
+
+                #FECHAR CAMPO DE QUANTIDADE
                 fecharQuantidade(None)
-                print(quant)
+
+        def removerCarrinho(event):
+
+            if len(treevVenda.selection()) == 0:
+                messagebox.showwarning('','POR FAVOR SELECIONE UM ITEM DO CARRINHO')
+
+            else:
+                #LINHA SELECIONADA
+                produtoSelecionado = treevVenda.selection()[0]
+
+                subtotal = float(treevVenda.item(produtoSelecionado, "values")[1])
+                quantidade = int(treevVenda.item(produtoSelecionado, "values")[2])
+                
+                total = subtotal * quantidade
+
+                #ATUALIZAR VALORES
+                self.total -= total
+                self.subtotal -= subtotal
+                self.quant -= quantidade
+
+                refreshValores()
+
+                #REMOVER DA LISTA
+                treevVenda.delete(produtoSelecionado)
 
         def fecharQuantidade(event):
 
@@ -142,30 +217,41 @@ class Tela_Vender_Produtos:
             self.etQuant.destroy()
 
             #HABILITAR TREEVIEW PRODUTO
-            treevVenda.state(('!disabled',))
 
         def setQuantidade(event):
-
-            #DESABILITAR TREEVIEW PRODUTO
-            treevVenda.state(('disabled',))
-
-            self.lblFundo = Label(self.windowMain, bg='LemonChiffon', width=20, height=5)
-            self.lblFundo.pack(pady=200)
             
-            self.lblQuant = Label(self.windowMain, text='Quantidade:', font='Arial 12', bg='LemonChiffon')
-            self.lblQuant.place(x=405, y=210)
-
-            self.etQuant = Entry(self.windowMain, font='Arial 12', width=10)
-            self.etQuant.insert(0, '1')
-            self.etQuant.place(x=405, y=240)
+            if len(treevProduto.selection()) == 0:
+                messagebox.showwarning('','POR FAVOR SELECIONE UM PRODUTO')
                 
-            self.etQuant.focus_force()
+            else:
+                #DESABILITAR TREEVIEW PRODUTO
 
-            self.etQuant.bind('<Return>', addCarrinho)
-            self.etQuant.bind('<Escape>', fecharQuantidade)
+                self.lblFundo = Label(self.windowMain, bg='DarkTurquoise', width=20, height=5)
+                self.lblFundo.pack(pady=200)
+                
+                self.lblQuant = Label(self.windowMain, text='Quantidade:', font='Arial 12', bg='DarkTurquoise', fg='White')
+                self.lblQuant.place(x=405, y=210)
+
+                self.etQuant = Entry(self.windowMain, font='Arial 12', width=10)
+                self.etQuant.insert(0, '1')
+                self.etQuant.place(x=405, y=240)
+                    
+                self.etQuant.focus_force()
+
+                self.etQuant.bind('<Return>', addCarrinho)
+                self.etQuant.bind('<Escape>', fecharQuantidade)
+
+        #INICIALIZAR VALORES
+        refreshValores()
+
+        #FOCAR NO CAMPO DE BUSCAR POR NOME
+        etNomeProduto.focus_force()
 
         #CAPTURA DE TECLAS
         treevProduto.bind('<Return>', setQuantidade)
+        treevVenda.bind('<Delete>', removerCarrinho)
+
+        etNomeProduto.bind('<Return>', buscar)
 
         self.windowMain.mainloop()
 

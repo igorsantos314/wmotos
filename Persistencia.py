@@ -126,6 +126,13 @@ class bd:
         #RETORNA LISTA DE OS
         return self.cur.fetchall()
 
+    def getNomeProduto(self, str):
+        show = f"SELECT * FROM produto WHERE nome LIKE '%{str}%'"
+        self.cur.execute(show)
+        
+        #RETORNA LISTA DE OS
+        return self.cur.fetchall()
+
     # --- CONTABILIDADE ---
     def getAllMaoObra(self):
 

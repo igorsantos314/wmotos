@@ -36,12 +36,6 @@ class json_ws:
     def getColorTelefone(self):
         return self.dict['color_telefone']
 
-    def getWidthScreen(self):
-        return self.dict['width_screen']
-
-    def getHeightScreen(self):
-        return self.dict['heigth_screen']
-
     def getPwCont(self):
         return self.dict['pw_cont']
     
