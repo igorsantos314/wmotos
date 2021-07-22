@@ -114,23 +114,17 @@ class Contabilidade:
         contValorTotal.place(x=490, y=129)
 
         #FORMA DE PAGAMENTO
-        lblContDinheiro = Label(self.windowMain, text='DINHEIRO', font='Arial 15', width=20, height=2, borderwidth = 1, relief="ridge", bg='#ee6055')
-        lblContDinheiro.place(x=10, y=232)
+        lblReceitaProduto = Label(self.windowMain, text='RECEITA PRODUTOS', font='Arial 15', width=20, height=2, borderwidth = 1, relief="ridge", bg='#ee6055')
+        lblReceitaProduto.place(x=10, y=232)
 
-        contValorDinheiro = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, borderwidth = 1, relief="ridge", bg='White')
-        contValorDinheiro.place(x=10, y=281)
+        contReceitaProduto = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, borderwidth = 1, relief="ridge", bg='White')
+        contReceitaProduto.place(x=10, y=281)
 
-        lblContCartao = Label(self.windowMain, text='CARTÃO', font='Arial 15', width=20, borderwidth = 1, relief="ridge", height=2, bg='#60d394')
-        lblContCartao.place(x=250, y=232)
+        lblLucro = Label(self.windowMain, text='LUCRO PRODUTOS', font='Arial 15', width=20, borderwidth = 1, relief="ridge", height=2, bg='#60d394')
+        lblLucro.place(x=250, y=232)
 
-        contValorCartao = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, bg='White', borderwidth = 1, relief="ridge")
-        contValorCartao.place(x=250, y=281)
-
-        lblContPix = Label(self.windowMain, text='PIX/TED', font='Arial 15', width=20, height=2, borderwidth = 1, relief="ridge", bg='#aaf683')
-        lblContPix.place(x=490, y=232)
-
-        contValorPix = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, bg='White', borderwidth = 1, relief="ridge")
-        contValorPix.place(x=490, y=281)
+        contLucro = Label(self.windowMain, text='', font='Arial 15', width=20, height=2, bg='White', borderwidth = 1, relief="ridge")
+        contLucro.place(x=250, y=281)
 
         #RESERVA DE EMERGÊNCIA
         lblReservaMes = Label(self.windowMain, text='RESERVA DO MÊS', font='Arial 15', width=20, height=2, borderwidth = 1, relief="ridge", bg='#836FFF', fg='White')
@@ -165,15 +159,12 @@ class Contabilidade:
             #SETAR PROJEÇÃO TOTAL
             contReservaTotal['text'] = f'R$ {(valor_total*0.10):.2f}'.replace('.', ',')
 
-        def setValuesPagamento():
+        def setValuesProdutos():
             #DINHEIRO
-            contValorDinheiro['text'] = f'R$ {bd().getContabilidadeDinheiro():.2f}'.replace('.', ',')
+            contReceitaProduto['text'] = f'R$ {bd().getReceitaProd():.2f}'.replace('.', ',')
 
             #CARTAO
-            contValorCartao['text'] = f'R$ {bd().getContabilidadeCartao():.2f}'.replace('.', ',')
-
-            #PIX
-            contValorPix['text'] = f'R$ {bd().getContabilidadePix():.2f}'.replace('.', ',')
+            contLucro['text'] = f'R$ {bd().getLucroProd():.2f}'.replace('.', ',')
 
         def setGraph():
             
@@ -211,7 +202,7 @@ class Contabilidade:
 
         #SETAR VALORES
         setValeusData()
-        setValuesPagamento()
+        setValuesProdutos()
         
         #CAPTURAR TELCAS
         self.windowMain.bind('<Escape>', exit)

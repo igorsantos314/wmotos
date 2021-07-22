@@ -319,7 +319,20 @@ class bd:
 
         return listReceita
 
-print(bd().getIdVenda())
+    def getLucroProd(self):
+        show = f"SELECT sum((p.valor_venda - p.valor_compra)*vp.quantidade) FROM produto p, vender_produtos vp WHERE p.id = vp.id_produto"
+        self.cur.execute(show)
+
+        return self.cur.fetchall()[0][0]
+
+    def getReceitaProd(self):
+        show = f"SELECT sum(subtotal*quantidade) FROM vender_produtos"
+        self.cur.execute(show)
+
+        return self.cur.fetchall()[0][0]
+
+#print(bd().getReceitaProd())
+#print(bd().getLucroProd())
 """print(bd().getReceitaMaoObra(2021))
 print(bd().getReceitaPecas(2021))
 print(bd().getReceitaOutros(2021))"""

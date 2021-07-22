@@ -220,8 +220,6 @@ class Tela_Vender_Produtos:
             self.lblQuant.destroy()
             self.etQuant.destroy()
 
-            #HABILITAR TREEVIEW PRODUTO
-
         def setQuantidade(event):
             
             if len(treevProduto.selection()) == 0:
@@ -287,6 +285,13 @@ class Tela_Vender_Produtos:
         def cancelarVenda(event):
 
             if messagebox.askquestion('','CANCELAR VENDA?'):
+                try:
+                    #TENTA FECHAR TELA DE QUANTIDADE CASO ABERTA
+                    fecharQuantidade(None)
+                except:
+                    pass
+                    
+                #LIMPAR
                 limpar()
         
         def sair():
