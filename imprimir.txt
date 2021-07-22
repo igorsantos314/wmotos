@@ -9,38 +9,34 @@ ________________________________________________________________________________
 
 DADOS DA ORDEM DE SERVIÇO
 ________________________________________________________________________________
-ID:                             16 
-DATA DE ENTRADA:                2/7/2021 
-DATA DE SAIDA:                  2/7/2021 
-NOME DO CLIENTE:                JUBLIE ALFONSO SOAREZ DA COSTA 
-TELEFONE:                       98233307654 
-VEICULO:                        CB 300 
+ID:                             22 
+DATA DE ENTRADA:                9/7/2021 
+DATA DE SAIDA:                  9/7/2021 
+NOME DO CLIENTE:                JUBILEU 
+TELEFONE:                       81 937263084 
+VEICULO:                        CG 99 
 
 ________________________________________________________________________________
 DESCRIÇÃO DO CLIENTE:
-     DASDASD
-
-
+     ALGO
 
 
 ________________________________________________________________________________
 LAUDO TECNICO:
-     DAS
-
-
+     ALGO 2
 
 
 ________________________________________________________________________________
 
-FORMA DE PAGAMENTO:             OUTRO 
+FORMA DE PAGAMENTO:             DINHEIRO 
 STATUS:                         CONCLUIDO 
-VALOR DE MÃO DE OBRA:           R$ 400.00 
-VALOR EM PEÇAS:                 R$ 236.00
-OUTROS VALORES:                 R$ 100.00
-TOTAL:                          R$ 736.00
+VALOR DE MÃO DE OBRA:           R$ 240.00 
+VALOR EM PEÇAS:                 R$ 16.00
+OUTROS VALORES:                 R$ 10.00
+TOTAL:                          R$ 266.00
 ________________________________________________________________________________
 
-IGTEC - IMPRESSO EM: 21/07/2021 as 18:07
+IGTEC - IMPRESSO EM: 22/07/2021 as 11:31
 
 
 

@@ -1,6 +1,7 @@
 import os
 from datetime import datetime
 from tkinter import messagebox
+import win32api
 
 class print_document:
 
@@ -73,7 +74,8 @@ class print_document:
     def comprovantePrint(self):
         try:
             # COMANDO DE IMPRESSÃO
-            os.startfile(self.caminho, "print")
+            #os.startfile(self.caminho, "print")
+            win32api.ShellExecute(0, "print", self.caminho, None, ".", 0)
             messagebox.showinfo('','AGUARDE, FOI ENVIADO PARA A IMPRESSORA!')
             
         except:

@@ -7,6 +7,7 @@ build_exe_options = {"packages": ["os"], "includes": [
     "sqlite3",
     "pylab",
     "numpy",
+    "win32api",
     "matplotlib.pyplot",
     "Tela_Backup_BD", 
     "Tela_Config", 
@@ -33,8 +34,8 @@ if sys.platform == "win32":
     base = "Win32GUI"
 
 setup(
-    name="IGTEC - OS",
-    version="2.0",
+    name="IGTEC - Ordem de Serviço",
+    version="2.0.3",
     description="Sistema para Gerenciar Oficina",
     options={"build_exe": build_exe_options},
     executables=[Executable("IGTEC.py", base=base, icon="icon.ico")]

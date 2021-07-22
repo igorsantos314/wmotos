@@ -38,7 +38,7 @@ class Menu_Principal:
         # Creating tkinter window
         self.window = Tk()
         self.window.resizable(False, False)
-        self.window.geometry(util().toCenterScreen(790, 580))
+        self.window.geometry(util().toCenterScreen(790, 570))
         self.window.focus_force()
         
         self.window.title('IGTEC - By:Igor Santos')
@@ -48,47 +48,47 @@ class Menu_Principal:
         imagem = PhotoImage(file=f"{json_ws().getPathLogo()}")
         w = Label(self.window, image=imagem)
         w.imagem = imagem
-        w.place(x=0, y=-5)
+        w.place(x=-2, y=-5)
 
         #NOVA ORDEM DE SERVIÇO
         imagem_new_os = PhotoImage(file=f"src/new_os.png")
-        btNewOS = Button(self.window, image=imagem_new_os, bg='White', bd=0, command=lambda:open('Nova'))
+        btNewOS = Button(self.window, image=imagem_new_os, bg='#737373', bd=0, command=lambda:open('Nova'))
         btNewOS.imagem = imagem_new_os
         btNewOS.place(x=10, y=10)
 
         #EXIBIR ORDENS DE SERVIÇO
         imagem_exibir = PhotoImage(file=f"src/exibir_os.png")
-        btExibir = Button(self.window, image=imagem_exibir, bg='White', bd=0, command=lambda:open('Exibir'))
+        btExibir = Button(self.window, image=imagem_exibir, bg='#737373', bd=0, command=lambda:open('Exibir'))
         btExibir.imagem = imagem_exibir
         btExibir.place(x=120, y=10)
 
         #EXIBIR CONTABILIDADE
         imagem_contabilidade = PhotoImage(file=f"src/cont.png")
-        btProduto = Button(self.window, image=imagem_contabilidade, bg='White', bd=0, command=lambda:open('C_Total'))
+        btProduto = Button(self.window, image=imagem_contabilidade, bg='#737373', bd=0, command=lambda:open('C_Total'))
         btProduto.imagem = imagem_contabilidade
         btProduto.place(x=230, y=10)
         
         #PRODUTO
         imagem_produto = PhotoImage(file=f"src/produto.png")
-        btCont = Button(self.window, image=imagem_produto, bg='White', bd=0, command=lambda: open('Prod'))
+        btCont = Button(self.window, image=imagem_produto, bg='#737373', bd=0, command=lambda: open('Prod'))
         btCont.imagem = imagem_produto
         btCont.place(x=340, y=10)
         
         #BACKUP
         imagem_backup = PhotoImage(file=f"src/backup.png")
-        btBackup = Button(self.window, image=imagem_backup, bg='White', bd=0, command=lambda:open('Backup'))
+        btBackup = Button(self.window, image=imagem_backup, bg='#737373', bd=0, command=lambda:open('Backup'))
         btBackup.imagem = imagem_backup
         btBackup.place(x=450, y=10)
 
         #CONFIGURAÇÕES
         imagem_config = PhotoImage(file=f"src/config.png")
-        btConfig = Button(self.window, image=imagem_config, bg='White', bd=0, command=lambda:open('Config'))
+        btConfig = Button(self.window, image=imagem_config, bg='#737373', bd=0, command=lambda:open('Config'))
         btConfig.imagem = imagem_config
         btConfig.place(x=560, y=10)
 
         #SAIR
         imagem_sair = PhotoImage(file=f"src/sair.png")
-        btSair = Button(self.window, image=imagem_sair, bg='White', bd=0, command=lambda:self.window.destroy())
+        btSair = Button(self.window, image=imagem_sair, bg='#737373', bd=0, command=lambda:self.window.destroy())
         btSair.imagem = imagem_sair
         btSair.place(x=670, y=10)
 
