@@ -6,3 +6,4 @@
     -> sudo apt-get install sqlite3
     -> sudo pip3 install matplotlib
     -> sudo apt-get install sqlitebrowser
+    -> pip install pypiwin32

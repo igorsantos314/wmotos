@@ -83,10 +83,10 @@ class Tela_Vender_Produtos:
         imagem_produtos = PhotoImage(file=f"src/carrinho_compras.png")
         lblVendas = Label(self.windowMain, image=imagem_produtos, bg='White', bd=0)
         lblVendas.imagem = imagem_produtos
-        lblVendas.place(x=280, y=10)
+        lblVendas.place(x=265, y=10)
 
         lblVenda = Label(self.windowMain, text='SETOR DE VENDAS', font='Arial 30 bold', bg='White', fg='DodgerBlue')
-        lblVenda.place(x=390, y=35)
+        lblVenda.place(x=375, y=35)
 
         treevVenda = ttk.Treeview(self.windowMain, selectmode ='browse', height=15) 
 
@@ -216,32 +216,40 @@ class Tela_Vender_Produtos:
         def fecharQuantidade(event):
 
             #DESTRUIR TELA DE QUANT
-            self.lblFundo.destroy()
+            self.lblFundoQuant.destroy()
             self.lblQuant.destroy()
             self.etQuant.destroy()
 
-        def setQuantidade(event):
+        def telaQuantidade(event):
             
             if len(treevProduto.selection()) == 0:
                 messagebox.showwarning('','POR FAVOR SELECIONE UM PRODUTO')
                 
             else:
-                #DESABILITAR TREEVIEW PRODUTO
-
-                self.lblFundo = Label(self.windowMain, bg='DodgerBlue', width=20, height=5)
-                self.lblFundo.pack(pady=200)
+                self.lblFundoQuant = Label(self.windowMain, bg='DodgerBlue', width=20, height=5)
+                self.lblFundoQuant.pack(pady=200)
                 
                 self.lblQuant = Label(self.windowMain, text='Quantidade:', font='Arial 12 bold', bg='DodgerBlue', fg='White')
-                self.lblQuant.place(x=435, y=210)
+                self.lblQuant.place(x=440, y=210)
 
                 self.etQuant = Entry(self.windowMain, font='Arial 12 bold', width=10)
                 self.etQuant.insert(0, '1')
-                self.etQuant.place(x=435, y=240)
+                self.etQuant.place(x=440, y=240)
                     
                 self.etQuant.focus_force()
 
                 self.etQuant.bind('<Return>', addCarrinho)
                 self.etQuant.bind('<Escape>', fecharQuantidade)
+
+        def telaVendas(event):
+            #DESABILITAR CAMPO DE CONSULTA E LIMPAR TABELAS
+            etNomeProduto.config(state='disabled')
+
+            #LIMPAR
+            limpar()
+
+            self.lblFundoVendas = Label(self.windowMain, bg='DodgerBlue', width=80, height=15)
+            self.lblFundoVendas.pack(pady=100)
 
         def limpar():
             #LIMPA AS TABELAS
@@ -325,7 +333,7 @@ class Tela_Vender_Produtos:
         etNomeProduto.focus_force()
 
         #CAPTURA DE TECLAS
-        treevProduto.bind('<Return>', setQuantidade)
+        treevProduto.bind('<Return>', telaQuantidade)
         treevVenda.bind('<Delete>', removerCarrinho)
 
         etNomeProduto.bind('<Return>', buscar)
@@ -334,6 +342,7 @@ class Tela_Vender_Produtos:
         self.windowMain.bind('<F2>', exibirProdutos)
         self.windowMain.bind('<F3>', salvar)
         self.windowMain.bind('<F4>', cancelarVenda)
+        self.windowMain.bind('<F6>', telaVendas)
 
         self.windowMain.mainloop()
 
