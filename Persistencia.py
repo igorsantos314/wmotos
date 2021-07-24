@@ -33,8 +33,10 @@ class bd:
         id = self.getIdVenda()
 
         for p in list_produtos:
+            lucro = self.getLucroId(p[0]) * int(p[3])
+
             #INSERIR DADOS NA TABELA VENDER PRODUTO
-            command = f'INSERT INTO vender_produtos(id_venda, id_produto, nome_produto, subtotal, quantidade) VALUES({id}, {p[0]}, "{p[1]}", {p[2]}, {p[3]})'
+            command = f'INSERT INTO vender_produtos(id_venda, id_produto, nome_produto, subtotal, quantidade, lucro) VALUES({id}, {p[0]}, "{p[1]}", {p[2]}, {p[3]}, {lucro})'
 
             self.cur.execute(command)
             self.conection.commit()
@@ -320,13 +322,19 @@ class bd:
         return listReceita
 
     def getLucroProd(self):
-        show = f"SELECT sum((p.valor_venda - p.valor_compra)*vp.quantidade) FROM produto p, vender_produtos vp WHERE p.id = vp.id_produto"
+        show = f"SELECT sum(lucro) FROM vender_produtos"
         self.cur.execute(show)
-
+        
         return self.cur.fetchall()[0][0]
 
     def getReceitaProd(self):
         show = f"SELECT sum(subtotal*quantidade) FROM vender_produtos"
+        self.cur.execute(show)
+
+        return self.cur.fetchall()[0][0]
+
+    def getLucroId(self, id):
+        show = f"SELECT valor_venda-valor_compra FROM produto WHERE id={id}"
         self.cur.execute(show)
 
         return self.cur.fetchall()[0][0]

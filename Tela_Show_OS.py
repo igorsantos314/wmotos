@@ -390,6 +390,7 @@ class consulta:
         
         #CAPTURA BOTAO NO TREVIEW
         treev2.bind("<Button-3>", popup)
+        treev2.bind("<Double-Button-1>", editar)
         treev2.bind('<Return>', editar)
         treev2.bind('<Delete>', deletar)
 

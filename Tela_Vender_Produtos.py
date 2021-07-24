@@ -138,9 +138,9 @@ class Tela_Vender_Produtos:
         lblTotal.place(x=650, y=470)
 
         # -- AJUDA --
-        lblAjuda = Label(text='<F1> Cadastrar Produto    <F2> Produtos Cadastrados    <F3> Salvar Venda    <F4> Cancelar', bg='White')
+        lblAjuda = Label(text='<Esc> Voltar    <F1> Cadastrar Produto    <F2> Produtos Cadastrados    <F3> Salvar Venda    <F4> Cancelar', bg='White')
         lblAjuda.place(x=10, y=525)
-
+        
         def refreshValores():
             #SETAR VALORES
             lblSubTotal['text'] = f'SUBTOTAL:  R$ {self.subtotal:.2f}'
@@ -302,13 +302,13 @@ class Tela_Vender_Produtos:
                 #LIMPAR
                 limpar()
         
-        def sair():
+        def sair(event):
             #FECHAR JANELA
             self.windowMain.destroy()
 
         def cadastrarProduto(event):
             #FECHAR JANELA
-            sair()
+            sair(None)
 
             #ABRIR TELA DE CADASTRAR PRODUTO
             Tela_Cadastrar_Produto()
@@ -318,7 +318,7 @@ class Tela_Vender_Produtos:
 
         def exibirProdutos(event):
             #FECHAR JANELA
-            sair()
+            sair(None)
 
             #ABRIR TELA DE CADASTRAR PRODUTO
             Tela_Show_Produto()
@@ -344,6 +344,8 @@ class Tela_Vender_Produtos:
         self.windowMain.bind('<F4>', cancelarVenda)
         self.windowMain.bind('<F6>', telaVendas)
 
+        self.windowMain.bind('<Escape>', sair)
+
         self.windowMain.mainloop()
 
-#Tela_Vender_Produtos()
+Tela_Vender_Produtos()
