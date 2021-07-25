@@ -56,7 +56,7 @@ class Tela_Vender_Produtos:
                                 command = treevProduto.yview) 
 
         # scrollbar 
-        verscrlbar.pack(side ='right', fill ='x') 
+        #verscrlbar.pack(side ='right', fill ='x') 
 
         # Configuring treeview 
         treevProduto.configure(xscrollcommand = verscrlbar.set) 
@@ -241,15 +241,85 @@ class Tela_Vender_Produtos:
                 self.etQuant.bind('<Return>', addCarrinho)
                 self.etQuant.bind('<Escape>', fecharQuantidade)
 
+        # --- TELA EMBUTIDA PARA CONSULTAR VENDAS ---
         def telaVendas(event):
-            #DESABILITAR CAMPO DE CONSULTA E LIMPAR TABELAS
-            etNomeProduto.config(state='disabled')
+            
+            self.id_atual = -1
+            cor_fundo = 'White'
 
             #LIMPAR
             limpar()
 
-            self.lblFundoVendas = Label(self.windowMain, bg='DodgerBlue', width=80, height=15)
-            self.lblFundoVendas.pack(pady=100)
+            def seachDataBase():
+                #LIMPA A TABELA PARA A NOVA VENDA
+                limpar_consultar_venda()
+
+                #FAZ A BUSCA DA VENDA NO BANCO DE DADOS
+                venda = bd().getVendaId(self.id_atual)
+                
+                if venda:
+
+                    #VARRE A LISTA DE PRODUTOS DA VENDA
+                    for v in venda:
+                        #PREENCHER TABELA COM OS DADOS DA VENDA
+                        treevViewVenda.insert("", 'end', text ="L1", values=(v[0], v[2], v[3], v[4], v[3]*v[4]))
+                
+            #NAVEGAÇÃO
+            def nav(position):
+
+                if position == -1 and self.id_atual < 1:
+                    pass
+                else:
+                    #ATUALIZA ID DA VENDA
+                    self.id_atual += position
+                    lblIdCount['text'] = self.id_atual
+                    
+                    #EXIBE VENDA
+                    seachDataBase()
+
+            def limpar_consultar_venda():
+                #LIMPAR TABELA PARA RECEBER NOVA VENDA
+                treevViewVenda.delete(*treevViewVenda.get_children())
+
+            self.lblFundoVendas = Label(self.windowMain, bg=cor_fundo, width=150, height=50)
+            self.lblFundoVendas.pack()
+
+            lblId = Label(text='Venda:', font='Arial 20', bg=cor_fundo, fg='Black')
+            lblId.place(x=10, y=10)
+
+            lblIdCount = Label(text='', font='Arial 20 bold', bg=cor_fundo, fg='#912FBD')
+            lblIdCount.place(x=100, y=10)
+
+            #NAVEGAÇÃO ENTRE VENDAS
+            imagem_direita = PhotoImage(file=f"src/seta_direita.png")
+            btDireita = Button(self.windowMain, image=imagem_direita, bg=cor_fundo, bd=0, command=lambda:nav(1))
+            btDireita.imagem = imagem_direita
+            btDireita.place(x=890, y=450)
+
+            imagem_esquerda = PhotoImage(file=f"src/seta_esquerda.png")
+            btEsquerda = Button(self.windowMain, image=imagem_esquerda, bg=cor_fundo, bd=0, command=lambda:nav(-1))
+            btEsquerda.imagem = imagem_esquerda
+            btEsquerda.place(x=10, y=450)
+
+            #TABELA PARA EXIBIR A VENDA
+            treevViewVenda = ttk.Treeview(self.windowMain, selectmode ='browse', height=16)
+            treevViewVenda.place(x=10, y=100)
+
+            # Defining number of columns 
+            treevViewVenda["columns"] = ("1", "2", "3", "4", "5")
+            treevViewVenda['show'] = 'headings'
+
+            treevViewVenda.column("1", width = 120, anchor ='c') 
+            treevViewVenda.column("2", width = 455, anchor ='se')
+            treevViewVenda.column("3", width = 150, anchor ='se')
+            treevViewVenda.column("4", width = 100, anchor ='se')
+            treevViewVenda.column("5", width = 150, anchor ='se')
+
+            treevViewVenda.heading("1", text ="Id") 
+            treevViewVenda.heading("2", text ="Nome do Produto") 
+            treevViewVenda.heading("3", text ="Subtotal")
+            treevViewVenda.heading("4", text ="Quantidade")
+            treevViewVenda.heading("5", text ="Total")
 
         def limpar():
             #LIMPA AS TABELAS

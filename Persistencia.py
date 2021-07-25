@@ -132,6 +132,18 @@ class bd:
             #PEGA O ULTIMO ID DE VENDA E SOMA 1
             return prod[-1][0]+1
 
+    def getVendaId(self, id):
+        show = f"SELECT * FROM vender_produtos WHERE id_venda={id}"
+        self.cur.execute(show)
+
+        venda = self.cur.fetchall()
+
+        if len(venda) == 0:
+            return None
+        
+        #RETORNA A TUPLA COM OS DADOS DA VENDA
+        return venda
+
     def getAllOS(self):
         show = "SELECT * FROM ordem_servico"
         self.cur.execute(show)
