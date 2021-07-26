@@ -5,17 +5,17 @@ import win32api
 
 class print_document:
 
-    def __init__(self, conteudo):
+    def __init__(self, type, conteudo):
         
         self.caminho = "{}\\imprimir.txt".format(os.getcwd())
         
         # CREAR ARQ DE IMPRESSÃO
-        self.createArqPrint(conteudo)
+        self.createArqPrint(type, conteudo)
 
         # IMPRIMIR
         self.comprovantePrint()
 
-    def setConteudoToPrint(self, conteudo):
+    def setConteudoToPrintOs(self, conteudo):
 
         head = '                           ORDEM DE SERVIÇO - W MOTOS  \n'
         head += "________________________________________________________________________________\n"
@@ -63,11 +63,61 @@ class print_document:
         
         return f"{head}{body}{bottom}"
 
-    def createArqPrint(self, conteudo):
+    def setConteudoToPrintVenda(self, conteudo):
+
+        #PEGA O ID E REMOVE PARA ITERAR A LISTA DE PRODUTOS
+        venda_id = conteudo[0]
+        del conteudo[0]
+        #print(conteudo)
+
+        head = '                         NOTA DE PRODUTOS VENDIDOS- W MOTOS  \n'
+
+        body =  "________________________________________________________________________________\n\n"
+        body += f"VENDA NÚMERO: {venda_id}\n"
+        body +=  "________________________________________________________________________________\n"
+        body += "ID   PRODUTO                                      SUB.      QUANT.     TOTAL\n"
+        body += "--------------------------------------------------------------------------------\n"
+
+        subtotal = 0
+        total = 0
+        quantidade = 0
+
+        for produto in conteudo:
+            total_produto = float(produto[2]) * int(produto[3])
+
+            total += total_produto
+            subtotal += float(produto[2])
+            quantidade += int(produto[3])
+
+            t_id = ' ' * (5-len(produto[0]))
+            t_nome = ' ' * (45-len(produto[1]))
+            t_sub = ' '*(10-len(produto[2]))
+            t_quant = ' '*(12-len(produto[3]))
+
+            body += f"{produto[0]}{t_id}{produto[1]}{t_nome}{produto[2]}{t_sub}{produto[3]}{t_quant}{total_produto}\n" 
+            
+        bottom = "\n________________________________________________________________________________\n"
+        bottom += f"SUBTOTAL: R${subtotal}              QUANTIDADE: {quantidade}              TOTAL: R${total}\n\n"
+        bottom += "________________________________________________________________________________\n"
+        bottom += "IGTEC - IMPRESSO EM: " + datetime.now().strftime('%d/%m/%Y as %H:%M') + "\n\n\n\n\n"
+
+        return f"{head}{body}{bottom}"
+
+    def createArqPrint(self, type, conteudo):
 
         #ESCRVE OS DADS NO ARQUIVO DE IMPRESSÃO
         arquivo = open(self.caminho, "w")
-        arquivo.write(self.setConteudoToPrint(conteudo))
+
+        #VERIFICA O TIPO DE IMPRESSÃO
+        if type == 'os':
+            arquivo.write(
+                self.setConteudoToPrintOs(conteudo)
+            )
+
+        elif type == 'venda':
+            arquivo.write(
+                self.setConteudoToPrintVenda(conteudo)
+            )
 
         arquivo.close()
 

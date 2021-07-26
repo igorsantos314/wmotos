@@ -158,6 +158,18 @@ class bd:
         #RETORNA A TUPLA COM OS DADOS DA VENDA
         return venda
 
+    def getMaxIdVenda(self):
+        show = f"SELECT max(id_venda) FROM vender_produtos"
+        self.cur.execute(show)
+        
+        venda = self.cur.fetchall()
+
+        if len(venda) == 0:
+            return None
+        
+        #RETORNA A TUPLA COM OS DADOS DA VENDA
+        return venda[0][0]
+
     def getAllOS(self):
         show = "SELECT * FROM ordem_servico"
         self.cur.execute(show)

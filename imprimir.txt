@@ -1,47 +1,21 @@
-                           ORDEM DE SERVIÇO - W MOTOS  
-________________________________________________________________________________
-CIDADE:                         BEJO JARDIM
-RUA:                            JOÃO BATISTA SENHORINHO
-NÚMERO:                         155
-PONTO DE REFERÊNCIA:            AVENIDA DO SESC
-WHATSAPP:                       (81) 98250-0763
+                         NOTA DE PRODUTOS VENDIDOS- W MOTOS  
 ________________________________________________________________________________
 
-DADOS DA ORDEM DE SERVIÇO
+VENDA NÚMERO: 17
 ________________________________________________________________________________
-ID:                             25 
-DATA DE ENTRADA:                25/7/2021 
-DATA DE SAIDA:                  25/7/2021 
-NOME DO CLIENTE:                ABC 
-TELEFONE:                        
-VEICULO:                        CB 300 
+ID   PRODUTO                                      SUB.      QUANT.     TOTAL
+--------------------------------------------------------------------------------
+5    ROLAMENTO RADIAL BROS 150                    15.0      1           15.0
+6    LAMPADA 150                                  12.5      1           12.5
+7    REPARO MOTOR DE PARTIDA 150                  51.0      1           51.0
+4    CAIXA DE DIREÇÃO BROS 150 2011               20.0      1           20.0
 
 ________________________________________________________________________________
-DESCRIÇÃO DO CLIENTE:
-     
+SUBTOTAL: R$98.5              QUANTIDADE: 4              TOTAL: R$98.5
+
 ________________________________________________________________________________
-LAUDO TECNICO:
-     
-________________________________________________________________________________
-
-FORMA DE PAGAMENTO:             DINHEIRO 
-STATUS:                         EM ESPERA 
-VALOR DE MÃO DE OBRA:           R$ 0.00 
-VALOR EM PEÇAS:                 R$ 0.00
-OUTROS VALORES:                 R$ 0.00
-TOTAL:                          R$ 0.00
-________________________________________________________________________________
-
-IGTEC - IMPRESSO EM: 25/07/2021 as 21:24
+IGTEC - IMPRESSO EM: 26/07/2021 as 09:49
 
 
 
 
-                  ___________________________________________                    
-                           Assinatura do Responsável
-
-
-
-
-                  ___________________________________________                    
-                             Assinatura do Cliente

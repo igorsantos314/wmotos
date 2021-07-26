@@ -190,6 +190,7 @@ class Tela_Cadastrar_OS:
                                     )[0]
                         
                         print_document(
+                            'os',
                             conteudo
                         )
 

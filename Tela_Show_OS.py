@@ -201,7 +201,7 @@ class consulta:
                 conteudo = bd().getOS(id)[0]
                 
                 #IMPRIMIR
-                print_document(conteudo)
+                print_document('os', conteudo)
         
         def editar(event):
             

@@ -5,6 +5,7 @@ from tkinter import messagebox
 from util import util
 from Tela_Cadastrar_Produto import Tela_Cadastrar_Produto
 from Tela_Show_Produto import Tela_Show_Produto
+from module_print import print_document
 
 class Tela_Vender_Produtos:
 
@@ -263,8 +264,8 @@ class Tela_Vender_Produtos:
                     #VARRE A LISTA DE PRODUTOS DA VENDA
                     for v in venda:
                         #PREENCHER TABELA COM OS DADOS DA VENDA
-                        treevViewVenda.insert("", 'end', text ="L1", values=(v[0], v[2], v[3], v[4], v[3]*v[4]))
-                
+                        treevViewVenda.insert("", 'end', text ="L1", values=(v[1], v[2], v[3], v[4], v[3]*v[4]))
+                        
             #NAVEGAÇÃO
             def nav(position):
                 
@@ -465,7 +466,23 @@ class Tela_Vender_Produtos:
 
                     #FOCAR NO CAMPO DE CONSULTA
                     etNomeProduto.focus_force()
+                    
+                    #PEGAR O ID DA VENDA
+                    id_current = bd().getMaxIdVenda()
 
+                    #SETA O ID NA LISTA PARA IMPRESSÃO
+                    list_impressao = [
+                        id_current
+                    ]
+
+                    #VARRE A LISTA DE PRODUTOS
+                    for p in list_prod:
+                        #MANDA OARA UMA LISTA DE IMPRESSAO
+                        list_impressao.append(p)
+                    
+                    #IMPRIMIR A VENDA
+                    print_document('venda', list_impressao)
+                    
             else:
                 messagebox.showwarning('','CARRINHO VAZIO :(')
 
@@ -527,4 +544,4 @@ class Tela_Vender_Produtos:
 
         self.windowMain.mainloop()
 
-#Tela_Vender_Produtos()
+Tela_Vender_Produtos()
