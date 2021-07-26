@@ -14,6 +14,8 @@ class Tela_Vender_Produtos:
         self.quant = 0
         self.total = 0
 
+        self.id_atual = None
+
         self.window()
 
     def window(self):
@@ -244,7 +246,6 @@ class Tela_Vender_Produtos:
         # --- TELA EMBUTIDA PARA CONSULTAR VENDAS ---
         def telaVendas(event):
             
-            self.id_atual = -1
             cor_fundo = 'White'
 
             #LIMPAR
@@ -266,9 +267,17 @@ class Tela_Vender_Produtos:
                 
             #NAVEGAÇÃO
             def nav(position):
+                
+                if self.id_atual == None:
+                    self.id_atual = 0
+                    lblIdCount['text'] = self.id_atual
 
-                if position == -1 and self.id_atual < 1:
+                    #EXIBE VENDA
+                    seachDataBase()
+
+                elif position == -1 and self.id_atual < 1:
                     pass
+
                 else:
                     #ATUALIZA ID DA VENDA
                     self.id_atual += position
@@ -281,14 +290,105 @@ class Tela_Vender_Produtos:
                 #LIMPAR TABELA PARA RECEBER NOVA VENDA
                 treevViewVenda.delete(*treevViewVenda.get_children())
 
+            def fechar_consultar_venda():
+                #RESETAR ID DA CONSULTA
+                self.id_atual = None
+
+                #DESTRUIR ITENS
+                self.lblFundoVendas.destroy()
+                treevViewVenda.destroy()
+                
+                lblIdCount.destroy()
+                lblNumeroVenda.destroy()
+
+                btDireita.destroy()
+                btEsquerda.destroy()
+                btDeletar.destroy()
+                btEditar.destroy()
+
+                lblBuscarVenda.destroy()
+                etBuscarVenda.destroy()
+
+                btSair.destroy()
+
+                #FOCAR NO CAMPO DE BUSCA
+                etNomeProduto.focus_force()
+
+            def consulta_venda(event):
+
+                #VERIFICA SE O USUARIO DIGITOU UM VALOR VALIDO
+                try:
+                    #PEGA O ID DO USUARIO
+                    self.id_atual = int(etBuscarVenda.get())
+
+                    #EXIBE O ID
+                    lblIdCount['text'] = self.id_atual
+
+                    #EXIBE VENDA
+                    seachDataBase()
+                except:
+                    #LIMPA O CAMPO DE CONSULTA
+                    etBuscarVenda.delete(0, END)
+                    etBuscarVenda.focus_force()
+
+                    messagebox.showerror('','DIGITE UM VALOR VÁLIDO !')
+
+            def deletar_venda():
+                
+                #VERIFICA SE A VENDA É VALIDA
+                if len(treevViewVenda.get_children()) == 0:
+                    messagebox.showwarning('','ESTÁ VENDA É VAZIA !')
+
+                elif messagebox.askyesno('',f'APAGAR VENDA NÚMERO {self.id_atual} ?'):
+                    #APAGAR VENDA
+                    bd().delVenda(self.id_atual)
+
+                    #LIMPA OS DADOS
+                    limpar_consultar_venda()
+
+                    etBuscarVenda.delete(0, END)
+                    self.id_atual = None
+
+                    #LIMPA O CAMPO DE ID
+                    lblIdCount['text'] = ''
+
+                    messagebox.showinfo('','APAGADO !')
+
+            def editar_venda():
+                messagebox.showinfo('','EM DESENVOLVIMENTO ...')
+                
             self.lblFundoVendas = Label(self.windowMain, bg=cor_fundo, width=150, height=50)
             self.lblFundoVendas.pack()
 
-            lblId = Label(text='Venda:', font='Arial 20', bg=cor_fundo, fg='Black')
-            lblId.place(x=10, y=10)
+            #EXIBIR O ID DA VENDA
+            lblNumeroVenda = Label(text='Venda Nº:', font='Arial 25 bold', bg=cor_fundo)
+            lblNumeroVenda.place(x=10, y=10)
+            
+            lblIdCount = Label(text='', font='Arial 25 bold', bg=cor_fundo, fg='#912FBD')
+            lblIdCount.place(x=180, y=10)
 
-            lblIdCount = Label(text='', font='Arial 20 bold', bg=cor_fundo, fg='#912FBD')
-            lblIdCount.place(x=100, y=10)
+            #CAMPO PARA BUSCAR VENDA
+            lblBuscarVenda = Label(text='Buscar:', font='Arial 12', bg=cor_fundo)
+            lblBuscarVenda.place(x=10, y=70)
+
+            etBuscarVenda = Entry(font='Arial 12 bold', fg='#912FBD')
+            etBuscarVenda.place(x=80, y=70)
+
+            #OPÇÕES
+            imagem_editar = PhotoImage(file=f"src/editar_48.png")
+            btEditar = Button(self.windowMain, image=imagem_editar, bg=cor_fundo, bd=0, command=lambda:editar_venda())
+            btEditar.imagem = imagem_editar
+            btEditar.place(x=845, y=50)
+
+            imagem_deletar = PhotoImage(file=f"src/deletar_48.png")
+            btDeletar = Button(self.windowMain, image=imagem_deletar, bg=cor_fundo, bd=0, command=lambda:deletar_venda())
+            btDeletar.imagem = imagem_deletar
+            btDeletar.place(x=895, y=50)
+
+            imagem_sair = PhotoImage(file=f"src/fechar_consulta.png")
+            btSair = Button(self.windowMain, image=imagem_sair, bg=cor_fundo, bd=0, command=lambda:fechar_consultar_venda())
+            btSair.imagem = imagem_sair
+            btSair.place(x=945, y=50)
 
             #NAVEGAÇÃO ENTRE VENDAS
             imagem_direita = PhotoImage(file=f"src/seta_direita.png")
@@ -305,7 +405,6 @@ class Tela_Vender_Produtos:
             treevViewVenda = ttk.Treeview(self.windowMain, selectmode ='browse', height=16)
             treevViewVenda.place(x=10, y=100)
 
-            # Defining number of columns 
             treevViewVenda["columns"] = ("1", "2", "3", "4", "5")
             treevViewVenda['show'] = 'headings'
 
@@ -321,6 +420,12 @@ class Tela_Vender_Produtos:
             treevViewVenda.heading("4", text ="Quantidade")
             treevViewVenda.heading("5", text ="Total")
 
+            #FOCA NO CAMPO DE DIGITAR O ID DA VENDA
+            etBuscarVenda.focus_force()
+
+            #TECLAS DE ATALHO
+            etBuscarVenda.bind('<Return>', consulta_venda)
+            
         def limpar():
             #LIMPA AS TABELAS
             treevProduto.delete(*treevProduto.get_children())
@@ -357,6 +462,10 @@ class Tela_Vender_Produtos:
                     limpar()
                     
                     messagebox.showinfo('','SALVO !')
+
+                    #FOCAR NO CAMPO DE CONSULTA
+                    etNomeProduto.focus_force()
+                    
             else:
                 messagebox.showwarning('','CARRINHO VAZIO :(')
 

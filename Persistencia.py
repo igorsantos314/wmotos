@@ -49,8 +49,15 @@ class bd:
         self.conection.commit()
 
     def delProduto(self, id):
-        #DELETAR OS
+        #DELETAR PRODUTO
         command = f'DELETE FROM produto WHERE id={id}'
+        
+        self.cur.execute(command)
+        self.conection.commit()
+    
+    def delVenda(self, id):
+        #DELETAR VENDA
+        command = f'DELETE FROM vender_produtos WHERE id_venda={id}'
         
         self.cur.execute(command)
         self.conection.commit()
