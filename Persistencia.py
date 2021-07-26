@@ -125,6 +125,13 @@ class bd:
         self.cur.execute(command)
         self.conection.commit()
     
+    def getMaiorIdOS(self):
+        show = f"SELECT MAX(id) FROM ordem_servico"
+        self.cur.execute(show)
+        
+        #RETORNA O PRODUTO
+        return self.cur.fetchall()[0][0]
+
     def getIdVenda(self):
         show = "SELECT * FROM vender_produtos"
 
@@ -358,7 +365,7 @@ class bd:
 
         return self.cur.fetchall()[0][0]
 
-#print(bd().getReceitaProd())
+#print(bd().getMaiorIdOS())
 #print(bd().getLucroProd())
 """print(bd().getReceitaMaoObra(2021))
 print(bd().getReceitaPecas(2021))

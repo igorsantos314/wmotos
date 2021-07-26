@@ -162,8 +162,8 @@ class Tela_Editar_OS:
 
                     messagebox.showinfo('','EDITADO COM SUCESSO !')
 
-                #FECHAR TELA
-                self.windowMain.destroy()
+                    #FECHAR TELA
+                    self.windowMain.destroy()
 
         def clear():
             # LIMPAR

@@ -199,7 +199,7 @@ class consulta:
             if id != False:
                 #PEGAR A TUPLA
                 conteudo = bd().getOS(id)[0]
-
+                
                 #IMPRIMIR
                 print_document(conteudo)
         

@@ -7,6 +7,7 @@ from module_json import json_ws
 from tkinter import scrolledtext
 import os
 from util import util
+from module_print import print_document
 
 class Tela_Cadastrar_OS:
 
@@ -29,8 +30,6 @@ class Tela_Cadastrar_OS:
         self.windowMain.focus_force()
         self.windowMain.title('IGTEC - CADASTRAR ORDEM DE SERVIÇO')
         self.windowMain['bg'] = 'White'
-        #self.windowMain.attributes('-fullscreen', True)  
-        #self.fullScreenState = False
 
         # Data
         lblDataEntrada = Label(self.windowMain, text='Data de Entrada:', font='Arial 12', bg='White')
@@ -182,6 +181,17 @@ class Tela_Cadastrar_OS:
                     )
 
                     messagebox.showinfo('','CADASTRADO COM SUCESSO !')
+
+                    #IMPRIMIR OS
+                    if messagebox.askyesno('', 'IMPRIMIR OS?'):
+                        #PEGA O ULTIMO ITEM CADASTRADO
+                        conteudo = bd().getOS(
+                                        bd().getMaiorIdOS()
+                                    )[0]
+                        
+                        print_document(
+                            conteudo
+                        )
 
                 # LIMPAR
                 clear()

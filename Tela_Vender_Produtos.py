@@ -140,7 +140,7 @@ class Tela_Vender_Produtos:
         lblTotal.place(x=650, y=470)
 
         # -- AJUDA --
-        lblAjuda = Label(text='<Esc> Voltar    <F1> Cadastrar Produto    <F2> Produtos Cadastrados    <F3> Salvar Venda    <F4> Cancelar', bg='White')
+        lblAjuda = Label(text='<Esc> Voltar    <F1> Cadastrar Produto    <F2> Produtos Cadastrados    <F3> Salvar Venda    <F4> Cancelar    <F6> Consultar Vendas', bg='White')
         lblAjuda.place(x=10, y=525)
         
         def refreshValores():
@@ -442,7 +442,7 @@ class Tela_Vender_Produtos:
             
             #VERIFICA SE TEM ALGUM ITEM NO CARRINHO
             if len(treevVenda.get_children()) != 0:
-                if messagebox.askquestion('','SALVAR VENDA?'):
+                if messagebox.askyesno('','SALVAR VENDA?'):
                     
                     list_prod = []
 
@@ -465,13 +465,13 @@ class Tela_Vender_Produtos:
 
                     #FOCAR NO CAMPO DE CONSULTA
                     etNomeProduto.focus_force()
-                    
+
             else:
                 messagebox.showwarning('','CARRINHO VAZIO :(')
 
         def cancelarVenda(event):
 
-            if messagebox.askquestion('','CANCELAR VENDA?'):
+            if messagebox.askyesno('','CANCELAR VENDA?'):
                 try:
                     #TENTA FECHAR TELA DE QUANTIDADE CASO ABERTA
                     fecharQuantidade(None)
@@ -527,4 +527,4 @@ class Tela_Vender_Produtos:
 
         self.windowMain.mainloop()
 
-Tela_Vender_Produtos()
+#Tela_Vender_Produtos()
