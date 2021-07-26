@@ -68,9 +68,8 @@ class print_document:
         #PEGA O ID E REMOVE PARA ITERAR A LISTA DE PRODUTOS
         venda_id = conteudo[0]
         del conteudo[0]
-        #print(conteudo)
-
-        head = '                         NOTA DE PRODUTOS VENDIDOS- W MOTOS  \n'
+        
+        head = '                               NOTA DE VENDA - W MOTOS  \n'
 
         body =  "________________________________________________________________________________\n\n"
         body += f"VENDA NÚMERO: {venda_id}\n"

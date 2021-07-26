@@ -130,8 +130,14 @@ class Backup_BD:
         self.windowMain.geometry('730x460')
         
     def createBackup(self, device):
-
-        self.destino = f'{device}/{self.data_atual}-wmotos.db'
+        
+        #CRIA A PASTA BACKUP CASO NÃO EXISTA
+        if os.path.isdir(f'{device}/Backup') == False:
+            #CRIA A PASTA
+            os.mkdir(f'{device}/Backup')
+        
+        #CAMINHO DE BACKUP
+        self.destino = f'{device}/Backup/{self.data_atual}-wmotos.db'
 
         #REALIZAR BACKUP PARA UNIDADE REMOVIVEL
         shutil.copy(self.origem, self.destino)

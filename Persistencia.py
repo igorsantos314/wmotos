@@ -363,18 +363,30 @@ class bd:
         show = f"SELECT sum(lucro) FROM vender_produtos"
         self.cur.execute(show)
         
-        return self.cur.fetchall()[0][0]
+        valor = self.cur.fetchall()[0][0]
+        
+        #TRATA O VALOR NONE PARA 0
+        if valor == None:
+            return 0
+            
+        return valor
 
     def getReceitaProd(self):
         show = f"SELECT sum(subtotal*quantidade) FROM vender_produtos"
         self.cur.execute(show)
-
-        return self.cur.fetchall()[0][0]
+        
+        valor = self.cur.fetchall()[0][0]
+        
+        #TRATA O VALOR NONE PARA 0
+        if valor == None:
+            return 0
+            
+        return valor
 
     def getLucroId(self, id):
         show = f"SELECT valor_venda-valor_compra FROM produto WHERE id={id}"
         self.cur.execute(show)
-
+        
         return self.cur.fetchall()[0][0]
 
 #print(bd().getMaiorIdOS())

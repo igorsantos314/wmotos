@@ -1,20 +1,20 @@
-                         NOTA DE PRODUTOS VENDIDOS- W MOTOS  
+                               NOTA DE VENDA - W MOTOS  
 ________________________________________________________________________________
 
-VENDA NÚMERO: 17
+VENDA NÚMERO: 0
 ________________________________________________________________________________
 ID   PRODUTO                                      SUB.      QUANT.     TOTAL
 --------------------------------------------------------------------------------
-5    ROLAMENTO RADIAL BROS 150                    15.0      1           15.0
+4    CAIXA DE DIREÇÃO BROS 150 2011               20        1           20.0
+5    ROLAMENTO RADIAL BROS 150                    15        1           15.0
 6    LAMPADA 150                                  12.5      1           12.5
-7    REPARO MOTOR DE PARTIDA 150                  51.0      1           51.0
-4    CAIXA DE DIREÇÃO BROS 150 2011               20.0      1           20.0
+7    REPARO MOTOR DE PARTIDA 150                  51        1           51.0
 
 ________________________________________________________________________________
 SUBTOTAL: R$98.5              QUANTIDADE: 4              TOTAL: R$98.5
 
 ________________________________________________________________________________
-IGTEC - IMPRESSO EM: 26/07/2021 as 09:49
+IGTEC - IMPRESSO EM: 26/07/2021 as 19:35
 
 
 

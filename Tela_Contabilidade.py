@@ -160,10 +160,10 @@ class Contabilidade:
             contReservaTotal['text'] = f'R$ {(valor_total*0.10):.2f}'.replace('.', ',')
 
         def setValuesProdutos():
-            #DINHEIRO
+            #RECEITA
             contReceitaProduto['text'] = f'R$ {bd().getReceitaProd():.2f}'.replace('.', ',')
 
-            #CARTAO
+            #LUCRO
             contLucro['text'] = f'R$ {bd().getLucroProd():.2f}'.replace('.', ',')
 
         def setGraph():
@@ -179,7 +179,7 @@ class Contabilidade:
                 bd().getReceitaOutros(ano)
             )
 
-        #EDITAR
+        #BUSCAR
         imagem_buscar = PhotoImage(file=f"src/buscar_48.png")
         btBuscar = Button(self.windowMain, image=imagem_buscar, bg='White', bd=0, command=lambda: setValeusData())
         btBuscar.imagem = imagem_buscar

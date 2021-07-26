@@ -16,6 +16,7 @@ class Tela_Vender_Produtos:
         self.total = 0
 
         self.id_atual = None
+        self.enable_venda = True
 
         self.window()
 
@@ -141,7 +142,7 @@ class Tela_Vender_Produtos:
         lblTotal.place(x=650, y=470)
 
         # -- AJUDA --
-        lblAjuda = Label(text='<Esc> Voltar    <F1> Cadastrar Produto    <F2> Produtos Cadastrados    <F3> Salvar Venda    <F4> Cancelar    <F6> Consultar Vendas', bg='White')
+        lblAjuda = Label(text='<Esc> Voltar    <F1> Cadastrar Produto    <F2> Produtos Cadastrados    <F3> Finalizar Venda    <F4> Cancelar    <F6> Consultar Vendas', bg='White')
         lblAjuda.place(x=10, y=525)
         
         def refreshValores():
@@ -247,185 +248,226 @@ class Tela_Vender_Produtos:
         # --- TELA EMBUTIDA PARA CONSULTAR VENDAS ---
         def telaVendas(event):
             
-            cor_fundo = 'White'
-
-            #LIMPAR
-            limpar()
-
-            def seachDataBase():
-                #LIMPA A TABELA PARA A NOVA VENDA
-                limpar_consultar_venda()
-
-                #FAZ A BUSCA DA VENDA NO BANCO DE DADOS
-                venda = bd().getVendaId(self.id_atual)
+            if self.enable_venda:
                 
-                if venda:
+                #DESABILITA PARA EVITAR SOBREPOSIÇÃO
+                self.enable_venda = False
 
-                    #VARRE A LISTA DE PRODUTOS DA VENDA
-                    for v in venda:
-                        #PREENCHER TABELA COM OS DADOS DA VENDA
-                        treevViewVenda.insert("", 'end', text ="L1", values=(v[1], v[2], v[3], v[4], v[3]*v[4]))
-                        
-            #NAVEGAÇÃO
-            def nav(position):
-                
-                if self.id_atual == None:
-                    self.id_atual = 0
-                    lblIdCount['text'] = self.id_atual
+                cor_fundo = 'White'
 
-                    #EXIBE VENDA
-                    seachDataBase()
+                #LIMPAR
+                limpar()
 
-                elif position == -1 and self.id_atual < 1:
-                    pass
-
-                else:
-                    #ATUALIZA ID DA VENDA
-                    self.id_atual += position
-                    lblIdCount['text'] = self.id_atual
-                    
-                    #EXIBE VENDA
-                    seachDataBase()
-
-            def limpar_consultar_venda():
-                #LIMPAR TABELA PARA RECEBER NOVA VENDA
-                treevViewVenda.delete(*treevViewVenda.get_children())
-
-            def fechar_consultar_venda():
-                #RESETAR ID DA CONSULTA
-                self.id_atual = None
-
-                #DESTRUIR ITENS
-                self.lblFundoVendas.destroy()
-                treevViewVenda.destroy()
-                
-                lblIdCount.destroy()
-                lblNumeroVenda.destroy()
-
-                btDireita.destroy()
-                btEsquerda.destroy()
-                btDeletar.destroy()
-                btEditar.destroy()
-
-                lblBuscarVenda.destroy()
-                etBuscarVenda.destroy()
-
-                btSair.destroy()
-
-                #FOCAR NO CAMPO DE BUSCA
-                etNomeProduto.focus_force()
-
-            def consulta_venda(event):
-
-                #VERIFICA SE O USUARIO DIGITOU UM VALOR VALIDO
-                try:
-                    #PEGA O ID DO USUARIO
-                    self.id_atual = int(etBuscarVenda.get())
-
-                    #EXIBE O ID
-                    lblIdCount['text'] = self.id_atual
-
-                    #EXIBE VENDA
-                    seachDataBase()
-                except:
-                    #LIMPA O CAMPO DE CONSULTA
-                    etBuscarVenda.delete(0, END)
-                    etBuscarVenda.focus_force()
-
-                    messagebox.showerror('','DIGITE UM VALOR VÁLIDO !')
-
-            def deletar_venda():
-                
-                #VERIFICA SE A VENDA É VALIDA
-                if len(treevViewVenda.get_children()) == 0:
-                    messagebox.showwarning('','ESTÁ VENDA É VAZIA !')
-
-                elif messagebox.askyesno('',f'APAGAR VENDA NÚMERO {self.id_atual} ?'):
-                    #APAGAR VENDA
-                    bd().delVenda(self.id_atual)
-
-                    #LIMPA OS DADOS
+                def seachDataBase():
+                    #LIMPA A TABELA PARA A NOVA VENDA
                     limpar_consultar_venda()
 
-                    etBuscarVenda.delete(0, END)
+                    #FAZ A BUSCA DA VENDA NO BANCO DE DADOS
+                    venda = bd().getVendaId(self.id_atual)
+                    
+                    if venda:
+
+                        #VARRE A LISTA DE PRODUTOS DA VENDA
+                        for v in venda:
+                            #PREENCHER TABELA COM OS DADOS DA VENDA
+                            treevViewVenda.insert("", 'end', text ="L1", values=(v[1], v[2], v[3], v[4], v[3]*v[4]))
+                            
+                #NAVEGAÇÃO
+                def nav(position):
+                    
+                    if self.id_atual == None:
+                        self.id_atual = 0
+                        lblIdCount['text'] = self.id_atual
+
+                        #EXIBE VENDA
+                        seachDataBase()
+
+                    elif position == -1 and self.id_atual < 1:
+                        pass
+
+                    else:
+                        #ATUALIZA ID DA VENDA
+                        self.id_atual += position
+                        lblIdCount['text'] = self.id_atual
+                        
+                        #EXIBE VENDA
+                        seachDataBase()
+
+                def limpar_consultar_venda():
+                    #LIMPAR TABELA PARA RECEBER NOVA VENDA
+                    treevViewVenda.delete(*treevViewVenda.get_children())
+
+                def fechar_consultar_venda():
+                    #RESETAR ID DA CONSULTA
                     self.id_atual = None
 
-                    #LIMPA O CAMPO DE ID
-                    lblIdCount['text'] = ''
+                    #DESTRUIR ITENS
+                    self.lblFundoVendas.destroy()
+                    treevViewVenda.destroy()
+                    
+                    lblIdCount.destroy()
+                    lblNumeroVenda.destroy()
 
-                    messagebox.showinfo('','APAGADO !')
+                    btDireita.destroy()
+                    btEsquerda.destroy()
+                    btDeletar.destroy()
+                    btEditar.destroy()
+                    btImpressora.destroy()
 
-            def editar_venda():
-                messagebox.showinfo('','EM DESENVOLVIMENTO ...')
+                    lblBuscarVenda.destroy()
+                    etBuscarVenda.destroy()
+
+                    btSair.destroy()
+
+                    #FOCAR NO CAMPO DE BUSCA
+                    etNomeProduto.focus_force()
+
+                    #HABILITAR PARA ABRIR TELA DE EDIÇÃO
+                    self.enable_venda = True
+
+                def consulta_venda(event):
+
+                    #VERIFICA SE O USUARIO DIGITOU UM VALOR VALIDO
+                    try:
+                        #PEGA O ID DO USUARIO
+                        self.id_atual = int(etBuscarVenda.get())
+
+                        #EXIBE O ID
+                        lblIdCount['text'] = self.id_atual
+
+                        #EXIBE VENDA
+                        seachDataBase()
+                    except:
+                        #LIMPA O CAMPO DE CONSULTA
+                        etBuscarVenda.delete(0, END)
+                        etBuscarVenda.focus_force()
+
+                        messagebox.showerror('','DIGITE UM VALOR VÁLIDO !')
+
+                def deletar_venda():
+                    
+                    #VERIFICA SE A VENDA É VALIDA
+                    if len(treevViewVenda.get_children()) == 0:
+                        messagebox.showwarning('','ESTÁ VENDA É VAZIA !')
+
+                    elif messagebox.askyesno('',f'APAGAR VENDA NÚMERO {self.id_atual} ?'):
+                        #APAGAR VENDA
+                        bd().delVenda(self.id_atual)
+
+                        #LIMPA OS DADOS
+                        limpar_consultar_venda()
+
+                        etBuscarVenda.delete(0, END)
+                        self.id_atual = None
+
+                        #LIMPA O CAMPO DE ID
+                        lblIdCount['text'] = ''
+
+                        messagebox.showinfo('','APAGADO !')
+
+                def imprimir():
+                    
+                    if len(treevViewVenda.get_children()) == 0:
+                        messagebox.showwarning('','ESTÁ VENDA É VAZIA !')
+
+                    elif messagebox.askyesno('',f'IMPRIMIR VENDA NÚMERO {self.id_atual} ?'):
+                        
+                        list_to_print = [self.id_atual]
+
+                        #VARRE A LISTA DE VENDA ATUAL
+                        for item in treevViewVenda.get_children():
+                            
+                            tuple_dados = ( treevViewVenda.item(item, "values")[0],
+                                            treevViewVenda.item(item, "values")[1],
+                                            treevViewVenda.item(item, "values")[2],
+                                            treevViewVenda.item(item, "values")[3],
+                                            treevViewVenda.item(item, "values")[4]
+                                            )
+
+                            list_to_print.append(tuple_dados)
+
+                        #ENVIAR PARA IMPRESSÃO
+                        print_document('venda', list_to_print)
+
+                        #MENSAGEM
+                        #messagebox.showinfo('', 'AGUARDE, ENVIADO PARA A IMPRESSORA !')
+
+                def editar_venda():
+                    messagebox.showinfo('','EM DESENVOLVIMENTO ...')
+                    
+                self.lblFundoVendas = Label(self.windowMain, bg=cor_fundo, width=150, height=50)
+                self.lblFundoVendas.pack()
+
+                #EXIBIR O ID DA VENDA
+                lblNumeroVenda = Label(text='Venda Nº:', font='Arial 25 bold', bg=cor_fundo)
+                lblNumeroVenda.place(x=10, y=10)
                 
-            self.lblFundoVendas = Label(self.windowMain, bg=cor_fundo, width=150, height=50)
-            self.lblFundoVendas.pack()
+                lblIdCount = Label(text='', font='Arial 25 bold', bg=cor_fundo, fg='#912FBD')
+                lblIdCount.place(x=180, y=10)
 
-            #EXIBIR O ID DA VENDA
-            lblNumeroVenda = Label(text='Venda Nº:', font='Arial 25 bold', bg=cor_fundo)
-            lblNumeroVenda.place(x=10, y=10)
-            
-            lblIdCount = Label(text='', font='Arial 25 bold', bg=cor_fundo, fg='#912FBD')
-            lblIdCount.place(x=180, y=10)
+                #CAMPO PARA BUSCAR VENDA
+                lblBuscarVenda = Label(text='Buscar:', font='Arial 12', bg=cor_fundo)
+                lblBuscarVenda.place(x=10, y=70)
 
-            #CAMPO PARA BUSCAR VENDA
-            lblBuscarVenda = Label(text='Buscar:', font='Arial 12', bg=cor_fundo)
-            lblBuscarVenda.place(x=10, y=70)
+                etBuscarVenda = Entry(font='Arial 12 bold', fg='#912FBD')
+                etBuscarVenda.place(x=80, y=70)
 
-            etBuscarVenda = Entry(font='Arial 12 bold', fg='#912FBD')
-            etBuscarVenda.place(x=80, y=70)
+                #OPÇÕES
+                imagem_impressora = PhotoImage(file=f"src/impressora_48.png")
+                btImpressora = Button(self.windowMain, image=imagem_impressora, bg=cor_fundo, bd=0, command=lambda:imprimir())
+                btImpressora.imagem = imagem_impressora
+                btImpressora.place(x=795, y=50)
 
-            #OPÇÕES
-            imagem_editar = PhotoImage(file=f"src/editar_48.png")
-            btEditar = Button(self.windowMain, image=imagem_editar, bg=cor_fundo, bd=0, command=lambda:editar_venda())
-            btEditar.imagem = imagem_editar
-            btEditar.place(x=845, y=50)
+                imagem_editar = PhotoImage(file=f"src/editar_48.png")
+                btEditar = Button(self.windowMain, image=imagem_editar, bg=cor_fundo, bd=0, command=lambda:editar_venda())
+                btEditar.imagem = imagem_editar
+                btEditar.place(x=845, y=50)
 
-            imagem_deletar = PhotoImage(file=f"src/deletar_48.png")
-            btDeletar = Button(self.windowMain, image=imagem_deletar, bg=cor_fundo, bd=0, command=lambda:deletar_venda())
-            btDeletar.imagem = imagem_deletar
-            btDeletar.place(x=895, y=50)
+                imagem_deletar = PhotoImage(file=f"src/deletar_48.png")
+                btDeletar = Button(self.windowMain, image=imagem_deletar, bg=cor_fundo, bd=0, command=lambda:deletar_venda())
+                btDeletar.imagem = imagem_deletar
+                btDeletar.place(x=895, y=50)
 
-            imagem_sair = PhotoImage(file=f"src/fechar_consulta.png")
-            btSair = Button(self.windowMain, image=imagem_sair, bg=cor_fundo, bd=0, command=lambda:fechar_consultar_venda())
-            btSair.imagem = imagem_sair
-            btSair.place(x=945, y=50)
+                imagem_sair = PhotoImage(file=f"src/fechar_consulta.png")
+                btSair = Button(self.windowMain, image=imagem_sair, bg=cor_fundo, bd=0, command=lambda:fechar_consultar_venda())
+                btSair.imagem = imagem_sair
+                btSair.place(x=945, y=50)
 
-            #NAVEGAÇÃO ENTRE VENDAS
-            imagem_direita = PhotoImage(file=f"src/seta_direita.png")
-            btDireita = Button(self.windowMain, image=imagem_direita, bg=cor_fundo, bd=0, command=lambda:nav(1))
-            btDireita.imagem = imagem_direita
-            btDireita.place(x=890, y=450)
+                #NAVEGAÇÃO ENTRE VENDAS
+                imagem_direita = PhotoImage(file=f"src/seta_direita.png")
+                btDireita = Button(self.windowMain, image=imagem_direita, bg=cor_fundo, bd=0, command=lambda:nav(1))
+                btDireita.imagem = imagem_direita
+                btDireita.place(x=890, y=450)
 
-            imagem_esquerda = PhotoImage(file=f"src/seta_esquerda.png")
-            btEsquerda = Button(self.windowMain, image=imagem_esquerda, bg=cor_fundo, bd=0, command=lambda:nav(-1))
-            btEsquerda.imagem = imagem_esquerda
-            btEsquerda.place(x=10, y=450)
+                imagem_esquerda = PhotoImage(file=f"src/seta_esquerda.png")
+                btEsquerda = Button(self.windowMain, image=imagem_esquerda, bg=cor_fundo, bd=0, command=lambda:nav(-1))
+                btEsquerda.imagem = imagem_esquerda
+                btEsquerda.place(x=10, y=450)
 
-            #TABELA PARA EXIBIR A VENDA
-            treevViewVenda = ttk.Treeview(self.windowMain, selectmode ='browse', height=16)
-            treevViewVenda.place(x=10, y=100)
+                #TABELA PARA EXIBIR A VENDA
+                treevViewVenda = ttk.Treeview(self.windowMain, selectmode ='browse', height=16)
+                treevViewVenda.place(x=10, y=100)
 
-            treevViewVenda["columns"] = ("1", "2", "3", "4", "5")
-            treevViewVenda['show'] = 'headings'
+                treevViewVenda["columns"] = ("1", "2", "3", "4", "5")
+                treevViewVenda['show'] = 'headings'
 
-            treevViewVenda.column("1", width = 120, anchor ='c') 
-            treevViewVenda.column("2", width = 455, anchor ='se')
-            treevViewVenda.column("3", width = 150, anchor ='se')
-            treevViewVenda.column("4", width = 100, anchor ='se')
-            treevViewVenda.column("5", width = 150, anchor ='se')
+                treevViewVenda.column("1", width = 120, anchor ='c') 
+                treevViewVenda.column("2", width = 455, anchor ='se')
+                treevViewVenda.column("3", width = 150, anchor ='se')
+                treevViewVenda.column("4", width = 100, anchor ='se')
+                treevViewVenda.column("5", width = 150, anchor ='se')
 
-            treevViewVenda.heading("1", text ="Id") 
-            treevViewVenda.heading("2", text ="Nome do Produto") 
-            treevViewVenda.heading("3", text ="Subtotal")
-            treevViewVenda.heading("4", text ="Quantidade")
-            treevViewVenda.heading("5", text ="Total")
+                treevViewVenda.heading("1", text ="Id") 
+                treevViewVenda.heading("2", text ="Nome do Produto") 
+                treevViewVenda.heading("3", text ="Subtotal")
+                treevViewVenda.heading("4", text ="Quantidade")
+                treevViewVenda.heading("5", text ="Total")
 
-            #FOCA NO CAMPO DE DIGITAR O ID DA VENDA
-            etBuscarVenda.focus_force()
+                #FOCA NO CAMPO DE DIGITAR O ID DA VENDA
+                etBuscarVenda.focus_force()
 
-            #TECLAS DE ATALHO
-            etBuscarVenda.bind('<Return>', consulta_venda)
+                #TECLAS DE ATALHO
+                etBuscarVenda.bind('<Return>', consulta_venda)
             
         def limpar():
             #LIMPA AS TABELAS
@@ -443,7 +485,7 @@ class Tela_Vender_Produtos:
             
             #VERIFICA SE TEM ALGUM ITEM NO CARRINHO
             if len(treevVenda.get_children()) != 0:
-                if messagebox.askyesno('','SALVAR VENDA?'):
+                if messagebox.askyesno('','FINALIZAR VENDA?'):
                     
                     list_prod = []
 
@@ -480,9 +522,10 @@ class Tela_Vender_Produtos:
                         #MANDA OARA UMA LISTA DE IMPRESSAO
                         list_impressao.append(p)
                     
-                    #IMPRIMIR A VENDA
-                    print_document('venda', list_impressao)
-                    
+                    if messagebox.askyesno('','IMPRIMIR COMPROVANTE?'):
+                        #IMPRIMIR A VENDA
+                        print_document('venda', list_impressao)
+
             else:
                 messagebox.showwarning('','CARRINHO VAZIO :(')
 
