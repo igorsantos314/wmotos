@@ -1,19 +1,57 @@
-                               NOTA DE VENDA - W MOTOS  
+                           ORDEM DE SERVIÇO - W MOTOS  
+________________________________________________________________________________
+CIDADE:                         BEJO JARDIM
+RUA:                            JOÃO BATISTA SENHORINHO
+NÚMERO:                         155
+PONTO DE REFERÊNCIA:            AVENIDA DO SESC
+WHATSAPP:                       (81) 98250-0763
 ________________________________________________________________________________
 
-VENDA NÚMERO: 6
+DADOS DA ORDEM DE SERVIÇO
 ________________________________________________________________________________
-ID   PRODUTO                                 SUB.      QUANT.    TOTAL
---------------------------------------------------------------------------------
-5    ROLAMENTO RADIAL BROS 150               15,00       1       15,00
-6    LAMPADA 150                             12,50       1       12,50
+ID:                             16 
+DATA DE ENTRADA:                2/7/2021 
+DATA DE SAIDA:                  2/7/2021 
+NOME DO CLIENTE:                JUBLIE SOAREZ DA COSTA 
+TELEFONE:                       98233307654 
+VEICULO:                        CB 300 
 
 ________________________________________________________________________________
-SUBTOTAL: R$27,50              QUANTIDADE: 2              TOTAL: R$27,50
+DESCRIÇÃO DO CLIENTE:
+     DASDASD
+
+
+
+
 
 ________________________________________________________________________________
-IGTEC - IMPRESSO EM: 27/07/2021 as 18:58
+LAUDO TECNICO:
+     DAS
 
 
 
 
+
+________________________________________________________________________________
+
+FORMA DE PAGAMENTO:             OUTRO 
+STATUS:                         CONCLUIDO 
+VALOR DE MÃO DE OBRA:           R$ 400.00 
+VALOR EM PEÇAS:                 R$ 236.00
+OUTROS VALORES:                 R$ 100.00
+TOTAL:                          R$ 736.00
+________________________________________________________________________________
+
+IGTEC - IMPRESSO EM: 27/07/2021 as 19:32
+
+
+
+
+                  ___________________________________________                    
+                           Assinatura do Responsável
+
+
+
+
+                  ___________________________________________                    
+                             Assinatura do Cliente

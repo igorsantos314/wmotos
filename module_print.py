@@ -82,20 +82,20 @@ class print_document:
         quantidade = 0
 
         for produto in conteudo:
-            total_produto = float(produto[2]) * int(produto[3])
+            total_produto = float(produto[2].replace(',', '.')) * int(produto[3].replace(',', '.'))
 
             total += total_produto
-            subtotal += float(produto[2])
-            quantidade += int(produto[3])
+            subtotal += float(produto[2].replace(',', '.'))
+            quantidade += int(produto[3].replace(',', '.'))
 
-            str_sub = f"{float(produto[2]):.2f}"
+            str_sub = f"{float(produto[2].replace(',', '.')):.2f}"
 
             t_id    = ' ' * (5-len(produto[0]))
             t_nome  = ' ' * (40-len(produto[1]))
             t_sub   = ' ' * (12-len(str_sub))
             t_quant = ' ' * (8-len(produto[3]))
             
-            str_dados = f"{produto[0]}{t_id}{produto[1]}{t_nome}{float(produto[2]):.2f}{t_sub}{produto[3]}{t_quant}{float(total_produto):.2f}\n"
+            str_dados = f"{produto[0]}{t_id}{produto[1]}{t_nome}{produto[2]}{t_sub}{produto[3]}{t_quant}{total_produto}\n"
             body += str_dados.replace('.', ',') 
             
         bottom = "\n________________________________________________________________________________\n"

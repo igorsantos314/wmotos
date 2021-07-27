@@ -35,7 +35,7 @@ if sys.platform == "win32":
 
 setup(
     name="IGTEC - Ordem de Serviço",
-    version="2.0.5",
+    version="2.0.6",
     description="Sistema para Gerenciar Oficina",
     options={"build_exe": build_exe_options},
     executables=[Executable("IGTEC.py", base=base, icon="igtec_icon.ico")]
