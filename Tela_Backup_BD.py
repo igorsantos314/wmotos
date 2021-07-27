@@ -64,6 +64,7 @@ class Backup_BD:
 
         self.windowMain = Tk()
         self.windowMain.resizable(False, False)
+        self.windowMain['bg'] = 'White'
         self.windowMain.geometry(util().toCenterScreen(400, 100))
         self.windowMain.focus_force()
         self.windowMain.title('IGTEC - BACKUP')
@@ -109,7 +110,7 @@ class Backup_BD:
         def voltar(event):
             self.windowMain.destroy()
 
-        lblDevice = Label(self.windowMain, text='ESCOLHA O DISPOSITIVO:', font='Arial 12 bold')
+        lblDevice = Label(self.windowMain, text='ESCOLHA O DISPOSITIVO:', font='Arial 12 bold', bg='White')
         lblDevice.pack()
 
         #BUSCAR DISPOSITIVOS

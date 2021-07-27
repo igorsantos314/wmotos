@@ -348,7 +348,7 @@ class Tela_Vender_Produtos:
 
                     lblBuscarVenda.destroy()
                     etBuscarVenda.destroy()
-                    
+
                     #VALORES
                     lblConsultaSubtotal.destroy()
                     lblCountConsultaSubtotal.destroy()
@@ -652,4 +652,4 @@ class Tela_Vender_Produtos:
 
         self.windowMain.mainloop()
 
-Tela_Vender_Produtos()
+#Tela_Vender_Produtos()
