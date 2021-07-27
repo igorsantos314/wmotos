@@ -24,7 +24,7 @@ class Tela_Vender_Produtos:
         
         self.windowMain = Tk()
         self.windowMain.resizable(False, False)
-        self.windowMain.geometry(util().toCenterScreen(1000, 550))
+        self.windowMain.geometry(util().toCenterScreen(1000, 520))
         self.windowMain.focus_force()
         self.windowMain.title('IGTEC - VENDER PRODUTOS')
         self.windowMain['bg'] = 'White'
@@ -236,10 +236,10 @@ class Tela_Vender_Produtos:
                 self.lblQuant = Label(self.windowMain, text='Quantidade:', font='Arial 12 bold', bg='DodgerBlue', fg='White')
                 self.lblQuant.place(x=440, y=210)
 
-                self.etQuant = Entry(self.windowMain, font='Arial 12 bold', width=10)
+                self.etQuant = Entry(self.windowMain, font='Arial 12 bold', width=12)
                 self.etQuant.insert(0, '1')
                 self.etQuant.place(x=440, y=240)
-                    
+                
                 self.etQuant.focus_force()
 
                 self.etQuant.bind('<Return>', addCarrinho)
@@ -264,14 +264,46 @@ class Tela_Vender_Produtos:
 
                     #FAZ A BUSCA DA VENDA NO BANCO DE DADOS
                     venda = bd().getVendaId(self.id_atual)
-                    
-                    if venda:
 
+                    #LIMPA OS VALORES DA VENDA
+                    lblCountConsultaSubtotal['text'] = ''
+                    lblCountConsultaQuant['text']    = ''
+                    lblCountConsultaTotal['text']    = ''
+
+                    if venda:
+                        #VALORES A EXIBIR
+                        subtotal = 0
+                        quant = 0
+                        total = 0
+                        
                         #VARRE A LISTA DE PRODUTOS DA VENDA
                         for v in venda:
-                            #PREENCHER TABELA COM OS DADOS DA VENDA
-                            treevViewVenda.insert("", 'end', text ="L1", values=(v[1], v[2], v[3], v[4], v[3]*v[4]))
                             
+                            subtotal_produto = float(v[3])
+                            quant_produto = int(v[4])
+                            total_produto = subtotal_produto * quant_produto
+
+                            #SOMA OS VALORES DA VENDA
+                            subtotal += subtotal_produto
+                            quant += quant_produto
+                            total += total_produto
+
+                            #PREENCHER TABELA COM OS DADOS DA VENDA
+                            treevViewVenda.insert("", 'end', text ="L1", 
+                                values=(
+                                    v[1], 
+                                    v[2], 
+                                    f"{subtotal_produto:.2f}".replace('.',','), 
+                                    v[4], 
+                                    f"{total_produto:.2f}".replace('.',',')
+                                    )
+                            )
+
+                        #SOMA OS VALORES DA VENDA
+                        lblCountConsultaSubtotal['text'] = f'R$ {subtotal:.2f}'.replace('.',',')
+                        lblCountConsultaQuant['text']    = f'{quant}'
+                        lblCountConsultaTotal['text']    = f'R$ {total:.2f}'.replace('.',',')
+
                 #NAVEGAÇÃO
                 def nav(position):
                     
@@ -316,6 +348,16 @@ class Tela_Vender_Produtos:
 
                     lblBuscarVenda.destroy()
                     etBuscarVenda.destroy()
+                    
+                    #VALORES
+                    lblConsultaSubtotal.destroy()
+                    lblCountConsultaSubtotal.destroy()
+
+                    lblConsultaQuant.destroy()
+                    lblCountConsultaQuant.destroy()
+
+                    lblConsultaTotal.destroy()
+                    lblCountConsultaTotal.destroy()
 
                     btSair.destroy()
 
@@ -463,6 +505,25 @@ class Tela_Vender_Produtos:
                 treevViewVenda.heading("4", text ="Quantidade")
                 treevViewVenda.heading("5", text ="Total")
 
+                # ---- VALORES DA COMPRA ----
+                lblConsultaSubtotal = Label(text='Subtotal:', font='Arial 20', bg=cor_fundo)
+                lblConsultaSubtotal.place(x=10, y=460)
+                
+                lblCountConsultaSubtotal = Label(text='', font='Arial 20 bold', fg='DodgerBlue', bg=cor_fundo)
+                lblCountConsultaSubtotal.place(x=130, y=460)
+
+                lblConsultaQuant = Label(text='Quantidade:', font='Arial 20', bg=cor_fundo)
+                lblConsultaQuant.place(x=350, y=460)
+                
+                lblCountConsultaQuant = Label(text='', font='Arial 20 bold', fg='DarkOrange', bg=cor_fundo)
+                lblCountConsultaQuant.place(x=510, y=460)
+
+                lblConsultaTotal = Label(text='Total:', font='Arial 20', bg=cor_fundo)
+                lblConsultaTotal.place(x=730, y=460)
+                
+                lblCountConsultaTotal = Label(text='', font='Arial 20 bold', fg='Green', bg=cor_fundo)
+                lblCountConsultaTotal.place(x=810, y=460)
+                
                 #FOCA NO CAMPO DE DIGITAR O ID DA VENDA
                 etBuscarVenda.focus_force()
 
@@ -480,7 +541,7 @@ class Tela_Vender_Produtos:
             self.quant = 0
 
             refreshValores()
-        
+
         def salvar(event):
             
             if self.enable_venda:
