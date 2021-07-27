@@ -74,7 +74,7 @@ class print_document:
         body =  "________________________________________________________________________________\n\n"
         body += f"VENDA NÚMERO: {venda_id}\n"
         body +=  "________________________________________________________________________________\n"
-        body += "ID   PRODUTO                                      SUB.      QUANT.     TOTAL\n"
+        body += "ID   PRODUTO                                 SUB.      QUANT.    TOTAL\n"
         body += "--------------------------------------------------------------------------------\n"
 
         subtotal = 0
@@ -88,15 +88,21 @@ class print_document:
             subtotal += float(produto[2])
             quantidade += int(produto[3])
 
-            t_id = ' ' * (5-len(produto[0]))
-            t_nome = ' ' * (45-len(produto[1]))
-            t_sub = ' '*(10-len(produto[2]))
-            t_quant = ' '*(12-len(produto[3]))
+            str_sub = f"{float(produto[2]):.2f}"
 
-            body += f"{produto[0]}{t_id}{produto[1]}{t_nome}{produto[2]}{t_sub}{produto[3]}{t_quant}{total_produto}\n" 
+            t_id    = ' ' * (5-len(produto[0]))
+            t_nome  = ' ' * (40-len(produto[1]))
+            t_sub   = ' ' * (12-len(str_sub))
+            t_quant = ' ' * (8-len(produto[3]))
+            
+            str_dados = f"{produto[0]}{t_id}{produto[1]}{t_nome}{float(produto[2]):.2f}{t_sub}{produto[3]}{t_quant}{float(total_produto):.2f}\n"
+            body += str_dados.replace('.', ',') 
             
         bottom = "\n________________________________________________________________________________\n"
-        bottom += f"SUBTOTAL: R${subtotal}              QUANTIDADE: {quantidade}              TOTAL: R${total}\n\n"
+
+        str_total = f"SUBTOTAL: R${subtotal:.2f}              QUANTIDADE: {quantidade}              TOTAL: R${total:.2f}\n\n"
+        bottom += str_total.replace('.', ',')
+
         bottom += "________________________________________________________________________________\n"
         bottom += "IGTEC - IMPRESSO EM: " + datetime.now().strftime('%d/%m/%Y as %H:%M') + "\n\n\n\n\n"
 

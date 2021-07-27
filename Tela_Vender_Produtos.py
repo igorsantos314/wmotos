@@ -434,15 +434,15 @@ class Tela_Vender_Produtos:
                 btSair.place(x=945, y=50)
 
                 #NAVEGAÇÃO ENTRE VENDAS
-                imagem_direita = PhotoImage(file=f"src/seta_direita.png")
+                imagem_direita = PhotoImage(file=f"src/seta_direita_48.png")
                 btDireita = Button(self.windowMain, image=imagem_direita, bg=cor_fundo, bd=0, command=lambda:nav(1))
                 btDireita.imagem = imagem_direita
-                btDireita.place(x=890, y=450)
+                btDireita.place(x=745, y=50)
 
-                imagem_esquerda = PhotoImage(file=f"src/seta_esquerda.png")
+                imagem_esquerda = PhotoImage(file=f"src/seta_esquerda_48.png")
                 btEsquerda = Button(self.windowMain, image=imagem_esquerda, bg=cor_fundo, bd=0, command=lambda:nav(-1))
                 btEsquerda.imagem = imagem_esquerda
-                btEsquerda.place(x=10, y=450)
+                btEsquerda.place(x=695, y=50)
 
                 #TABELA PARA EXIBIR A VENDA
                 treevViewVenda = ttk.Treeview(self.windowMain, selectmode ='browse', height=16)
@@ -483,87 +483,91 @@ class Tela_Vender_Produtos:
         
         def salvar(event):
             
-            #VERIFICA SE TEM ALGUM ITEM NO CARRINHO
-            if len(treevVenda.get_children()) != 0:
-                if messagebox.askyesno('','FINALIZAR VENDA?'):
-                    
-                    list_prod = []
-
-                    for item in treevVenda.get_children():
+            if self.enable_venda:
+                #VERIFICA SE TEM ALGUM ITEM NO CARRINHO
+                if len(treevVenda.get_children()) != 0:
+                    if messagebox.askyesno('','FINALIZAR VENDA?'):
                         
-                        tuple_dados = ( treevVenda.item(item, "values")[0],
-                                        treevVenda.item(item, "values")[1],
-                                        treevVenda.item(item, "values")[2],
-                                        treevVenda.item(item, "values")[3])
+                        list_prod = []
+
+                        for item in treevVenda.get_children():
+                            
+                            tuple_dados = ( treevVenda.item(item, "values")[0],
+                                            treevVenda.item(item, "values")[1],
+                                            treevVenda.item(item, "values")[2],
+                                            treevVenda.item(item, "values")[3])
+                            
+                            list_prod.append(tuple_dados)
                         
-                        list_prod.append(tuple_dados)
-                    
-                    #ENVIAR PRO BANCO DE DADOS
-                    bd().insertVendaProduto(list_prod)
+                        #ENVIAR PRO BANCO DE DADOS
+                        bd().insertVendaProduto(list_prod)
 
-                    #LIMPAR VENDA
-                    limpar()
-                    
-                    messagebox.showinfo('','SALVO !')
+                        #LIMPAR VENDA
+                        limpar()
+                        
+                        messagebox.showinfo('','SALVO !')
 
-                    #FOCAR NO CAMPO DE CONSULTA
-                    etNomeProduto.focus_force()
-                    
-                    #PEGAR O ID DA VENDA
-                    id_current = bd().getMaxIdVenda()
+                        #FOCAR NO CAMPO DE CONSULTA
+                        etNomeProduto.focus_force()
+                        
+                        #PEGAR O ID DA VENDA
+                        id_current = bd().getMaxIdVenda()
 
-                    #SETA O ID NA LISTA PARA IMPRESSÃO
-                    list_impressao = [
-                        id_current
-                    ]
+                        #SETA O ID NA LISTA PARA IMPRESSÃO
+                        list_impressao = [
+                            id_current
+                        ]
 
-                    #VARRE A LISTA DE PRODUTOS
-                    for p in list_prod:
-                        #MANDA OARA UMA LISTA DE IMPRESSAO
-                        list_impressao.append(p)
-                    
-                    if messagebox.askyesno('','IMPRIMIR COMPROVANTE?'):
-                        #IMPRIMIR A VENDA
-                        print_document('venda', list_impressao)
-
-            else:
-                messagebox.showwarning('','CARRINHO VAZIO :(')
+                        #VARRE A LISTA DE PRODUTOS
+                        for p in list_prod:
+                            #MANDA OARA UMA LISTA DE IMPRESSAO
+                            list_impressao.append(p)
+                        
+                        if messagebox.askyesno('','IMPRIMIR COMPROVANTE?'):
+                            #IMPRIMIR A VENDA
+                            print_document('venda', list_impressao)
+                            
+                else:
+                    messagebox.showwarning('','CARRINHO VAZIO :(')
 
         def cancelarVenda(event):
-
-            if messagebox.askyesno('','CANCELAR VENDA?'):
-                try:
-                    #TENTA FECHAR TELA DE QUANTIDADE CASO ABERTA
-                    fecharQuantidade(None)
-                except:
-                    pass
-                    
-                #LIMPAR
-                limpar()
+            if self.enable_venda:
+                if messagebox.askyesno('','CANCELAR VENDA?'):
+                    try:
+                        #TENTA FECHAR TELA DE QUANTIDADE CASO ABERTA
+                        fecharQuantidade(None)
+                    except:
+                        pass
+                        
+                    #LIMPAR
+                    limpar()
         
         def sair(event):
             #FECHAR JANELA
             self.windowMain.destroy()
 
         def cadastrarProduto(event):
-            #FECHAR JANELA
-            sair(None)
 
-            #ABRIR TELA DE CADASTRAR PRODUTO
-            Tela_Cadastrar_Produto()
+            if self.enable_venda:
+                #FECHAR JANELA
+                sair(None)
 
-            #CHAMAR SETOR DE VENDAS
-            Tela_Vender_Produtos()
+                #ABRIR TELA DE CADASTRAR PRODUTO
+                Tela_Cadastrar_Produto()
+
+                #CHAMAR SETOR DE VENDAS
+                Tela_Vender_Produtos()
 
         def exibirProdutos(event):
-            #FECHAR JANELA
-            sair(None)
+            if self.enable_venda:
+                #FECHAR JANELA
+                sair(None)
 
-            #ABRIR TELA DE CADASTRAR PRODUTO
-            Tela_Show_Produto()
-            
-            #CHAMAR SETOR DE VENDAS
-            Tela_Vender_Produtos()
+                #ABRIR TELA DE CADASTRAR PRODUTO
+                Tela_Show_Produto()
+                
+                #CHAMAR SETOR DE VENDAS
+                Tela_Vender_Produtos()
 
         #INICIALIZAR VALORES
         refreshValores()

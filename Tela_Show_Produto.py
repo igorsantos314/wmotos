@@ -121,7 +121,7 @@ class Tela_Show_Produto:
             #VERIFICA SE O ID É VALIDO
             if id != False:
 
-                if messagebox.askquestion('', 'EXCLUIR PRODUTO?'):
+                if messagebox.askyesno('', 'EXCLUIR PRODUTO?'):
                     #DELETAR O PRODUTO
                     bd().delProduto(id)
 
@@ -133,12 +133,13 @@ class Tela_Show_Produto:
 
         #MANUAL
         lblAjuda = Label(text='<Esc> Voltar   <Enter> Editar    <Del> Excluir', bg='White')
-        lblAjuda.place(x=10, y=390)
+        lblAjuda.place(x=10, y=385)
 
         #FOCA NO CAMPO DE CONSULTA
         etNomeProduto.focus_force()
 
         #TECLAS DE ATALHO
+        treevProduto.bind("<Double-Button-1>", editar)
         treevProduto.bind('<Return>', editar)
         treevProduto.bind('<Delete>', excluir)
 
