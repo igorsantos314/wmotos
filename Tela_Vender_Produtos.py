@@ -24,11 +24,11 @@ class Tela_Vender_Produtos:
         
         self.windowMain = Tk()
         self.windowMain.resizable(False, False)
-        self.windowMain.geometry(util().toCenterScreen(1000, 520))
+        self.windowMain.geometry(util().toCenterScreen(1000, 600))
         self.windowMain.focus_force()
         self.windowMain.title('IGTEC - VENDER PRODUTOS')
         self.windowMain['bg'] = 'White'
-
+        
         #TREEVIEW BUSCAR PRODUTO
         lblNomeProduto = Label(self.windowMain, text='BUSCAR:', font='Arial 12', bg='White')
         lblNomeProduto.place(x=10, y=120)
@@ -118,7 +118,7 @@ class Tela_Vender_Produtos:
         # Assigning the width and anchor to the 
         # respective columns 
         treevVenda.column("1", width = 70, anchor ='c') 
-        treevVenda.column("2", width = 250, anchor ='se')
+        treevVenda.column("2", width = 237, anchor ='se')
         treevVenda.column("3", width = 70, anchor ='se')
         treevVenda.column("4", width = 70, anchor ='se')
         treevVenda.column("5", width = 70, anchor ='se')
@@ -132,24 +132,50 @@ class Tela_Vender_Produtos:
         treevVenda.heading("5", text ="Total")
 
         # -- VALORES --
-        lblSubTotal = Label(text='SUBTOTAL: ', font='Arial 20', bg='White', fg='DodgerBlue')
-        lblSubTotal.place(x=10, y=470)
+        lblInfoSub = Label(text='SUBTOTAL: ', font='Arial 20', bg='White', fg='Black')
+        lblInfoSub.place(x=10, y=470)
+        
+        lblSubTotal = Label(text='', font='Arial 20 bold', bg='White', fg='DodgerBlue')
+        lblSubTotal.place(x=170, y=470)
+        
+        lblInfoQuant = Label(text='QUANT: ', font='Arial 20', bg='White', fg='Black')
+        lblInfoQuant.place(x=440, y=470)
 
-        lblQuant = Label(text='QUANT: ', font='Arial 20', bg='White', fg='DarkOrange')
-        lblQuant.place(x=440, y=470)
+        lblQuant = Label(text='', font='Arial 20 bold', bg='White', fg='DarkOrange')
+        lblQuant.place(x=550, y=470)
 
-        lblTotal = Label(text='TOTAL: ', font='Arial 20 bold', bg='White', fg='Green')
-        lblTotal.place(x=650, y=470)
+        lblInfoTotal = Label(text='TOTAL: ', font='Arial 20', bg='White', fg='Black')
+        lblInfoTotal.place(x=650, y=470)
 
-        # -- AJUDA --
-        lblAjuda = Label(text='<Esc> Voltar    <F1> Cadastrar Produto    <F2> Produtos Cadastrados    <F3> Finalizar Venda    <F4> Cancelar    <F6> Consultar Vendas', bg='White')
-        lblAjuda.place(x=10, y=525)
+        lblTotal = Label(text='', font='Arial 20 bold', bg='White', fg='Green')
+        lblTotal.place(x=750, y=470)
+        
+        # -- BOTÕES DE ACESSO -- 
+        tam_bt = 18
+        alt_bt = 2
+        bg_bt = 'DodgerBlue'
+        fg_bt = 'White'
+
+        btCadastrarProduto = Button(text='(F1) Cadastrar Prod.', font='Arial 12 bold', bd=0, bg='DarkOrange', fg=fg_bt, width=tam_bt, height=alt_bt, command=lambda: cadastrarProduto(None))
+        btCadastrarProduto.place(x=10, y=540)
+
+        btConsultarProduto = Button(text='(F2) Consultar Prod.', font='Arial 12 bold', bd=0, bg=bg_bt, fg=fg_bt, width=tam_bt, height=alt_bt, command=lambda: exibirProdutos(None))
+        btConsultarProduto.place(x=200, y=540)
+
+        btFinalizarVenda = Button(text='(F3) Finalizar Venda', font='Arial 12 bold', bd=0, bg='Green', fg=fg_bt, width=tam_bt, height=alt_bt, command=lambda: salvar(None))
+        btFinalizarVenda.place(x=390, y=540)
+
+        btFinalizarVenda = Button(text='(F4) Cancelar Venda', font='Arial 12 bold', bd=0, bg='Red', fg=fg_bt, width=tam_bt, height=alt_bt, command=lambda: cancelarVenda(None))
+        btFinalizarVenda.place(x=580, y=540)
+
+        btFinalizarVenda = Button(text='(F6) Consultar Vendas', font='Arial 12 bold', bd=0, bg='DarkSlateGray', fg=fg_bt, width=tam_bt, height=alt_bt, command=lambda: telaVendas(None))
+        btFinalizarVenda.place(x=770, y=540)
         
         def refreshValores():
             #SETAR VALORES
-            lblSubTotal['text'] = f'SUBTOTAL:  R$ {self.subtotal:.2f}'
-            lblQuant['text'] = f'QUANT: {self.quant}'
-            lblTotal['text'] = f'TOTAL: R$ {self.total:.2f}'
+            lblSubTotal['text'] = f'R$ {self.subtotal:.2f}'
+            lblQuant['text'] = f'{self.quant}'
+            lblTotal['text'] = f'R$ {self.total:.2f}'
 
         def buscar(event):
             #LIMPAR TABELA

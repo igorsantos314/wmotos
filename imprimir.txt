@@ -1,57 +1,43 @@
-                           ORDEM DE SERVIÇO - W MOTOS  
-________________________________________________________________________________
-CIDADE:                         BEJO JARDIM
-RUA:                            JOÃO BATISTA SENHORINHO
-NÚMERO:                         155
-PONTO DE REFERÊNCIA:            AVENIDA DO SESC
-WHATSAPP:                       (81) 98250-0763
+                               NOTA DE VENDA - W MOTOS  
 ________________________________________________________________________________
 
-DADOS DA ORDEM DE SERVIÇO
+VENDA NÚMERO: 19
 ________________________________________________________________________________
-ID:                             16 
-DATA DE ENTRADA:                2/7/2021 
-DATA DE SAIDA:                  2/7/2021 
-NOME DO CLIENTE:                JUBLIE SOAREZ DA COSTA 
-TELEFONE:                       98233307654 
-VEICULO:                        CB 300 
+ID   PRODUTO                                 SUB.      QUANT.    TOTAL
+--------------------------------------------------------------------------------
+1    OLEO LUBRAX                             18,00       1       18,0
+7    REPARO MOTOR DE PARTIDA 150             51,00       1       51,0
+6    LAMPADA 150                             12,50       1       12,5
+7    REPARO MOTOR DE PARTIDA 150             51,00       1       51,0
+8    MOLA PÉ DE APOIO                        3,00        1       3,0
+7    REPARO MOTOR DE PARTIDA 150             51,00       1       51,0
+6    LAMPADA 150                             12,50       1       12,5
+1    OLEO LUBRAX                             18,00       1       18,0
+7    REPARO MOTOR DE PARTIDA 150             51,00       1       51,0
+6    LAMPADA 150                             12,50       1       12,5
+8    MOLA PÉ DE APOIO                        3,00        1       3,0
+1    OLEO LUBRAX                             18,00       1       18,0
+6    LAMPADA 150                             12,50       1       12,5
+7    REPARO MOTOR DE PARTIDA 150             51,00       1       51,0
+8    MOLA PÉ DE APOIO                        3,00        1       3,0
+1    OLEO LUBRAX                             18,00       1       18,0
+6    LAMPADA 150                             12,50       1       12,5
+7    REPARO MOTOR DE PARTIDA 150             51,00       1       51,0
+8    MOLA PÉ DE APOIO                        3,00        1       3,0
+1    OLEO LUBRAX                             18,00       1       18,0
+6    LAMPADA 150                             12,50       1       12,5
+7    REPARO MOTOR DE PARTIDA 150             51,00       1       51,0
+8    MOLA PÉ DE APOIO                        3,00        1       3,0
+7    REPARO MOTOR DE PARTIDA 150             51,00       1       51,0
+6    LAMPADA 150                             12,50       1       12,5
+1    OLEO LUBRAX                             18,00       1       18,0
 
 ________________________________________________________________________________
-DESCRIÇÃO DO CLIENTE:
-     DASDASD
-
-
-
-
+SUBTOTAL: R$618,50              QUANTIDADE: 26              TOTAL: R$618,50
 
 ________________________________________________________________________________
-LAUDO TECNICO:
-     DAS
+IGTEC - IMPRESSO EM: 27/07/2021 as 19:34
 
 
 
 
-
-________________________________________________________________________________
-
-FORMA DE PAGAMENTO:             OUTRO 
-STATUS:                         CONCLUIDO 
-VALOR DE MÃO DE OBRA:           R$ 400.00 
-VALOR EM PEÇAS:                 R$ 236.00
-OUTROS VALORES:                 R$ 100.00
-TOTAL:                          R$ 736.00
-________________________________________________________________________________
-
-IGTEC - IMPRESSO EM: 27/07/2021 as 19:32
-
-
-
-
-                  ___________________________________________                    
-                           Assinatura do Responsável
-
-
-
-
-                  ___________________________________________                    
-                             Assinatura do Cliente

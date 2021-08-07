@@ -112,8 +112,12 @@ class Tela_Show_Produto:
 
             #INSERIR NO TREEVIEW DE PRODUTO
             for produto in bd().getNomeProduto(etNomeProduto.get().upper()):
-                lucro = produto[3]-produto[2]
-                treevProduto.insert("", 'end', text ="L1", values=(produto[0], produto[1], produto[2], produto[3], lucro))
+                valor_compra = f'{produto[2]:.2f}'.replace('.', ',')
+                valor_venda = f'{produto[3]:.2f}'.replace('.', ',')
+
+                lucro = f'{(produto[3] - produto[2]):.2f}'.replace('.', ',')
+                
+                treevProduto.insert("", 'end', text ="L1", values=(produto[0], produto[1], valor_compra, valor_venda, lucro))
 
         def excluir(event):
             id = getId()

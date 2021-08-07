@@ -20,7 +20,7 @@ class Backup_BD:
 
         self.data_atual = f'{self.day}-{self.month}-{self.year}'
         self.origem = 'wmotos.db'
-        self.list_devices = ['E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N']
+        self.list_devices = ['E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'W']
         self.list_color = [ 'SpringGreen', 'SaddleBrown', 'Black', 'SlateBlue', 'DarkSlateGray',
                             'Indigo', 'DarkRed', 'DarkOrange', 'Goldenrod', 'MidnightBlue']
 
@@ -91,7 +91,7 @@ class Backup_BD:
         
         def startBackup(device):
             
-            if messagebox.askquestion('','NÃO DESLIGUE OU FECHE O COMPUTADOR, DESEJA CONTINUAR?'):
+            if messagebox.askyesno('','NÃO DESLIGUE OU FECHE O COMPUTADOR, DESEJA CONTINUAR?'):
 
                 try:
                     #INCIAR BACKUP
@@ -104,8 +104,8 @@ class Backup_BD:
                 except:
                     messagebox.showerror('','NÃO FOI POSSIVEL REALIZAR O BACKUP')
 
-            #FECHAR A JANELA
-            self.windowMain.destroy()
+                #FECHAR A JANELA
+                self.windowMain.destroy()
 
         def voltar(event):
             self.windowMain.destroy()
@@ -142,3 +142,5 @@ class Backup_BD:
 
         #REALIZAR BACKUP PARA UNIDADE REMOVIVEL
         shutil.copy(self.origem, self.destino)
+
+#Backup_BD()

@@ -123,6 +123,12 @@ class Tela_Cadastrar_OS:
         etOutros.insert(0, '0')
         etOutros.place(x=410, y=390)
 
+        lblTotal = Label(self.windowMain, text='Total:', font='Arial 12', bg='White')
+        lblTotal.place(x=10, y=435)
+
+        etTotal = Entry(self.windowMain, font='Arial 12 ', width=20, state='disable')
+        etTotal.place(x=10, y=460)
+        
         #SALVAR
         imagem_salvar = PhotoImage(file=f"src/salvar_48.png")
         btExibir = Button(self.windowMain, image=imagem_salvar, bg='White', bd=0, command=lambda: save())
@@ -194,8 +200,8 @@ class Tela_Cadastrar_OS:
                             conteudo
                         )
 
-                # LIMPAR
-                clear()
+                    # LIMPAR
+                    clear()
 
         def clear():
             # LIMPAR
