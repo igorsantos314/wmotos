@@ -489,4 +489,4 @@ class consulta:
 
         self.windowTroco.mainloop()
 
-consulta()
+#consulta()

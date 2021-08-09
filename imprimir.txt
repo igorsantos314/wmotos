@@ -1,42 +1,19 @@
                                NOTA DE VENDA - W MOTOS  
 ________________________________________________________________________________
 
-VENDA NÚMERO: 19
+VENDA NÚMERO: 4
 ________________________________________________________________________________
 ID   PRODUTO                                 SUB.      QUANT.    TOTAL
 --------------------------------------------------------------------------------
-1    OLEO LUBRAX                             18,00       1       18,0
-7    REPARO MOTOR DE PARTIDA 150             51,00       1       51,0
 6    LAMPADA 150                             12,50       1       12,5
-7    REPARO MOTOR DE PARTIDA 150             51,00       1       51,0
-8    MOLA PÉ DE APOIO                        3,00        1       3,0
-7    REPARO MOTOR DE PARTIDA 150             51,00       1       51,0
-6    LAMPADA 150                             12,50       1       12,5
-1    OLEO LUBRAX                             18,00       1       18,0
-7    REPARO MOTOR DE PARTIDA 150             51,00       1       51,0
-6    LAMPADA 150                             12,50       1       12,5
-8    MOLA PÉ DE APOIO                        3,00        1       3,0
-1    OLEO LUBRAX                             18,00       1       18,0
-6    LAMPADA 150                             12,50       1       12,5
-7    REPARO MOTOR DE PARTIDA 150             51,00       1       51,0
-8    MOLA PÉ DE APOIO                        3,00        1       3,0
-1    OLEO LUBRAX                             18,00       1       18,0
-6    LAMPADA 150                             12,50       1       12,5
-7    REPARO MOTOR DE PARTIDA 150             51,00       1       51,0
-8    MOLA PÉ DE APOIO                        3,00        1       3,0
-1    OLEO LUBRAX                             18,00       1       18,0
-6    LAMPADA 150                             12,50       1       12,5
-7    REPARO MOTOR DE PARTIDA 150             51,00       1       51,0
-8    MOLA PÉ DE APOIO                        3,00        1       3,0
-7    REPARO MOTOR DE PARTIDA 150             51,00       1       51,0
-6    LAMPADA 150                             12,50       1       12,5
-1    OLEO LUBRAX                             18,00       1       18,0
+5    ROLAMENTO RADIAL BROS 150               15,00       1       15,0
+4    CAIXA DE DIREÇÃO BROS 150 2011          20,00       1       20,0
 
 ________________________________________________________________________________
-SUBTOTAL: R$618,50              QUANTIDADE: 26              TOTAL: R$618,50
+SUBTOTAL: R$47,50              QUANTIDADE: 3              TOTAL: R$47,50
 
 ________________________________________________________________________________
-IGTEC - IMPRESSO EM: 27/07/2021 as 19:34
+IGTEC - IMPRESSO EM: 08/08/2021 as 21:06
 
 
 
