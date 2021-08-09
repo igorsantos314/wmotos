@@ -167,8 +167,8 @@ class consulta:
         def getAll():
             #VARRER LISTA E ADICIONAR NA TABELA
             for i in bd().getAllOS():
-                total = f"{(i[10] + i[11] + i[12]):.2f}"
-                treev2.insert("", 'end', text ="L1", values =(i[0], i[1], i[2], i[3], i[5], i[8], i[9], i[10], i[11], i[12], total))
+                #FUNCAO PARA INSERIR NA TABELA
+                inserirTabela(i)
 
         def buscar(event):
             
@@ -177,8 +177,16 @@ class consulta:
 
             #VARRER LISTA E ADICIONAR NA TABELA
             for i in bd().getNomeVeiculoOS(etBuscar.get().upper()):
-                total = f"{(i[10] + i[11] + i[12]):.2f}"
-                treev2.insert("", 'end', text ="L1", values =(i[0], i[1], i[2], i[3], i[5], i[8], i[9], i[10], i[11], i[12], total))
+                #FUNCAO PARA INSERIR NA TABELA
+                inserirTabela(i)
+
+        def inserirTabela(item):
+            str_obra = f"{item[10]:.2f}".replace('.', ',')
+            str_pecas = f"{item[11]:.2f}".replace('.', ',')
+            str_outros = f"{item[12]:.2f}".replace('.', ',')
+
+            total = f"{(item[10] + item[11] + item[12]):.2f}".replace('.', ',')
+            treev2.insert("", 'end', text ="L1", values =(item[0], item[1], item[2], item[3], item[5], item[8], item[9], str_obra, str_pecas, str_outros, total))
 
         def limpar(event):
             #LIMPAR CAMPO DE CONSULTA
@@ -337,7 +345,7 @@ class consulta:
                 itemSelecionado = treev2.selection()[0]
 
                 #PEGAR VALORES
-                val = float(treev2.item(itemSelecionado, "values")[10])
+                val = treev2.item(itemSelecionado, "values")[10]
                 
                 #CHAMAR JANELA DE TROCO
                 self.CalcularTroco(val)
@@ -417,10 +425,10 @@ class consulta:
         lblTotal.place(x=10, y=30)
         
         etValor = Entry(self.windowTroco, font='Arial 15 bold')
-        etValor.insert(0, f"{valor:.2f}".replace('.', ','))
+        etValor.insert(0, valor)
         etValor['state'] = 'disabled'
         etValor.place(x=130, y=30)
-
+    
         #DESCONTO
         lblDesc = Label(self.windowTroco, text='Desconto:', font='Arial 15', bg='White')
         lblDesc.place(x=10, y=80)
@@ -450,7 +458,7 @@ class consulta:
 
             try:
                 desconto = float(etDesc.get().replace(',','.'))
-                troco = float(etRecebeu.get().replace(',','.')) - (valor - desconto)
+                troco = float(etRecebeu.get().replace(',','.')) - (float(valor.replace(',', '.')) - desconto)
 
                 #HABILITAR PARA EDIÇÃO
                 etTroco['state'] = 'normal'
@@ -481,4 +489,4 @@ class consulta:
 
         self.windowTroco.mainloop()
 
-#consulta()
+consulta()

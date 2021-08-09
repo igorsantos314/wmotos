@@ -52,6 +52,9 @@ class Tela_Cadastrar_Produto:
 
                 messagebox.showinfo('', 'PRODUTO CADASTRADO !')
 
+                #FOCA NO CAMPO DE NOME
+                etNomeProduto.focus_force()
+                
             else:
                 messagebox.showwarning('','PREENCHA TODOS OS CAMPOS!')
         

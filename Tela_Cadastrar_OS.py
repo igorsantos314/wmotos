@@ -124,11 +124,17 @@ class Tela_Cadastrar_OS:
         etOutros.place(x=410, y=390)
 
         lblTotal = Label(self.windowMain, text='Total:', font='Arial 12', bg='White')
-        lblTotal.place(x=10, y=435)
+        lblTotal.place(x=610, y=365)
 
-        etTotal = Entry(self.windowMain, font='Arial 12 ', width=20, state='disable')
-        etTotal.place(x=10, y=460)
+        self.etTotal = Entry(self.windowMain, font='Arial 12 bold', width=15, state='disable')
+        self.etTotal.place(x=610, y=390)
         
+        #CALCULADORA
+        imagem_total = PhotoImage(file=f"src/troco_48.png")
+        btTotal = Button(self.windowMain, image=imagem_total, bg='White', bd=0, command=lambda: calcTotal())
+        btTotal.imagem = imagem_total
+        btTotal.place(x=740, y=365)
+
         #SALVAR
         imagem_salvar = PhotoImage(file=f"src/salvar_48.png")
         btExibir = Button(self.windowMain, image=imagem_salvar, bg='White', bd=0, command=lambda: save())
@@ -141,6 +147,20 @@ class Tela_Cadastrar_OS:
         btVoltar.imagem = imagem_voltar
         btVoltar.place(x=740, y=430)
         
+        def calcTotal():
+            #VERIFICA SE NÃO HÁ NENHUM CAMPO DE VALOR VAZIO
+            verificarCampos()
+
+            #HABILITA O CAMPO
+            self.etTotal['state'] = 'normal'
+
+            #LIMPA E CALCULA
+            self.etTotal.delete(0, END)
+            self.etTotal.insert(0, f"{(float(etObra.get().replace(',', '.')) + float(etPecas.get().replace(',', '.')) + float(etOutros.get().replace(',', '.')))}")
+
+            #DESABILITA O CAMPO
+            self.etTotal['state'] = 'disable'
+
         def verificarCampos():
 
             #VERIFICA SE TEM NUMERO NOS CAMPOS DE VALORES

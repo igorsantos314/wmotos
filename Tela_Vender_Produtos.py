@@ -616,7 +616,7 @@ class Tela_Vender_Produtos:
                             
                 else:
                     messagebox.showwarning('','CARRINHO VAZIO :(')
-
+        
         def cancelarVenda(event):
             if self.enable_venda:
                 if messagebox.askyesno('','CANCELAR VENDA?'):
