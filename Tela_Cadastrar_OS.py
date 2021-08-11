@@ -237,8 +237,13 @@ class Tela_Cadastrar_OS:
                         #PEGA O ULTIMO ITEM CADASTRADO
                         conteudo = bd().getOS(
                                         bd().getMaiorIdOS()
-                                    )[0]
-                        
+                                    )
+
+                        #TRATAR DADOS QUE SÃO None
+                        for pos, i in enumerate(conteudo):
+                            if i == None:
+                                conteudo[pos] = ""
+
                         print_document(
                             'os',
                             conteudo
@@ -272,6 +277,8 @@ class Tela_Cadastrar_OS:
 
             etOutros.delete(0, END)
             etOutros.insert(0, '0')
+            
+            self.etTotal.delete(0, END)
             
         def exit(event):
             #DESTRUIR

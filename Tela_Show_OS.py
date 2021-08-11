@@ -206,8 +206,13 @@ class consulta:
             #VERIFICA SE O ID É VALIDO
             if id != False:
                 #PEGAR A TUPLA
-                conteudo = bd().getOS(id)[0]
+                conteudo = bd().getOS(id)
                 
+                #TRATAR DADOS QUE SÃO None
+                for pos, i in enumerate(conteudo):
+                    if i == None:
+                        conteudo[pos] = ""
+
                 #IMPRIMIR
                 print_document('os', conteudo)
         
@@ -417,18 +422,16 @@ class consulta:
         self.windowTroco.title('IGTEC - TROCO')
         self.windowTroco['bg'] = 'White'
         self.windowTroco.resizable(False, False)
-        self.windowTroco.geometry(util().toCenterScreen(400, 250))
+        self.windowTroco.geometry(util().toCenterScreen(370, 250))
         self.windowTroco.focus_force()
 
         #TOTAL DA OS
         lblTotal = Label(self.windowTroco, text='Total:', font='Arial 15', bg='White')
         lblTotal.place(x=10, y=30)
         
-        etValor = Entry(self.windowTroco, font='Arial 15 bold')
-        etValor.insert(0, valor)
-        etValor['state'] = 'disabled'
-        etValor.place(x=130, y=30)
-    
+        lblValor = Label(self.windowTroco, text=f"R$ {valor}", font='Arial 15 bold', bg='White')
+        lblValor.place(x=130, y=30)
+        
         #DESCONTO
         lblDesc = Label(self.windowTroco, text='Desconto:', font='Arial 15', bg='White')
         lblDesc.place(x=10, y=80)
@@ -445,11 +448,14 @@ class consulta:
         etRecebeu.place(x=130, y=130)
         
         #TROCO
-        lblTroco = Label(self.windowTroco, text='Troco:', font='Arial 15', bg='White')
+        bannerFundo = Label(self.windowTroco, font='Arial 20', bg='DodgerBlue', width=21)
+        bannerFundo.place(x=10, y=175)
+
+        lblTroco = Label(self.windowTroco, text='Troco:', font='Arial 15 bold', fg='White', bg='DodgerBlue')
         lblTroco.place(x=10, y=180)
 
-        etTroco = Entry(self.windowTroco, font='Arial 15 bold', state='disabled')
-        etTroco.place(x=130, y=180)
+        lblTrocoCount = Label(self.windowTroco, font='Arial 15 bold', fg='White', bg='DodgerBlue')
+        lblTrocoCount.place(x=130, y=180)
 
         lblManual = Label(self.windowTroco, text='<Esc> Voltar    <Enter> Calcular Troco', bg='White')
         lblManual.place(x=10, y=230)
@@ -460,15 +466,8 @@ class consulta:
                 desconto = float(etDesc.get().replace(',','.'))
                 troco = float(etRecebeu.get().replace(',','.')) - (float(valor.replace(',', '.')) - desconto)
 
-                #HABILITAR PARA EDIÇÃO
-                etTroco['state'] = 'normal'
+                lblTrocoCount['text'] = f"R$ {troco:.2f}".replace('.',',')
 
-                #SETAR O VALOR DO TROCO
-                etTroco.delete(0, END)
-                etTroco.insert(0, f"{troco}".replace('.',','))
-
-                #DESABILITAR
-                etTroco['state'] = 'disabled'
             except:
                 messagebox.showerror('','PREENCHA OS CAMPOS CORRETAMENTE!')
 
@@ -489,4 +488,4 @@ class consulta:
 
         self.windowTroco.mainloop()
 
-#consulta()
+consulta()

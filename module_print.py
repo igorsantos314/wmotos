@@ -32,24 +32,27 @@ class print_document:
         body += f"DATA DE ENTRADA:                {conteudo[1]} \n"   
         body += f"DATA DE SAIDA:                  {conteudo[2]} \n"    
         body += f"NOME DO CLIENTE:                {conteudo[3]} \n"   
-        body += f"TELEFONE:                       {conteudo[4]} \n"     
-        body += f"VEICULO:                        {conteudo[5]} \n\n" 
-
+        body += f"TELEFONE 1:                     {conteudo[4]} \n"   
+        body += f"TELEFONE 2:                     {conteudo[5]} \n"  
+        body += f"VEICULO:                        {conteudo[6]} \n" 
+        body += f"PLACA:                          {conteudo[7]} \n"
+        body += f"QUILOMETRAGEM:                  {conteudo[8]} \n"
+        
         body += "________________________________________________________________________________\n"
         body += "DESCRIÇÃO DO CLIENTE:\n"
-        body += f"     {conteudo[6]}"
+        body += f"     {conteudo[9]}"
 
         body += "________________________________________________________________________________\n"
         body += "LAUDO TECNICO:\n"
-        body += f"     {conteudo[7]}"
+        body += f"     {conteudo[10]}"
         body += "________________________________________________________________________________\n\n"
         
-        body += f"FORMA DE PAGAMENTO:             {conteudo[8]} \n"
-        body += f"STATUS:                         {conteudo[9]} \n"
-        body += f"VALOR DE MÃO DE OBRA:           R$ {conteudo[10]:.2f} \n"
-        body += f"VALOR EM PEÇAS:                 R$ {conteudo[11]:.2f}\n"
-        body += f"OUTROS VALORES:                 R$ {conteudo[12]:.2f}\n"
-        body += f"TOTAL:                          R$ {(conteudo[10] + conteudo[11] + conteudo[12]):.2f}\n"
+        body += f"FORMA DE PAGAMENTO:             {conteudo[11]} \n"
+        body += f"STATUS:                         {conteudo[12]} \n"
+        body += f"VALOR DE MÃO DE OBRA:           R$ {conteudo[13]:.2f} \n"
+        body += f"VALOR EM PEÇAS:                 R$ {conteudo[14]:.2f}\n"
+        body += f"OUTROS VALORES:                 R$ {conteudo[15]:.2f}\n"
+        body += f"TOTAL:                          R$ {(conteudo[13] + conteudo[14] + conteudo[15]):.2f}\n"
 
         body += "________________________________________________________________________________\n\n"
 

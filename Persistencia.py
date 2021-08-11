@@ -193,9 +193,9 @@ class bd:
 
     def getNomeVeiculoPlacaOS(self, str):
 
-        show = f"SELECT * FROM ordem_servico WHERE cliente LIKE '%{str}%' OR veiculo LIKE '%{str}%' placa LIKE '%{str}%'"
+        show = f"SELECT * FROM ordem_servico WHERE cliente LIKE '%{str}%' OR veiculo LIKE '%{str}%' or placa LIKE '%{str}%'"
         self.cur.execute(show)
-        
+
         #RETORNA LISTA DE OS
         return self.cur.fetchall()
 

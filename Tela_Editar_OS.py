@@ -250,8 +250,8 @@ class Tela_Editar_OS:
             etTelefone1.insert(0, dados[4])
             etTelefone2.insert(0, dados[5])
             etVeiculo.insert(0, dados[6])
-            etQuilometragem.insert(0, dados[7])
-            etPlaca.insert(0, dados[8])
+            etPlaca.insert(0, dados[7])
+            etQuilometragem.insert(0, dados[8])
             stDesc.insert(INSERT, dados[9])
             stLaudo.insert(INSERT, dados[10])
             setPagamento(dados[11])
@@ -259,7 +259,7 @@ class Tela_Editar_OS:
             etObra.insert(0, str(dados[13]).replace('.',','))
             etPecas.insert(0, str(dados[14]).replace('.',','))
             etOutros.insert(0, str(dados[15]).replace('.',','))
-
+            
             #CALCULAR O TOTAL
             calcTotal()
 
@@ -281,5 +281,5 @@ class Tela_Editar_OS:
         self.windowMain.bind('<Escape>', exit)
 
         self.windowMain.mainloop()
-
+        
 #Tela_Editar_OS(13)
