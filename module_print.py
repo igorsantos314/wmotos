@@ -36,15 +36,15 @@ class print_document:
         body += f"TELEFONE 2:                     {conteudo[5]} \n"  
         body += f"VEICULO:                        {conteudo[6]} \n" 
         body += f"PLACA:                          {conteudo[7]} \n"
-        body += f"QUILOMETRAGEM:                  {conteudo[8]} \n"
-        
+        body += f"QUILOMETRAGEM:                  {conteudo[8]} \n\n"
+
         body += "________________________________________________________________________________\n"
         body += "DESCRIÇÃO DO CLIENTE:\n"
-        body += f"     {conteudo[9]}"
+        body += f"     {conteudo[9]}\n"
 
         body += "________________________________________________________________________________\n"
         body += "LAUDO TECNICO:\n"
-        body += f"     {conteudo[10]}"
+        body += f"     {conteudo[10]}\n"
         body += "________________________________________________________________________________\n\n"
         
         body += f"FORMA DE PAGAMENTO:             {conteudo[11]} \n"

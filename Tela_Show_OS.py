@@ -431,7 +431,7 @@ class consulta:
         
         lblValor = Label(self.windowTroco, text=f"R$ {valor}", font='Arial 15 bold', bg='White')
         lblValor.place(x=130, y=30)
-        
+
         #DESCONTO
         lblDesc = Label(self.windowTroco, text='Desconto:', font='Arial 15', bg='White')
         lblDesc.place(x=10, y=80)
@@ -488,4 +488,4 @@ class consulta:
 
         self.windowTroco.mainloop()
 
-consulta()
+#consulta()

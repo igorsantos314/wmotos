@@ -221,8 +221,8 @@ class Tela_Cadastrar_OS:
                         etVeiculo.get().upper(),
                         etPlaca.get().upper(),
                         etQuilometragem.get().upper(),
-                        stDesc.get("1.0", END).upper(),
-                        stLaudo.get("1.0", END).upper(),
+                        stDesc.get("1.0", END).upper().replace("\n", ""),
+                        stLaudo.get("1.0", END).upper().replace("\n", ""),
                         comboPagamento.get(),
                         comboStatus.get(),
                         float(etObra.get().replace(',','.')),
@@ -279,7 +279,7 @@ class Tela_Cadastrar_OS:
             etOutros.insert(0, '0')
             
             self.etTotal.delete(0, END)
-            
+
         def exit(event):
             #DESTRUIR
             self.windowMain.destroy()

@@ -204,8 +204,8 @@ class Tela_Editar_OS:
                         etVeiculo.get().upper(),
                         etPlaca.get().upper(),
                         etQuilometragem.get().upper(),
-                        stDesc.get("1.0", END).upper(),
-                        stLaudo.get("1.0", END).upper(),
+                        stDesc.get("1.0", END).upper().replace("\n", ""),
+                        stLaudo.get("1.0", END).upper().replace("\n", ""),
                         comboPagamento.get(),
                         comboStatus.get(),
                         float(etObra.get().replace(',','.')),
@@ -281,5 +281,5 @@ class Tela_Editar_OS:
         self.windowMain.bind('<Escape>', exit)
 
         self.windowMain.mainloop()
-        
+
 #Tela_Editar_OS(13)
