@@ -59,12 +59,33 @@ class Tela_Cadastrar_OS:
         etVeiculo = Entry(self.windowMain, font='Arial 12 ', fg=f'{json_ws().getColorVeiculo()}', width=20)
         etVeiculo.place(x=610, y=35)
 
-        #Telefone
-        lblTelefone = Label(self.windowMain, font='Arial 12', text='Telefone:', bg='White')
-        lblTelefone.place(x=10, y=75)
+        #Telefone 1
+        lblTelefone1 = Label(self.windowMain, font='Arial 12', text='Telefone 1:', bg='White')
+        lblTelefone1.place(x=10, y=75)
 
-        etTelefone = Entry(self.windowMain, font='Arial 12', fg=f'{json_ws().getColorTelefone()}', width=20)
-        etTelefone.place(x=10, y=100)
+        etTelefone1 = Entry(self.windowMain, font='Arial 12', fg=f'{json_ws().getColorTelefone()}', width=20)
+        etTelefone1.place(x=10, y=100)
+
+        #Telefone 2
+        lblTelefone2 = Label(self.windowMain, font='Arial 12', text='Telefone 2:', bg='White')
+        lblTelefone2.place(x=210, y=75)
+
+        etTelefone2 = Entry(self.windowMain, font='Arial 12', fg=f'{json_ws().getColorTelefone()}', width=20)
+        etTelefone2.place(x=210, y=100)
+
+        #Quilometragem
+        lblQuilometragem = Label(self.windowMain, font='Arial 12', text='Quilometragem:', bg='White')
+        lblQuilometragem.place(x=410, y=75)
+
+        etQuilometragem = Entry(self.windowMain, font='Arial 12', width=20)
+        etQuilometragem.place(x=410, y=100)
+
+        #Placa
+        lblPlaca = Label(self.windowMain, font='Arial 12', text='Placa:', bg='White')
+        lblPlaca.place(x=610, y=75)
+
+        etPlaca = Entry(self.windowMain, font='Arial 12', width=20)
+        etPlaca.place(x=610, y=100)
 
         # Descricao e Laudo
         lblDesc = Label(self.windowMain, text='Descrição do Cliente:', font='Arial 12', bg='White')
@@ -195,8 +216,11 @@ class Tela_Cadastrar_OS:
                         etDataEntrada.get(),
                         etDataSaida.get(),
                         etCliente.get().upper(),
-                        etTelefone.get(),
+                        etTelefone1.get(),
+                        etTelefone2.get(),
                         etVeiculo.get().upper(),
+                        etPlaca.get().upper(),
+                        etQuilometragem.get().upper(),
                         stDesc.get("1.0", END).upper(),
                         stLaudo.get("1.0", END).upper(),
                         comboPagamento.get(),
@@ -232,8 +256,11 @@ class Tela_Cadastrar_OS:
             etDataSaida.insert(0, self.data_atual)
 
             etCliente.delete(0, END)
-            etTelefone.delete(0, END)
+            etTelefone1.delete(0, END)
+            etTelefone2.delete(0, END)
             etVeiculo.delete(0, END)
+            etPlaca.delete(0, END)
+            etQuilometragem.delete(0, END)
             stDesc.delete("1.0", END)
             stLaudo.delete("1.0", END)
 

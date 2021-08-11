@@ -20,15 +20,14 @@ class Backup_BD:
 
         self.data_atual = f'{self.day}-{self.month}-{self.year}'
         self.origem = 'wmotos.db'
-        self.list_devices = ['E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'W']
+        self.list_devices = ['D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'W', 'Y', 'Z']
         self.list_color = [ 'SpringGreen', 'SaddleBrown', 'Black', 'SlateBlue', 'DarkSlateGray',
                             'Indigo', 'DarkRed', 'DarkOrange', 'Goldenrod', 'MidnightBlue']
 
         #JANELA MAIN
         self.login()
-
+    
     def login(self):
-
         windowLogin = Tk()
         windowLogin.resizable(False, False)
         windowLogin.geometry(util().toCenterScreen(160,70))

@@ -176,17 +176,17 @@ class consulta:
             limparTabela()
 
             #VARRER LISTA E ADICIONAR NA TABELA
-            for i in bd().getNomeVeiculoOS(etBuscar.get().upper()):
+            for i in bd().getNomeVeiculoPlacaOS(etBuscar.get().upper()):
                 #FUNCAO PARA INSERIR NA TABELA
                 inserirTabela(i)
 
         def inserirTabela(item):
-            str_obra = f"{item[10]:.2f}".replace('.', ',')
-            str_pecas = f"{item[11]:.2f}".replace('.', ',')
-            str_outros = f"{item[12]:.2f}".replace('.', ',')
+            str_obra = f"{item[13]:.2f}".replace('.', ',')
+            str_pecas = f"{item[14]:.2f}".replace('.', ',')
+            str_outros = f"{item[15]:.2f}".replace('.', ',')
 
-            total = f"{(item[10] + item[11] + item[12]):.2f}".replace('.', ',')
-            treev2.insert("", 'end', text ="L1", values =(item[0], item[1], item[2], item[3], item[5], item[8], item[9], str_obra, str_pecas, str_outros, total))
+            total = f"{(item[13] + item[14] + item[15]):.2f}".replace('.', ',')
+            treev2.insert("", 'end', text ="L1", values =(item[0], item[1], item[2], item[3], item[6], item[11], item[12], str_obra, str_pecas, str_outros, total))
 
         def limpar(event):
             #LIMPAR CAMPO DE CONSULTA

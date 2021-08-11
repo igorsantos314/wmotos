@@ -59,12 +59,33 @@ class Tela_Editar_OS:
         etVeiculo = Entry(self.windowMain, font='Arial 12 ', fg=f'{json_ws().getColorVeiculo()}', width=20)
         etVeiculo.place(x=610, y=35)
 
-        #Telefone
-        lblTelefone = Label(self.windowMain, font='Arial 12', text='Telefone:', bg='White')
-        lblTelefone.place(x=10, y=75)
+        #Telefone 1
+        lblTelefone1 = Label(self.windowMain, font='Arial 12', text='Telefone 1:', bg='White')
+        lblTelefone1.place(x=10, y=75)
 
-        etTelefone = Entry(self.windowMain, font='Arial 12', fg=f'{json_ws().getColorTelefone()}', width=20)
-        etTelefone.place(x=10, y=100)
+        etTelefone1 = Entry(self.windowMain, font='Arial 12', fg=f'{json_ws().getColorTelefone()}', width=20)
+        etTelefone1.place(x=10, y=100)
+
+        #Telefone 2
+        lblTelefone2 = Label(self.windowMain, font='Arial 12', text='Telefone 2:', bg='White')
+        lblTelefone2.place(x=210, y=75)
+
+        etTelefone2 = Entry(self.windowMain, font='Arial 12', fg=f'{json_ws().getColorTelefone()}', width=20)
+        etTelefone2.place(x=210, y=100)
+
+        #Quilometragem
+        lblQuilometragem = Label(self.windowMain, font='Arial 12', text='Quilometragem:', bg='White')
+        lblQuilometragem.place(x=410, y=75)
+
+        etQuilometragem = Entry(self.windowMain, font='Arial 12', width=20)
+        etQuilometragem.place(x=410, y=100)
+
+        #Placa
+        lblPlaca = Label(self.windowMain, font='Arial 12', text='Placa:', bg='White')
+        lblPlaca.place(x=610, y=75)
+
+        etPlaca = Entry(self.windowMain, font='Arial 12', width=20)
+        etPlaca.place(x=610, y=100)
 
         # Descricao e Laudo
         lblDesc = Label(self.windowMain, text='Descrição do Cliente:', font='Arial 12', bg='White')
@@ -178,8 +199,11 @@ class Tela_Editar_OS:
                         etDataEntrada.get(),
                         etDataSaida.get(),
                         etCliente.get().upper(),
-                        etTelefone.get(),
+                        etTelefone1.get(),
+                        etTelefone2.get(),
                         etVeiculo.get().upper(),
+                        etPlaca.get().upper(),
+                        etQuilometragem.get().upper(),
                         stDesc.get("1.0", END).upper(),
                         stLaudo.get("1.0", END).upper(),
                         comboPagamento.get(),
@@ -213,20 +237,28 @@ class Tela_Editar_OS:
             self.windowMain.destroy()
 
         def setDados():
-            dados = bd().getOS(self.id)[0]
-
+            dados = bd().getOS(self.id)
+            
+            #TRATAR DADOS QUE SÃO None
+            for pos, i in enumerate(dados):
+                if i == None:
+                    dados[pos] = ""
+            
             etDataEntrada.insert(0, dados[1])
             etDataSaida.insert(0, dados[2])
             etCliente.insert(0, dados[3])
-            etTelefone.insert(0, dados[4])
-            etVeiculo.insert(0, dados[5])
-            stDesc.insert(INSERT, dados[6])
-            stLaudo.insert(INSERT, dados[7])
-            setPagamento(dados[8])
-            setStatus(dados[9])
-            etObra.insert(0, str(dados[10]).replace('.',','))
-            etPecas.insert(0, str(dados[11]).replace('.',','))
-            etOutros.insert(0, str(dados[12]).replace('.',','))
+            etTelefone1.insert(0, dados[4])
+            etTelefone2.insert(0, dados[5])
+            etVeiculo.insert(0, dados[6])
+            etQuilometragem.insert(0, dados[7])
+            etPlaca.insert(0, dados[8])
+            stDesc.insert(INSERT, dados[9])
+            stLaudo.insert(INSERT, dados[10])
+            setPagamento(dados[11])
+            setStatus(dados[12])
+            etObra.insert(0, str(dados[13]).replace('.',','))
+            etPecas.insert(0, str(dados[14]).replace('.',','))
+            etOutros.insert(0, str(dados[15]).replace('.',','))
 
             #CALCULAR O TOTAL
             calcTotal()

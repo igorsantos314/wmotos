@@ -12,10 +12,10 @@ class bd:
         self.conection = sqlite3.connect(json_ws().getPathBd())
         self.cur = self.conection.cursor()
 
-    def insertOS(self, data_entrada, saida, nome_cliente, telefone, veiculo, desc, laudo_tecnico, forma_pagamento, status, valor_mao_obra, valor_pecas, valor_outros):
+    def insertOS(self, data_entrada, saida, nome_cliente, telefone1, telefone2, veiculo, placa, quilometragem, desc, laudo_tecnico, forma_pagamento, status, valor_mao_obra, valor_pecas, valor_outros):
 
         #INSERIR DADOS NA TABELA ORDEMS DE SERVIÇO
-        command = f'INSERT INTO ordem_servico(entrada, saida, cliente, telefone, veiculo, descricao, laudo, pagamento, status, mao_de_obra, valor_de_pecas, valor_outros) VALUES("{data_entrada}", "{saida}", "{nome_cliente}", "{telefone}", "{veiculo}", "{desc}", "{laudo_tecnico}", "{forma_pagamento}", "{status}", {valor_mao_obra}, {valor_pecas}, {valor_outros})'
+        command = f'INSERT INTO ordem_servico(entrada, saida, cliente, telefone_1, telefone_2, veiculo, placa, quilometragem, descricao, laudo, pagamento, status, mao_de_obra, valor_de_pecas, valor_outros) VALUES("{data_entrada}", "{saida}", "{nome_cliente}", "{telefone1}", "{telefone2}", "{veiculo}", "{placa}", "{quilometragem}", "{desc}", "{laudo_tecnico}", "{forma_pagamento}", "{status}", {valor_mao_obra}, {valor_pecas}, {valor_outros})'
         
         self.cur.execute(command)
         self.conection.commit()
@@ -62,9 +62,9 @@ class bd:
         self.cur.execute(command)
         self.conection.commit()
 
-    def updateOS(self, id, data_entrada, saida, nome_cliente, telefone, veiculo, desc, laudo_tecnico, forma_pagamento, status, valor_mao_obra, valor_pecas, valor_outros):
+    def updateOS(self, id, data_entrada, saida, nome_cliente, telefone1, telefone2, veiculo, placa, quilometragem, desc, laudo_tecnico, forma_pagamento, status, valor_mao_obra, valor_pecas, valor_outros):
         #ATUALIZAR OS
-        command = f"UPDATE ordem_servico SET entrada='{data_entrada}', saida='{saida}', cliente='{nome_cliente}', telefone='{telefone}', veiculo='{veiculo}', descricao='{desc}', laudo='{laudo_tecnico}', pagamento='{forma_pagamento}', status='{status}', mao_de_obra={valor_mao_obra}, valor_de_pecas={valor_pecas}, valor_outros={valor_outros} WHERE id={id};"
+        command = f"UPDATE ordem_servico SET entrada='{data_entrada}', saida='{saida}', cliente='{nome_cliente}', telefone_1='{telefone1}', telefone_2='{telefone2}', veiculo='{veiculo}', placa='{placa}', quilometragem='{quilometragem}', descricao='{desc}', laudo='{laudo_tecnico}', pagamento='{forma_pagamento}', status='{status}', mao_de_obra={valor_mao_obra}, valor_de_pecas={valor_pecas}, valor_outros={valor_outros} WHERE id={id};"
 
         self.cur.execute(command)
         self.conection.commit()
@@ -182,8 +182,8 @@ class bd:
         self.cur.execute(show)
 
         #RETORNA LISTA DE OS
-        return self.cur.fetchall()
-    
+        return [item for item in self.cur.fetchall()[0]]
+
     def getValor(self, id):
         show = f"SELECT * FROM ordem_servico WHERE id={id}"
         self.cur.execute(show)
@@ -191,11 +191,11 @@ class bd:
         #RETORNA O VALOR DA OS PELO ID
         return self.cur.fetchall()
 
-    def getNomeVeiculoOS(self, str):
+    def getNomeVeiculoPlacaOS(self, str):
 
-        show = f"SELECT * FROM ordem_servico WHERE cliente LIKE '%{str}%' OR veiculo LIKE '%{str}%'"
+        show = f"SELECT * FROM ordem_servico WHERE cliente LIKE '%{str}%' OR veiculo LIKE '%{str}%' placa LIKE '%{str}%'"
         self.cur.execute(show)
-
+        
         #RETORNA LISTA DE OS
         return self.cur.fetchall()
 
